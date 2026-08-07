@@ -47,7 +47,7 @@
   <meta property="og:url" content="https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/tools/youtube-thumbnail-viewer.html" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/tools/youtube-thumbnail-viewer.html","description":"View the thumbnail of any YouTube video at every size, side by side. Paste the link and compare HD, SD and HQ previews instantly. Free viewer.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/tools/youtube-thumbnail-viewer.html","description":"View the thumbnail of any YouTube video at every size, side by side. Paste the link and compare HD, SD and HQ previews instantly. Free viewer.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I compare all sizes at once?","acceptedAnswer":{"@type":"Answer","text":"Yes — every size is displayed in a single grid."}},{"@type":"Question","name":"Does it work with any video?","acceptedAnswer":{"@type":"Answer","text":"Yes, any public YouTube video, including Shorts and live streams."}},{"@type":"Question","name":"Is the viewer free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/"},{"@type":"ListItem","position":2,"name":"View YouTube Video Thumbnails","item":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/tools/youtube-thumbnail-viewer.html"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23ef4444%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
@@ -1047,6 +1047,269 @@ button.small {
   border-bottom: 8px solid transparent;
   transform: translate(-30%, -50%);
 }
+
+/* ---------- Example chips ---------- */
+
+.example-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.chip {
+  min-height: 28px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(56, 189, 248, 0.14);
+  transform: none;
+}
+
+/* ---------- Quick nav ---------- */
+
+.quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.quicknav a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.quicknav a:hover {
+  color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* ---------- Stats band ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin: 1.1rem 0 0.4rem;
+}
+
+@media (max-width: 620px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.85), rgba(13, 20, 36, 0.9));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 0.6rem;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.stat span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
+/* ---------- How / Feature / Use grids ---------- */
+
+.how-grid,
+.feature-grid,
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.how-card,
+.feature-card,
+.use-card {
+  background: rgba(13, 20, 36, 0.7);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.how-card h3,
+.feature-card h3,
+.use-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.how-card p,
+.feature-card p,
+.use-card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.how-num {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0b0f1a;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  margin-bottom: 0.6rem;
+}
+
+.feature-card h3::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+  margin-right: 0.45rem;
+  vertical-align: middle;
+}
+
+.use-card h3 {
+  color: var(--accent-2);
+}
+
+/* ---------- Resolutions table ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 20, 36, 0.6);
+}
+
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.res-table th,
+.res-table td {
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-muted);
+}
+
+.res-table th {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-dim);
+  background: rgba(18, 26, 46, 0.7);
+}
+
+.res-table tr:last-child td {
+  border-bottom: none;
+}
+
+.res-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.res-table code {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+}
+
+/* ---------- Blog ---------- */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.blog-card {
+  display: block;
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.85), rgba(13, 20, 36, 0.9));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+}
+
+.blog-card h2 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+}
+
+.blog-card p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.seo-section.article h2 {
+  margin-top: 1.6rem;
+}
+
+.seo-section.article ul {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Copy button state ---------- */
+
+.thumb-actions button.small:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.thumb-actions button.small:disabled:hover {
+  border-color: var(--border-soft);
+  background: transparent;
+  transform: none;
+}
 </style>
   
 </head>
@@ -1069,8 +1332,10 @@ button.small {
           placeholder="Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
         <button id="btnFetch" class="primary" title="Get Thumbnails" aria-label="Get Thumbnails">Get Thumbnails</button>
         <button id="btnExample" class="ghost" title="Example" aria-label="Example">Example</button>
+        <button id="btnClear" class="ghost" title="Clear" aria-label="Clear">Clear</button>
       </div>
       <p class="tips" role="note">Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links</p>
+      <div class="example-chips" id="exampleChips" aria-label="Examples"></div>
 
       <div id="errorBox" class="error-box" role="alert" hidden></div>
 
@@ -1134,6 +1399,34 @@ button.small {
 <a href="/tools/youtube-thumbnail-sizes.html">YouTube Thumbnail Sizes</a>
 <a href="/tools/download-video-cover-image.html">Download YouTube Video Cover Image</a>
 <a href="/tools/free-youtube-thumbnail-downloader.html">Free YouTube Thumbnail Downloader</a>
+<a href="/tools/youtube-thumbnail-4k-downloader.html">4K YouTube Thumbnail Downloader</a>
+<a href="/tools/download-youtube-video-thumbnail.html">Download YouTube Video Thumbnail</a>
+<a href="/tools/youtube-thumbnail-downloader-no-watermark.html">YouTube Thumbnail Downloader No Watermark</a>
+<a href="/tools/youtube-thumbnail-downloader-free-online.html">Free Online YouTube Thumbnail Downloader</a>
+<a href="/tools/youtube-thumbnail-downloader-no-login.html">YouTube Thumbnail Downloader No Login</a>
+<a href="/tools/youtube-thumbnail-downloader-for-creators.html">YouTube Thumbnail Downloader for Content Creators</a>
+<a href="/tools/youtube-thumbnail-downloader-online.html">YouTube Thumbnail Downloader Online</a>
+<a href="/tools/download-youtube-thumbnail-without-signup.html">Download YouTube Thumbnail Without Sign-Up</a>
+<a href="/tools/get-youtube-thumbnail-url.html">Get YouTube Thumbnail URL</a>
+<a href="/tools/youtube-thumbnail-preview.html">YouTube Thumbnail Preview</a>
+<a href="/tools/youtube-thumbnail-image-downloader.html">YouTube Thumbnail Image Downloader</a>
+<a href="/tools/download-thumbnails-from-youtube-shorts.html">Download Thumbnail from YouTube Shorts</a>
+<a href="/tools/best-youtube-thumbnail-downloader.html">Best YouTube Thumbnail Downloader</a>
+      </div>
+    </section>
+    <section class="footer-block">
+      <h2 class="footer-title">Guides</h2>
+      <div class="related-grid">
+<a href="/blog/how-to-download-youtube-thumbnails/">How to Download YouTube Thumbnails</a>
+<a href="/blog/youtube-thumbnail-size-guide/">YouTube Thumbnail Size Guide</a>
+<a href="/blog/youtube-thumbnail-best-practices/">YouTube Thumbnail Best Practices</a>
+<a href="/blog/youtube-thumbnail-ideas/">YouTube Thumbnail Ideas</a>
+<a href="/blog/best-youtube-thumbnail-downloader-tools/">Best YouTube Thumbnail Downloader Tools</a>
+<a href="/blog/youtube-thumbnail-ctr/">YouTube Thumbnail CTR</a>
+<a href="/blog/is-it-legal-to-download-youtube-thumbnails/">Is It Legal to Download YouTube Thumbnails?</a>
+<a href="/blog/youtube-thumbnail-downloader-for-chrome/">YouTube Thumbnail Downloader for Chrome</a>
+<a href="/blog/youtube-thumbnail-downloader-without-watermark/">YouTube Thumbnail Downloader Without Watermark</a>
+<a href="/blog/how-to-make-youtube-thumbnails/">How to Make YouTube Thumbnails</a>
       </div>
     </section>
     <section class="footer-block">
@@ -1175,10 +1468,20 @@ button.small {
 <a href="/lang/tl/" hreflang="tl">Tagalog</a>
       </div>
     </section>
+    <section class="footer-block">
+      <h2 class="footer-title">Site</h2>
+      <div class="related-grid">
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy-policy.html">Privacy Policy</a>
+<a href="/terms.html">Terms of Use</a>
+<a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </section>
     <p class="footer-note">Free YouTube thumbnail downloader. Paste any YouTube video link and download HD, SD and HQ thumbnails in one click. No sign-up, no watermark, no limits — everything runs in your browser.</p>
   </footer>
 
-  <script>window.UI_TEXT={"placeholder":"Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links","getThumbs":"Get Thumbnails","example":"Example","loading":"Loading…","download":"Download","open":"Open in new tab","notAvailable":"Not available","sizesTitle":"Available thumbnails","sizesSub":"Click Download to save the image to your device.","videoTitle":"YouTube video","openVideo":"Open video on YouTube","qDefault":"Default","invalidMsg":"Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be."};</script>
+  <script>window.UI_TEXT={"placeholder":"Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links","getThumbs":"Get Thumbnails","example":"Example","loading":"Loading…","download":"Download","open":"Open in new tab","notAvailable":"Not available","sizesTitle":"Available thumbnails","sizesSub":"Click Download to save the image to your device.","videoTitle":"YouTube video","openVideo":"Open video on YouTube","qDefault":"Default","invalidMsg":"Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be.","copy":"Copy URL","copied":"Copied!","clear":"Clear","qThumb1":"Thumb 1","qThumb2":"Thumb 2"};</script>
   <script>const UI_TEXT = window.UI_TEXT || {
   placeholder: "Paste a YouTube link \u2014 e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   tips: "Paste a video URL and press Enter \u00b7 Supports watch, youtu.be, shorts and embed links",
@@ -1194,11 +1497,17 @@ button.small {
   openVideo: "Open video on YouTube",
   qDefault: "Default",
   invalidMsg: "Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be.",
+  copy: "Copy URL",
+  copied: "Copied!",
+  clear: "Clear",
+  qThumb1: "Thumb 1",
+  qThumb2: "Thumb 2",
 };
 
 const urlInput = document.getElementById("urlInput");
 const btnFetch = document.getElementById("btnFetch");
 const btnExample = document.getElementById("btnExample");
+const btnClear = document.getElementById("btnClear");
 const errorBox = document.getElementById("errorBox");
 const results = document.getElementById("results");
 const videoTitle = document.getElementById("videoTitle");
@@ -1208,6 +1517,11 @@ const preview = document.getElementById("preview");
 const thumbGrid = document.getElementById("thumbGrid");
 
 const EXAMPLE = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+const EXAMPLE_VIDEOS = [
+  { label: "Rick Astley", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+  { label: "First Video", url: "https://www.youtube.com/watch?v=jNQXAC9IVRw" },
+  { label: "Gangnam Style", url: "https://www.youtube.com/watch?v=9bZkp7q19f0" },
+];
 
 const QUALITIES = [
   { key: "maxresdefault", label: "HD", res: "1280\u00d7720", note: "Highest quality" },
@@ -1215,6 +1529,8 @@ const QUALITIES = [
   { key: "hqdefault", label: "HQ", res: "480\u00d7360", note: "High quality" },
   { key: "mqdefault", label: "MQ", res: "320\u00d7180", note: "Medium quality" },
   { key: "default", label: UI_TEXT.qDefault, res: "120\u00d790", note: "Smallest" },
+  { key: "1", label: UI_TEXT.qThumb1, res: "120\u00d790", note: "Row frame" },
+  { key: "2", label: UI_TEXT.qThumb2, res: "120\u00d790", note: "Row frame" },
 ];
 
 const PREVIEW_ORDER = ["maxresdefault", "sddefault", "hqdefault"];
@@ -1291,6 +1607,7 @@ function renderGrid(id) {
       '<div class="thumb-label"><span class="thumb-badge">' + q.label + "</span>" +
       '<span class="thumb-res">' + q.res + "</span></div>" +
       '<div class="thumb-actions">' +
+      '<button class="ghost small" data-copy="' + url + '" title="' + UI_TEXT.copy + '" aria-label="' + UI_TEXT.copy + '">' + UI_TEXT.copy + "</button>" +
       '<button class="ghost small" data-dl="' + url + '" data-name="' + id + "-" + q.key + '.jpg" disabled>' + UI_TEXT.download + "</button>" +
       '<a class="thumb-open" href="' + url + '" target="_blank" rel="noopener" title="' + UI_TEXT.open + '" aria-label="' + UI_TEXT.open + '">&#8599;</a>' +
       "</div>" +
@@ -1374,10 +1691,42 @@ async function loadVideo(value) {
   }
 }
 
+async function copyImageUrl(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    return true;
+  } catch (err) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch (err2) {
+      return false;
+    }
+  }
+}
+
 thumbGrid.addEventListener("click", (e) => {
   const btn = e.target.closest("button[data-dl]");
   if (btn) {
     downloadImage(btn.dataset.dl, btn.dataset.name);
+    return;
+  }
+  const cp = e.target.closest("button[data-copy]");
+  if (cp) {
+    copyImageUrl(cp.dataset.copy).then((ok) => {
+      const label = cp.textContent;
+      cp.textContent = ok ? UI_TEXT.copied : label;
+      setTimeout(() => {
+        cp.textContent = label;
+      }, 1600);
+    });
   }
 });
 
@@ -1395,6 +1744,23 @@ urlInput.addEventListener("paste", () => {
 });
 
 btnFetch.addEventListener("click", () => loadVideo(urlInput.value));
+const exampleChips = document.getElementById("exampleChips");
+EXAMPLE_VIDEOS.forEach((ex) => {
+  const chip = document.createElement("button");
+  chip.type = "button";
+  chip.className = "chip";
+  chip.textContent = ex.label;
+  chip.addEventListener("click", () => {
+    urlInput.value = ex.url;
+    loadVideo(ex.url);
+  });
+  exampleChips.appendChild(chip);
+});
+btnClear.addEventListener("click", () => {
+  urlInput.value = "";
+  urlInput.focus();
+  clearResults();
+});
 btnExample.addEventListener("click", () => {
   urlInput.value = EXAMPLE;
   loadVideo(EXAMPLE);

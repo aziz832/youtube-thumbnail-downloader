@@ -47,8 +47,8 @@
   <meta property="og:url" content="https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/en/" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/en/","description":"Free YouTube thumbnail downloader. Paste any YouTube video link and download HD, SD and HQ thumbnails in one click. No sign-up, no watermark, no limits — everything runs in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the YouTube thumbnail downloader free?","acceptedAnswer":{"@type":"Answer","text":"Yes — it is completely free, requires no sign-up, and lets you download unlimited thumbnails."}},{"@type":"Question","name":"Do I need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No. It is a web app that runs in your browser, so there is nothing to install."}},{"@type":"Question","name":"What thumbnail sizes are available?","acceptedAnswer":{"@type":"Answer","text":"Most videos offer five sizes: 1280x720 HD, 640x480 SD, 480x360, 320x180 and 120x90. The HD version is only available for videos that have one."}},{"@type":"Question","name":"Can I download a thumbnail without knowing the video ID?","acceptedAnswer":{"@type":"Answer","text":"Yes — just paste the full YouTube link (watch, short, or youtu.be) and the video ID is extracted for you automatically."}},{"@type":"Question","name":"Is my video link sent to a server?","acceptedAnswer":{"@type":"Answer","text":"Thumbnail images are fetched directly from YouTube's public image CDN. No data is stored, collected, or shared."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/en/","description":"Free YouTube thumbnail downloader. Paste any YouTube video link and download HD, SD and HQ thumbnails in one click. No sign-up, no watermark, no limits — everything runs in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the YouTube thumbnail downloader free?","acceptedAnswer":{"@type":"Answer","text":"Yes — it is 100% free with no hidden fees, no sign-up, and no download limits."}},{"@type":"Question","name":"What is the highest quality thumbnail I can download?","acceptedAnswer":{"@type":"Answer","text":"The maximum is 1280x720 (maxresdefault). This tool always fetches that file first and falls back to the next-best size when it is missing."}},{"@type":"Question","name":"Do I need an account or login?","acceptedAnswer":{"@type":"Answer","text":"No. There is no account, email, or password — the tool is completely anonymous."}},{"@type":"Question","name":"Can I download thumbnails from YouTube Shorts?","acceptedAnswer":{"@type":"Answer","text":"Yes — /shorts/ links are supported and return the same set of sizes as regular videos."}},{"@type":"Question","name":"Does it add a watermark?","acceptedAnswer":{"@type":"Answer","text":"No. Downloaded images are the exact original files from YouTube's servers, with no watermark or branding."}},{"@type":"Question","name":"Why is the HD thumbnail missing for some videos?","acceptedAnswer":{"@type":"Answer","text":"The 1280x720 image is only generated when the uploader enabled a high-quality thumbnail. Older or low-resolution uploads may only have smaller sizes."}},{"@type":"Question","name":"What formats are the downloaded files?","acceptedAnswer":{"@type":"Answer","text":"Thumbnails are standard JPG (JPEG) image files that open in any viewer or editor."}},{"@type":"Question","name":"Which YouTube URL formats are supported?","acceptedAnswer":{"@type":"Answer","text":"watch links, youtu.be short links, /shorts/, /embed/, /live/, and a bare 11-character video ID."}},{"@type":"Question","name":"Is my video link stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Links are processed locally in your browser and never uploaded to a server."}},{"@type":"Question","name":"Can I download thumbnails from private videos?","acceptedAnswer":{"@type":"Answer","text":"No — only public videos with publicly accessible thumbnails can be downloaded."}}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23ef4444%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1046,6 +1046,269 @@ button.small {
   border-bottom: 8px solid transparent;
   transform: translate(-30%, -50%);
 }
+
+/* ---------- Example chips ---------- */
+
+.example-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.chip {
+  min-height: 28px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(56, 189, 248, 0.14);
+  transform: none;
+}
+
+/* ---------- Quick nav ---------- */
+
+.quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.quicknav a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.quicknav a:hover {
+  color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* ---------- Stats band ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin: 1.1rem 0 0.4rem;
+}
+
+@media (max-width: 620px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.85), rgba(13, 20, 36, 0.9));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 0.6rem;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.stat span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
+/* ---------- How / Feature / Use grids ---------- */
+
+.how-grid,
+.feature-grid,
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.how-card,
+.feature-card,
+.use-card {
+  background: rgba(13, 20, 36, 0.7);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.how-card h3,
+.feature-card h3,
+.use-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.how-card p,
+.feature-card p,
+.use-card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.how-num {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0b0f1a;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  margin-bottom: 0.6rem;
+}
+
+.feature-card h3::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+  margin-right: 0.45rem;
+  vertical-align: middle;
+}
+
+.use-card h3 {
+  color: var(--accent-2);
+}
+
+/* ---------- Resolutions table ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 20, 36, 0.6);
+}
+
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.res-table th,
+.res-table td {
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-muted);
+}
+
+.res-table th {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-dim);
+  background: rgba(18, 26, 46, 0.7);
+}
+
+.res-table tr:last-child td {
+  border-bottom: none;
+}
+
+.res-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.res-table code {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+}
+
+/* ---------- Blog ---------- */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.blog-card {
+  display: block;
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.85), rgba(13, 20, 36, 0.9));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+}
+
+.blog-card h2 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+}
+
+.blog-card p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.seo-section.article h2 {
+  margin-top: 1.6rem;
+}
+
+.seo-section.article ul {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Copy button state ---------- */
+
+.thumb-actions button.small:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.thumb-actions button.small:disabled:hover {
+  border-color: var(--border-soft);
+  background: transparent;
+  transform: none;
+}
 </style>
   
 </head>
@@ -1064,8 +1327,10 @@ button.small {
           placeholder="Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
         <button id="btnFetch" class="primary" title="Get Thumbnails" aria-label="Get Thumbnails">Get Thumbnails</button>
         <button id="btnExample" class="ghost" title="Example" aria-label="Example">Example</button>
+        <button id="btnClear" class="ghost" title="Clear" aria-label="Clear">Clear</button>
       </div>
       <p class="tips" role="note">Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links</p>
+      <div class="example-chips" id="exampleChips" aria-label="Examples"></div>
 
       <div id="errorBox" class="error-box" role="alert" hidden></div>
 
@@ -1089,35 +1354,104 @@ button.small {
     </section>
 
     
-    <section class="seo-section">
-      <h2>What is a YouTube thumbnail downloader?</h2>
-      <p>A YouTube thumbnail downloader extracts the preview image of any video from its public thumbnail CDN and saves it to your device. You only need the video link — the tool finds the video ID automatically, checks every available resolution, and lets you download the HD, SD or HQ version with one click. It is useful for creating custom thumbnails for your own videos, referencing designs, or simply saving a frame you like.</p>
+    <nav class="quicknav" aria-label="Page sections">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#who-uses">Who Uses It</a>
+      <a href="#resolutions">Resolutions</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <section class="stats" aria-label="Tool stats">
+      <div class="stat"><strong>100%</strong><span>Free forever</span></div>
+      <div class="stat"><strong>5</strong><span>Resolutions</span></div>
+      <div class="stat"><strong>0</strong><span>Login required</span></div>
+      <div class="stat"><strong>1280×720</strong><span>Max quality</span></div>
     </section>
-    <section class="seo-section">
-      <h2>How to download a YouTube thumbnail</h2>
-      <ol>
-<li>Paste a YouTube link into the box — watch, shorts, embed, or youtu.be links all work.</li>
-<li>Click Get Thumbnails (or press Enter) and wait a moment while the sizes load.</li>
-<li>Preview the video and the highest-quality thumbnail at the top.</li>
-<li>Click Download on any size you want — the image saves instantly, no watermark.</li>
-      </ol>
+
+    <section class="seo-section" id="how-it-works">
+      <h2>How It Works</h2>
+      <div class="how-grid">
+        <div class="how-card"><div class="how-num">1</div><h3>Copy the YouTube URL</h3><p>Open any YouTube video and copy its link from the address bar or share button. Watch, Shorts, embed, and youtu.be links all work.</p></div>
+        <div class="how-card"><div class="how-num">2</div><h3>Paste &amp; preview</h3><p>Paste the link into the box and press Enter. The video metadata loads and every thumbnail size is fetched at once.</p></div>
+        <div class="how-card"><div class="how-num">3</div><h3>Download instantly</h3><p>Click Download on the size you want — the original JPG saves straight to your device. No watermark, no sign-up.</p></div>
+      </div>
     </section>
+
+    <section class="seo-section" id="features">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card"><h3>HD &amp; 4K-quality originals</h3><p>Every thumbnail is the original file from YouTube's image CDN — no re-compression, no quality loss.</p></div>
+        <div class="feature-card"><h3>No watermark, ever</h3><p>Downloaded images are exactly what YouTube stores, with nothing overlaid on top.</p></div>
+        <div class="feature-card"><h3>No account needed</h3><p>No email, no password, no sign-up. The tool is completely anonymous to use.</p></div>
+        <div class="feature-card"><h3>All 5 resolutions</h3><p>Get maxresdefault HD, SD, HQ, MQ, and the tiny default image for any video.</p></div>
+        <div class="feature-card"><h3>Shorts &amp; live streams</h3><p>Watch links, Shorts, embeds, youtu.be, and live stream URLs are all detected automatically.</p></div>
+        <div class="feature-card"><h3>100% private</h3><p>Links are processed in your browser. Nothing is stored, collected, or shared.</p></div>
+      </div>
+    </section>
+
+    <section class="seo-section" id="who-uses">
+      <h2>Who Uses Our YouTube Thumbnail Downloader?</h2>
+      <div class="use-grid">
+        <div class="use-card"><h3>Content creators</h3><p>Study competitor thumbnails, get design inspiration, and archive your own uploads.</p></div>
+        <div class="use-card"><h3>Digital marketers</h3><p>Download thumbnails for A/B testing, competitive research, and campaign planning.</p></div>
+        <div class="use-card"><h3>Graphic designers</h3><p>Save covers as visual references for mood boards, presentations, and client work.</p></div>
+        <div class="use-card"><h3>Educators &amp; researchers</h3><p>Grab thumbnails for lectures, media-literacy classes, and visual communication research.</p></div>
+      </div>
+    </section>
+
+    <section class="seo-section" id="resolutions">
+      <h2>Supported Resolutions</h2>
+      <div class="table-wrap"><table class="res-table">
+        <thead><tr><th>Size</th><th>Dimensions</th><th>File</th><th>Notes</th></tr></thead>
+        <tbody>
+        <tr><td>Max HD</td><td>1280 × 720</td><td><code>maxresdefault</code></td><td>Only when the uploader used a high-quality thumbnail</td></tr>
+        <tr><td>SD</td><td>640 × 480</td><td><code>sddefault</code></td><td>Available for almost every video</td></tr>
+        <tr><td>HQ</td><td>480 × 360</td><td><code>hqdefault</code></td><td>The classic sidebar size</td></tr>
+        <tr><td>MQ</td><td>320 × 180</td><td><code>mqdefault</code></td><td>Compact 16:9 preview</td></tr>
+        <tr><td>Default</td><td>120 × 90</td><td><code>default.jpg</code></td><td>Small playlist icon</td></tr>
+        <tr><td>Thumb 1 / Thumb 2</td><td>120 × 90</td><td><code>1.jpg / 2.jpg</code></td><td>Additional row frames</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
     <section class="seo-section">
-      <h2>Common uses</h2>
+      <h2>What Is a YouTube Thumbnail Downloader?</h2>
+      <p>A YouTube thumbnail downloader extracts the preview image of any video from its public image CDN and saves it to your device. You only need the video link — the tool finds the video ID automatically, checks every available resolution, and lets you download the HD, SD, or HQ version with one click. It is useful for creating custom thumbnails for your own videos, referencing designs, or simply saving a frame you like.</p>
+      <p>Unlike screenshots, the downloaded file is the original image YouTube stores — sharp at full resolution and free of player UI, play buttons, and compression artifacts.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>Supported URL Formats</h2>
+      <p>The tool detects the video ID from every common YouTube link format:</p>
       <ul>
-<li>Create custom thumbnails for your own YouTube videos</li>
-<li>Save reference designs and clickbait examples for inspiration</li>
-<li>Archive thumbnails of your favorite videos for your collection</li>
-<li>Grab a cover image for blog posts, slides, and presentations</li>
+        <li>Standard: youtube.com/watch?v=VIDEO_ID</li>
+        <li>Short: youtu.be/VIDEO_ID</li>
+        <li>Embedded: youtube.com/embed/VIDEO_ID</li>
+        <li>Shorts: youtube.com/shorts/VIDEO_ID</li>
+        <li>Live streams and playlist video URLs</li>
+        <li>A bare 11-character video ID</li>
       </ul>
     </section>
+
     <section class="seo-section">
-      <h2>Frequently asked questions</h2>
-      <details class="faq-item"><summary>Is the YouTube thumbnail downloader free?</summary><p>Yes — it is completely free, requires no sign-up, and lets you download unlimited thumbnails.</p></details>
-<details class="faq-item"><summary>Do I need to install anything?</summary><p>No. It is a web app that runs in your browser, so there is nothing to install.</p></details>
-<details class="faq-item"><summary>What thumbnail sizes are available?</summary><p>Most videos offer five sizes: 1280x720 HD, 640x480 SD, 480x360, 320x180 and 120x90. The HD version is only available for videos that have one.</p></details>
-<details class="faq-item"><summary>Can I download a thumbnail without knowing the video ID?</summary><p>Yes — just paste the full YouTube link (watch, short, or youtu.be) and the video ID is extracted for you automatically.</p></details>
-<details class="faq-item"><summary>Is my video link sent to a server?</summary><p>Thumbnail images are fetched directly from YouTube's public image CDN. No data is stored, collected, or shared.</p></details>
+      <h2>Why Use a Thumbnail Downloader Instead of a Screenshot?</h2>
+      <p>Screenshots capture the player on screen: compressed, small, and covered with the play button and UI. A downloader fetches the original file from YouTube's servers at its true resolution, so the image stays sharp when you crop, zoom, or place it in a design.</p>
+      <p>You also get every size YouTube offers at once, instead of hunting through the page source for image URLs.</p>
+    </section>
+
+    <section class="seo-section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <details class="faq-item"><summary>Is the YouTube thumbnail downloader free?</summary><p>Yes — it is 100% free with no hidden fees, no sign-up, and no download limits.</p></details>
+        <details class="faq-item"><summary>What is the highest quality thumbnail I can download?</summary><p>The maximum is 1280x720 (maxresdefault). This tool always fetches that file first and falls back to the next-best size when it is missing.</p></details>
+        <details class="faq-item"><summary>Do I need an account or login?</summary><p>No. There is no account, email, or password — the tool is completely anonymous.</p></details>
+        <details class="faq-item"><summary>Can I download thumbnails from YouTube Shorts?</summary><p>Yes — /shorts/ links are supported and return the same set of sizes as regular videos.</p></details>
+        <details class="faq-item"><summary>Does it add a watermark?</summary><p>No. Downloaded images are the exact original files from YouTube's servers, with no watermark or branding.</p></details>
+        <details class="faq-item"><summary>Why is the HD thumbnail missing for some videos?</summary><p>The 1280x720 image is only generated when the uploader enabled a high-quality thumbnail. Older or low-resolution uploads may only have smaller sizes.</p></details>
+        <details class="faq-item"><summary>What formats are the downloaded files?</summary><p>Thumbnails are standard JPG (JPEG) image files that open in any viewer or editor.</p></details>
+        <details class="faq-item"><summary>Which YouTube URL formats are supported?</summary><p>watch links, youtu.be short links, /shorts/, /embed/, /live/, and a bare 11-character video ID.</p></details>
+        <details class="faq-item"><summary>Is my video link stored anywhere?</summary><p>No. Links are processed locally in your browser and never uploaded to a server.</p></details>
+        <details class="faq-item"><summary>Can I download thumbnails from private videos?</summary><p>No — only public videos with publicly accessible thumbnails can be downloaded.</p></details>
     </section>
   </main>
 
@@ -1142,6 +1476,34 @@ button.small {
 <a href="/tools/youtube-thumbnail-sizes.html">YouTube Thumbnail Sizes</a>
 <a href="/tools/download-video-cover-image.html">Download YouTube Video Cover Image</a>
 <a href="/tools/free-youtube-thumbnail-downloader.html">Free YouTube Thumbnail Downloader</a>
+<a href="/tools/youtube-thumbnail-4k-downloader.html">4K YouTube Thumbnail Downloader</a>
+<a href="/tools/download-youtube-video-thumbnail.html">Download YouTube Video Thumbnail</a>
+<a href="/tools/youtube-thumbnail-downloader-no-watermark.html">YouTube Thumbnail Downloader No Watermark</a>
+<a href="/tools/youtube-thumbnail-downloader-free-online.html">Free Online YouTube Thumbnail Downloader</a>
+<a href="/tools/youtube-thumbnail-downloader-no-login.html">YouTube Thumbnail Downloader No Login</a>
+<a href="/tools/youtube-thumbnail-downloader-for-creators.html">YouTube Thumbnail Downloader for Content Creators</a>
+<a href="/tools/youtube-thumbnail-downloader-online.html">YouTube Thumbnail Downloader Online</a>
+<a href="/tools/download-youtube-thumbnail-without-signup.html">Download YouTube Thumbnail Without Sign-Up</a>
+<a href="/tools/get-youtube-thumbnail-url.html">Get YouTube Thumbnail URL</a>
+<a href="/tools/youtube-thumbnail-preview.html">YouTube Thumbnail Preview</a>
+<a href="/tools/youtube-thumbnail-image-downloader.html">YouTube Thumbnail Image Downloader</a>
+<a href="/tools/download-thumbnails-from-youtube-shorts.html">Download Thumbnail from YouTube Shorts</a>
+<a href="/tools/best-youtube-thumbnail-downloader.html">Best YouTube Thumbnail Downloader</a>
+      </div>
+    </section>
+    <section class="footer-block">
+      <h2 class="footer-title">Guides</h2>
+      <div class="related-grid">
+<a href="/blog/how-to-download-youtube-thumbnails/">How to Download YouTube Thumbnails</a>
+<a href="/blog/youtube-thumbnail-size-guide/">YouTube Thumbnail Size Guide</a>
+<a href="/blog/youtube-thumbnail-best-practices/">YouTube Thumbnail Best Practices</a>
+<a href="/blog/youtube-thumbnail-ideas/">YouTube Thumbnail Ideas</a>
+<a href="/blog/best-youtube-thumbnail-downloader-tools/">Best YouTube Thumbnail Downloader Tools</a>
+<a href="/blog/youtube-thumbnail-ctr/">YouTube Thumbnail CTR</a>
+<a href="/blog/is-it-legal-to-download-youtube-thumbnails/">Is It Legal to Download YouTube Thumbnails?</a>
+<a href="/blog/youtube-thumbnail-downloader-for-chrome/">YouTube Thumbnail Downloader for Chrome</a>
+<a href="/blog/youtube-thumbnail-downloader-without-watermark/">YouTube Thumbnail Downloader Without Watermark</a>
+<a href="/blog/how-to-make-youtube-thumbnails/">How to Make YouTube Thumbnails</a>
       </div>
     </section>
     <section class="footer-block">
@@ -1183,10 +1545,20 @@ button.small {
 <a href="/lang/tl/" hreflang="tl">Tagalog</a>
       </div>
     </section>
+    <section class="footer-block">
+      <h2 class="footer-title">Site</h2>
+      <div class="related-grid">
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy-policy.html">Privacy Policy</a>
+<a href="/terms.html">Terms of Use</a>
+<a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </section>
     <p class="footer-note">Free YouTube thumbnail downloader. Paste any YouTube video link and download HD, SD and HQ thumbnails in one click. No sign-up, no watermark, no limits — everything runs in your browser.</p>
   </footer>
 
-  <script>window.UI_TEXT={"placeholder":"Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links","getThumbs":"Get Thumbnails","example":"Example","loading":"Loading…","download":"Download","open":"Open in new tab","notAvailable":"Not available","sizesTitle":"Available thumbnails","sizesSub":"Click Download to save the image to your device.","videoTitle":"YouTube video","openVideo":"Open video on YouTube","qDefault":"Default","invalidMsg":"Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be."};</script>
+  <script>window.UI_TEXT={"placeholder":"Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"Paste a video URL and press Enter · Supports watch, youtu.be, shorts and embed links","getThumbs":"Get Thumbnails","example":"Example","loading":"Loading…","download":"Download","open":"Open in new tab","notAvailable":"Not available","sizesTitle":"Available thumbnails","sizesSub":"Click Download to save the image to your device.","videoTitle":"YouTube video","openVideo":"Open video on YouTube","qDefault":"Default","invalidMsg":"Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be.","copy":"Copy URL","copied":"Copied!","clear":"Clear","qThumb1":"Thumb 1","qThumb2":"Thumb 2"};</script>
   <script>const UI_TEXT = window.UI_TEXT || {
   placeholder: "Paste a YouTube link \u2014 e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   tips: "Paste a video URL and press Enter \u00b7 Supports watch, youtu.be, shorts and embed links",
@@ -1202,11 +1574,17 @@ button.small {
   openVideo: "Open video on YouTube",
   qDefault: "Default",
   invalidMsg: "Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be.",
+  copy: "Copy URL",
+  copied: "Copied!",
+  clear: "Clear",
+  qThumb1: "Thumb 1",
+  qThumb2: "Thumb 2",
 };
 
 const urlInput = document.getElementById("urlInput");
 const btnFetch = document.getElementById("btnFetch");
 const btnExample = document.getElementById("btnExample");
+const btnClear = document.getElementById("btnClear");
 const errorBox = document.getElementById("errorBox");
 const results = document.getElementById("results");
 const videoTitle = document.getElementById("videoTitle");
@@ -1216,6 +1594,11 @@ const preview = document.getElementById("preview");
 const thumbGrid = document.getElementById("thumbGrid");
 
 const EXAMPLE = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+const EXAMPLE_VIDEOS = [
+  { label: "Rick Astley", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+  { label: "First Video", url: "https://www.youtube.com/watch?v=jNQXAC9IVRw" },
+  { label: "Gangnam Style", url: "https://www.youtube.com/watch?v=9bZkp7q19f0" },
+];
 
 const QUALITIES = [
   { key: "maxresdefault", label: "HD", res: "1280\u00d7720", note: "Highest quality" },
@@ -1223,6 +1606,8 @@ const QUALITIES = [
   { key: "hqdefault", label: "HQ", res: "480\u00d7360", note: "High quality" },
   { key: "mqdefault", label: "MQ", res: "320\u00d7180", note: "Medium quality" },
   { key: "default", label: UI_TEXT.qDefault, res: "120\u00d790", note: "Smallest" },
+  { key: "1", label: UI_TEXT.qThumb1, res: "120\u00d790", note: "Row frame" },
+  { key: "2", label: UI_TEXT.qThumb2, res: "120\u00d790", note: "Row frame" },
 ];
 
 const PREVIEW_ORDER = ["maxresdefault", "sddefault", "hqdefault"];
@@ -1299,6 +1684,7 @@ function renderGrid(id) {
       '<div class="thumb-label"><span class="thumb-badge">' + q.label + "</span>" +
       '<span class="thumb-res">' + q.res + "</span></div>" +
       '<div class="thumb-actions">' +
+      '<button class="ghost small" data-copy="' + url + '" title="' + UI_TEXT.copy + '" aria-label="' + UI_TEXT.copy + '">' + UI_TEXT.copy + "</button>" +
       '<button class="ghost small" data-dl="' + url + '" data-name="' + id + "-" + q.key + '.jpg" disabled>' + UI_TEXT.download + "</button>" +
       '<a class="thumb-open" href="' + url + '" target="_blank" rel="noopener" title="' + UI_TEXT.open + '" aria-label="' + UI_TEXT.open + '">&#8599;</a>' +
       "</div>" +
@@ -1382,10 +1768,42 @@ async function loadVideo(value) {
   }
 }
 
+async function copyImageUrl(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    return true;
+  } catch (err) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch (err2) {
+      return false;
+    }
+  }
+}
+
 thumbGrid.addEventListener("click", (e) => {
   const btn = e.target.closest("button[data-dl]");
   if (btn) {
     downloadImage(btn.dataset.dl, btn.dataset.name);
+    return;
+  }
+  const cp = e.target.closest("button[data-copy]");
+  if (cp) {
+    copyImageUrl(cp.dataset.copy).then((ok) => {
+      const label = cp.textContent;
+      cp.textContent = ok ? UI_TEXT.copied : label;
+      setTimeout(() => {
+        cp.textContent = label;
+      }, 1600);
+    });
   }
 });
 
@@ -1403,6 +1821,23 @@ urlInput.addEventListener("paste", () => {
 });
 
 btnFetch.addEventListener("click", () => loadVideo(urlInput.value));
+const exampleChips = document.getElementById("exampleChips");
+EXAMPLE_VIDEOS.forEach((ex) => {
+  const chip = document.createElement("button");
+  chip.type = "button";
+  chip.className = "chip";
+  chip.textContent = ex.label;
+  chip.addEventListener("click", () => {
+    urlInput.value = ex.url;
+    loadVideo(ex.url);
+  });
+  exampleChips.appendChild(chip);
+});
+btnClear.addEventListener("click", () => {
+  urlInput.value = "";
+  urlInput.focus();
+  clearResults();
+});
 btnExample.addEventListener("click", () => {
   urlInput.value = EXAMPLE;
   loadVideo(EXAMPLE);

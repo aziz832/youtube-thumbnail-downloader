@@ -393,4 +393,637 @@ export const PSEO = [
       ["Can I download as many as I want?", "Yes, there is no limit."],
     ],
   },
+  {
+    slug: "youtube-thumbnail-4k-downloader",
+    primary: "4k youtube thumbnail downloader",
+    title: "4K YouTube Thumbnail Downloader — Get the Highest Quality Image",
+    meta: "Download the highest-quality YouTube thumbnail available for any video. Get the maxresdefault 1280x720 image and every fallback size. Free 4K downloader.",
+    h1: "4K YouTube Thumbnail Downloader",
+    intro: [
+      "The largest thumbnail YouTube serves is the maxresdefault image at 1280x720 pixels. This downloader always pulls that file first, so you get the sharpest cover image YouTube has for the video.",
+      "When a video has no high-resolution image — typical for older uploads — the tool automatically falls back to the best available size so you still get a clean result.",
+    ],
+    steps: [
+      "Paste the video link or video ID.",
+      "The tool checks the maxresdefault image first.",
+      "Download the highest available quality.",
+      "Use a smaller fallback size if needed.",
+    ],
+    faq: [
+      ["Does YouTube have 4K thumbnails?", "No — 1280x720 is the maximum thumbnail resolution YouTube publishes. This tool always gets that largest size when it exists."],
+      ["Why is the HD thumbnail missing?", "The maxresdefault file is only generated when the uploader used a high-quality custom thumbnail."],
+      ["What is the fallback order?", "maxresdefault, then sddefault, then hqdefault, then mqdefault, then default."],
+    ],
+  },
+  {
+    slug: "download-youtube-video-thumbnail",
+    primary: "download youtube video thumbnail",
+    title: "Download YouTube Video Thumbnail — From Any Video URL",
+    meta: "Download the thumbnail of any YouTube video from its URL. Paste the link and save the HD, SD or HQ cover image instantly. Free, no sign-up.",
+    h1: "Download YouTube Video Thumbnail",
+    intro: [
+      "Every YouTube video has a thumbnail — the cover image shown in search results and the player. This tool converts any video URL into a downloadable image file in one step.",
+      "The video ID is read from the link automatically, so you never need to touch the page source or build image URLs by hand.",
+    ],
+    steps: [
+      "Copy the video URL from your browser.",
+      "Paste it into the box above.",
+      "Choose the resolution you want.",
+      "Click Download to save the JPG.",
+    ],
+    faq: [
+      ["Can I download the cover of any video?", "Yes, any public video — including Shorts and live streams — has an accessible thumbnail."],
+      ["What resolution will I get?", "The largest one available for that video, from HD 1280x720 down to 120x90."],
+      ["Is it really free?", "Yes, completely free with no watermark."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-no-watermark",
+    primary: "youtube thumbnail downloader no watermark",
+    title: "YouTube Thumbnail Downloader No Watermark — Clean Original Images",
+    meta: "Download YouTube thumbnails with no watermark. Images are saved exactly as YouTube serves them — no logos, no branding, no overlay. Free tool.",
+    h1: "YouTube Thumbnail Downloader — No Watermark",
+    intro: [
+      "Thumbnails downloaded with this tool are the exact original files from YouTube's image CDN. No watermark, no logo, no compression, and no branding overlay is ever added.",
+      "The file you save is identical to what YouTube stores — ready for design work, presentations, or personal archives.",
+    ],
+    steps: [
+      "Paste the YouTube link.",
+      "Pick the resolution you need.",
+      "Click Download.",
+      "Use the clean JPG anywhere.",
+    ],
+    faq: [
+      ["Are there watermarks on the images?", "No. The file is the original thumbnail straight from YouTube with nothing added."],
+      ["Do I get the original quality?", "Yes, every size is saved at the exact resolution YouTube publishes."],
+      ["Can I reuse the thumbnails commercially?", "Thumbnails belong to the uploader — check usage rights before commercial reuse."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-free-online",
+    primary: "free online youtube thumbnail downloader",
+    title: "Free Online YouTube Thumbnail Downloader — No Install, No Sign-Up",
+    meta: "A free online YouTube thumbnail downloader that needs no install. Paste a link, preview every size, and save the image. Works on all devices.",
+    h1: "Free Online YouTube Thumbnail Downloader",
+    intro: [
+      "This free online tool downloads YouTube thumbnails straight in your browser — nothing to install, nothing to sign up for, and no account to create.",
+      "It works the same on desktop, tablet, and phone, in every modern browser.",
+    ],
+    steps: [
+      "Open this page on any device.",
+      "Paste the YouTube link.",
+      "Preview the available sizes.",
+      "Download the one you need.",
+    ],
+    faq: [
+      ["Is it really free and online?", "Yes — it is a free web tool that runs entirely in your browser."],
+      ["Does it work on my phone?", "Yes, it is fully responsive and works on iOS and Android browsers."],
+      ["Do I need to install an app?", "No app and no extension are required."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-no-login",
+    primary: "youtube thumbnail downloader no login",
+    title: "YouTube Thumbnail Downloader No Login — Anonymous & Private",
+    meta: "Download YouTube thumbnails with no login and no email. A fully anonymous tool that processes links in your browser. Free, private, unlimited.",
+    h1: "YouTube Thumbnail Downloader — No Login",
+    intro: [
+      "There is no account, email, or password here. The tool is completely anonymous — paste a link and download the thumbnail without creating anything.",
+      "Because everything runs in your browser, your video history is never uploaded anywhere.",
+    ],
+    steps: [
+      "Paste a YouTube link.",
+      "Wait a moment for the sizes to load.",
+      "Choose a resolution.",
+      "Download the image.",
+    ],
+    faq: [
+      ["Do I need an account?", "No — there is no login and no email required."],
+      ["Is my search history stored?", "No. Links are processed locally in your browser and nothing is collected."],
+      ["Can I use it without registering?", "Yes, it is fully anonymous."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-for-creators",
+    primary: "youtube thumbnail downloader for content creators",
+    title: "YouTube Thumbnail Downloader for Content Creators — Study & Reuse",
+    meta: "A thumbnail downloader built for YouTube creators. Save competitor thumbnails, archive your own uploads, and study winning designs. Free.",
+    h1: "YouTube Thumbnail Downloader for Creators",
+    intro: [
+      "Content creators use thumbnails for inspiration, A/B testing, and archiving. This tool saves any video's thumbnail at full quality so you can study what works.",
+      "Download your own thumbnails to compare variants, or grab competitor covers for swipe files and design research.",
+    ],
+    steps: [
+      "Copy the URL of the video you want.",
+      "Paste it into the box.",
+      "Pick HD or another size.",
+      "Save the image for your research.",
+    ],
+    faq: [
+      ["Can I download my own video thumbnails?", "Yes — any public video, including your own uploads, can be downloaded."],
+      ["Can I use competitor thumbnails for inspiration?", "Yes, for personal study and reference. Respect copyright for commercial use."],
+      ["Does the tool help with CTR analysis?", "It makes saving and comparing thumbnail variants for A/B testing quick and easy."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-online",
+    primary: "youtube thumbnail downloader online",
+    title: "YouTube Thumbnail Downloader Online — Fast Browser Tool",
+    meta: "Online YouTube thumbnail downloader. Paste any video URL and save HD thumbnails in seconds — right in your browser. Free, private, unlimited.",
+    h1: "YouTube Thumbnail Downloader Online",
+    intro: [
+      "An online thumbnail downloader that works in any browser tab. There is no software, no upload, and no waiting — the image comes straight from YouTube's CDN.",
+      "Paste, preview, download. That is the whole workflow.",
+    ],
+    steps: [
+      "Paste the video link in the box.",
+      "Press Enter or click Get Thumbnails.",
+      "Preview each available size.",
+      "Download the best one.",
+    ],
+    faq: [
+      ["Is this an online-only tool?", "Yes, it runs as a normal web page in your browser."],
+      ["How fast is it?", "Thumbnails usually load within one or two seconds."],
+      ["Is my video link uploaded?", "No — the link is only used to build the public image URL locally."],
+    ],
+  },
+  {
+    slug: "download-youtube-thumbnail-without-signup",
+    primary: "download youtube thumbnail without sign up",
+    title: "Download YouTube Thumbnail Without Sign-Up — Instant Access",
+    meta: "Download YouTube thumbnails without signing up or registering. Paste the link and save HD, SD or HQ images instantly. Free and open to all.",
+    h1: "Download YouTube Thumbnail Without Sign-Up",
+    intro: [
+      "No registration wall here. The tool is open to everyone — paste any public video link and start downloading thumbnails immediately, with no forms to fill in.",
+      "There is nothing to download, install, or authorize.",
+    ],
+    steps: [
+      "Paste the video link.",
+      "Select a resolution.",
+      "Click Download.",
+      "Save the image to your device.",
+    ],
+    faq: [
+      ["Is registration required?", "No — the tool is completely open and sign-up free."],
+      ["Do I need to verify my email?", "No email or account is ever requested."],
+      ["Are there usage limits?", "No — downloads are unlimited."],
+    ],
+  },
+  {
+    slug: "get-youtube-thumbnail-url",
+    primary: "get youtube thumbnail url",
+    title: "Get YouTube Thumbnail URL — Direct Image Links for Any Video",
+    meta: "Get the direct YouTube thumbnail URL for any video. Paste the link and copy the i.ytimg.com image URL for every size. Free tool.",
+    h1: "Get YouTube Thumbnail URL",
+    intro: [
+      "This tool reveals the exact image URL of every thumbnail size YouTube has generated for a video. Use the links in embeds, apps, or tools that need a direct image source.",
+      "The URLs follow the public i.ytimg.com pattern and need no API key.",
+    ],
+    steps: [
+      "Paste the video URL.",
+      "Every thumbnail URL is shown.",
+      "Click Copy next to the one you need.",
+      "Paste it anywhere.",
+    ],
+    faq: [
+      ["What do the URLs look like?", "They use the pattern https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg."],
+      ["Do I need an API key?", "No — the images are public and need no authentication."],
+      ["Can I hotlink the image?", "Yes, the URL is a plain JPG that can be embedded in most platforms."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-preview",
+    primary: "youtube thumbnail preview",
+    title: "YouTube Thumbnail Preview — See Every Size Before You Save",
+    meta: "Preview the thumbnail of any YouTube video at every resolution before downloading. Paste the link and compare HD, SD and HQ side by side.",
+    h1: "YouTube Thumbnail Preview",
+    intro: [
+      "Before saving a thumbnail, it helps to see what each resolution looks like. This tool renders every size YouTube offers in a single grid so you can compare them side by side.",
+      "Click the preview you like best and download it directly.",
+    ],
+    steps: [
+      "Paste the video link.",
+      "All sizes appear in a preview grid.",
+      "Compare resolution and sharpness.",
+      "Download the best one.",
+    ],
+    faq: [
+      ["Can I preview the HD version first?", "Yes — the HD image is shown at the top of the grid when it exists."],
+      ["Do previews load fast?", "Yes, images load directly from YouTube's CDN in about a second."],
+      ["Can I download from the preview?", "Yes, each preview has a Download button."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-image-downloader",
+    primary: "youtube thumbnail image downloader",
+    title: "YouTube Thumbnail Image Downloader — Save Any Cover as JPG",
+    meta: "Download the thumbnail image of any YouTube video as a JPG file. Paste the link, pick a resolution, and save. Free, fast, no sign-up.",
+    h1: "YouTube Thumbnail Image Downloader",
+    intro: [
+      "A dedicated image downloader for YouTube covers. It fetches the thumbnail file YouTube stores for a video and saves it to your device as a standard JPG.",
+      "The image is preserved at its original resolution — no re-encoding, no quality loss.",
+    ],
+    steps: [
+      "Paste the video URL.",
+      "Choose your preferred size.",
+      "Click Download.",
+      "Open the JPG in any editor or viewer.",
+    ],
+    faq: [
+      ["What file format is saved?", "Thumbnails are saved as JPG (JPEG) image files."],
+      ["Is the quality preserved?", "Yes, the file is the original from YouTube's servers."],
+      ["Can I download multiple sizes?", "Yes, every size has its own Download button."],
+    ],
+  },
+  {
+    slug: "download-thumbnails-from-youtube-shorts",
+    primary: "download thumbnail from youtube shorts",
+    title: "Download Thumbnail from YouTube Shorts — Vertical Covers Too",
+    meta: "Download thumbnails from YouTube Shorts videos. Paste a /shorts/ link and save the HD or SD cover image instantly. Free tool.",
+    h1: "Download Thumbnail from YouTube Shorts",
+    intro: [
+      "Shorts videos have thumbnails just like regular uploads, and they are fetched the same way. Paste a Shorts link and every available cover size is returned.",
+      "The /shorts/ URL format is recognized automatically, so no manual ID extraction is needed.",
+    ],
+    steps: [
+      "Copy the Shorts link from YouTube.",
+      "Paste it into the box.",
+      "Browse the cover sizes.",
+      "Download the one you want.",
+    ],
+    faq: [
+      ["Do Shorts have HD thumbnails?", "Yes, when the Shorts video has a high-quality thumbnail it appears in the list."],
+      ["Which URL formats are supported?", "youtube.com/shorts/VIDEO_ID and the mobile share links."],
+      ["Is it free?", "Yes, free and unlimited."],
+    ],
+  },
+  {
+    slug: "best-youtube-thumbnail-downloader",
+    primary: "best youtube thumbnail downloader",
+    title: "Best YouTube Thumbnail Downloader — Why This One Stands Out",
+    meta: "Looking for the best YouTube thumbnail downloader? Compare the key features — HD quality, no watermark, no sign-up, unlimited downloads — and try it free.",
+    h1: "Best YouTube Thumbnail Downloader",
+    intro: [
+      "The best YouTube thumbnail downloader gets the original image, quickly, without sign-up or watermarks. This tool checks every box: it serves the original files from YouTube's CDN, shows all five sizes, and never limits downloads.",
+      "There is no account to create, no extension to install, and no data collected about what you paste.",
+    ],
+    steps: [
+      "Paste any YouTube link.",
+      "Compare all five resolutions side by side.",
+      "Pick the sharpest one.",
+      "Download it with one click.",
+    ],
+    faq: [
+      ["What makes this the best downloader?", "Original-quality images, all five sizes, no sign-up, no watermark, and unlimited free downloads."],
+      ["Is it better than browser extensions?", "It needs no permissions and nothing to install, so it is lighter and safer to use."],
+      ["Can I compare it to other tools?", "Yes — try it against any other thumbnail downloader and compare image quality and speed."],
+    ],
+  },
+];
+
+export const BLOG = [
+  {
+    slug: "how-to-download-youtube-thumbnails",
+    title: "How to Download YouTube Thumbnails — The Complete 2026 Guide",
+    meta: "Step-by-step guide on how to download YouTube thumbnails in HD without screenshots. Works for videos, Shorts, and live streams. Free and no sign-up.",
+    h1: "How to Download YouTube Thumbnails",
+    intro: [
+      "There are three ways people download YouTube thumbnails: taking a screenshot, right-clicking the preview image, or using a dedicated tool. Screenshots lose quality, and right-clicking usually gives you a tiny, compressed version. A thumbnail downloader fetches the original file straight from YouTube's image servers.",
+      "This guide walks through the fastest method and explains the resolutions you can expect to get.",
+    ],
+    sections: [
+      ["Method 1: Use a thumbnail downloader (recommended)", [
+        "Copy the video URL from your browser's address bar. It can be a watch link, a Shorts link, an embed, or a youtu.be short link.",
+        "Open a thumbnail downloader such as this site and paste the URL into the box.",
+        "Press Enter and the tool lists every thumbnail size YouTube has for the video.",
+        "Click Download on the size you want — the original file saves directly to your device.",
+      ]],
+      ["Method 2: Edit the image URL manually", [
+        "Every thumbnail lives at https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg.",
+        "Replace VIDEO_ID with the 11-character ID from the video link.",
+        "Replace SIZE with maxresdefault, sddefault, hqdefault, mqdefault, or default.",
+        "Open the URL in a new tab and save the image. The downside is you must guess which sizes exist — a tool checks them all at once.",
+      ]],
+      ["Method 3: Screenshot (last resort)", [
+        "Screenshots capture whatever is on screen, so you get compression artifacts and the player's UI in the image.",
+        "For quick reference a screenshot is fine, but for design work you want the original file.",
+      ]],
+    ],
+    faq: [
+      ["Can I download a thumbnail in HD?", "Yes — if the video has a maxresdefault image (1280x720), a downloader will show it in the list."],
+      ["Can I download thumbnails from Shorts?", "Yes, Shorts links are supported and return the same set of sizes."],
+      ["Is downloading thumbnails free?", "Yes, and most tools do not require an account."],
+      ["Why is the HD thumbnail missing for some videos?", "The 1280x720 image is only generated when the uploader used a high-quality custom thumbnail."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-size-guide",
+    title: "YouTube Thumbnail Size Guide — Exact Dimensions & Resolution Rules",
+    meta: "The complete YouTube thumbnail size guide: 1280x720 is the recommended size, minimum 640x360, file size under 2MB. Plus every size YouTube actually stores.",
+    h1: "YouTube Thumbnail Size Guide",
+    intro: [
+      "YouTube recommends uploading thumbnails at 1280x720 pixels with a minimum width of 640 pixels. The file should be under 2MB and saved as JPG, PNG, or GIF. Staying close to these numbers keeps the image sharp on every screen.",
+      "Separate from what you should upload, YouTube stores several generated sizes of every thumbnail. Here is what they are.",
+    ],
+    sections: [
+      ["The five sizes YouTube stores", [
+        "maxresdefault — 1280x720. The full HD image, only present when the uploader used a high-quality thumbnail.",
+        "sddefault — 640x480. The most reliable size, available for almost every video.",
+        "hqdefault — 480x360. The classic sidebar size, available for nearly all videos.",
+        "mqdefault — 320x180. A compact 16:9 preview.",
+        "default — 120x90. The tiny icon used in playlists.",
+      ]],
+      ["Rules for a good upload", [
+        "Use 1280x720. This is YouTube's recommended thumbnail size and what creators should design against.",
+        "Keep the file under 2MB so YouTube does not compress it.",
+        "Use high contrast and readable text — most viewers will see the thumbnail at a small size on mobile.",
+      ]],
+    ],
+    faq: [
+      ["What is the recommended YouTube thumbnail size?", "1280x720 pixels, with a minimum width of 640 pixels."],
+      ["What is the maximum file size?", "2MB is the safe limit before YouTube compresses the image."],
+      ["Why do my thumbnails look blurry?", "Small uploads get upscaled by YouTube — upload at 1280x720 to avoid blur."],
+      ["What format should I use?", "JPG, PNG, or GIF all work. JPG is the lightest option for photos."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-best-practices",
+    title: "YouTube Thumbnail Best Practices — 12 Tips to Raise CTR",
+    meta: "12 YouTube thumbnail best practices that raise click-through rate: faces, contrast, 3-4 word text, consistent branding, and color psychology.",
+    h1: "YouTube Thumbnail Best Practices",
+    intro: [
+      "Thumbnails are the single biggest click-through lever you control. Viewers decide in a fraction of a second whether to click, so the image has to communicate clearly at small size. These are the practices the top creators follow.",
+    ],
+    sections: [
+      ["What works", [
+        "Show a face with a strong emotion — faces reliably increase clicks.",
+        "Use a 3-word (or shorter) text overlay. More words become unreadable at small sizes.",
+        "Maximize contrast so the thumbnail stands out from the video player and page background.",
+        "Keep one consistent style so your audience recognizes your videos instantly.",
+      ]],
+      ["What to avoid", [
+        "Cluttered scenes with no clear focal point.",
+        "Text that is cut off or too small to read on a phone.",
+        "Clickbait that does not match the video — it raises early CTR but destroys retention.",
+      ]],
+    ],
+    faq: [
+      ["What makes a thumbnail clickable?", "A clear subject, a human face, high contrast, and a short readable text overlay."],
+      ["How long should thumbnail text be?", "Three words or fewer is the practical limit at small sizes."],
+      ["Should I use consistent branding?", "Yes — a repeatable style builds recognition and increases clicks over time."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-ideas",
+    title: "YouTube Thumbnail Ideas — 15 Proven Concepts for Any Niche",
+    meta: "15 proven YouTube thumbnail ideas you can copy for any niche: reaction shots, before/after, text overlays, arrows, and the classic 'shocked face'.",
+    h1: "YouTube Thumbnail Ideas",
+    intro: [
+      "If you are stuck on your next thumbnail, these concepts are proven across niches. Pick one, adapt it to your video, and keep the composition simple.",
+    ],
+    sections: [
+      ["15 ideas that work", [
+        "The shocked face — an exaggerated reaction to a surprising claim.",
+        "Before and after — side-by-side comparison that shows transformation.",
+        "The arrow — point at the most important element on screen.",
+        "Big number — '3 Mistakes', '10 Tools' put the promise in the thumbnail.",
+        "The cutout — your face removed from the background and placed on a bold color.",
+        "Text overlay — the key takeaway in 3 words or less.",
+        "The split screen — two subjects that represent a comparison or matchup.",
+        "Zoomed detail — a tight crop on an interesting object.",
+        "The hand pointing — directs the eye toward the text or subject.",
+        "Color blocking — a solid background color with a single bold subject.",
+        "The list — numbered items shown visually instead of as text.",
+        "Dramatic lighting — a spotlight effect draws the eye to the subject.",
+        "The question — 'Who is right?' written big and bold.",
+        "Context clue — an object that hints at the video's outcome without spoiling it.",
+        "The collage — multiple thumbnails arranged to imply a comparison or ranking.",
+      ]],
+    ],
+    faq: [
+      ["How do I pick an idea for my video?", "Start with the video's core promise and pick the idea that communicates it fastest at small size."],
+      ["Should every thumbnail look the same?", "Keep the style consistent but change the composition so the set does not feel repetitive."],
+      ["Do colors matter?", "Yes — warm, high-saturation colors attract attention, while low-contrast images get scrolled past."],
+    ],
+  },
+  {
+    slug: "best-youtube-thumbnail-downloader-tools",
+    title: "Best YouTube Thumbnail Downloader Tools in 2026 — Compared",
+    meta: "The best YouTube thumbnail downloader tools of 2026 compared: quality, watermark, sign-up, speed, and formats. Includes free browser-based options.",
+    h1: "Best YouTube Thumbnail Downloader Tools",
+    intro: [
+      "YouTube thumbnail downloaders differ in quality, watermark policy, and whether they need an account. This comparison covers what to look for and which tools fit which use case.",
+    ],
+    sections: [
+      ["What to compare", [
+        "Original quality — does the tool serve the file from YouTube's CDN or re-compress it?",
+        "Watermark — reputable tools never add one.",
+        "Sign-up — the best tools require no account.",
+        "Sizes offered — all five resolutions, including the 1280x720 HD image.",
+        "URL formats — watch, Shorts, embed, and youtu.be links should all work.",
+        "Privacy — links should be processed in the browser, not uploaded to a server.",
+      ]],
+      ["The verdict", [
+        "For most people, a free browser-based tool with no sign-up and no watermark is the right choice. It needs no installation, works on every device, and always returns the original image.",
+      ]],
+    ],
+    faq: [
+      ["Are browser-based downloaders safe?", "Yes — a tool that processes links locally in your browser never stores your data."],
+      ["Why avoid tools that add watermarks?", "A watermark ruins the original image and defeats the purpose of a thumbnail downloader."],
+      ["Do I need a paid tool?", "No — the free browser-based options cover the full feature set for most users."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-ctr",
+    title: "YouTube Thumbnail CTR — How to Improve Click-Through Rate",
+    meta: "What is a good YouTube thumbnail CTR? Learn the benchmarks and the 6 changes that raise click-through rate on your videos.",
+    h1: "YouTube Thumbnail CTR",
+    intro: [
+      "Click-through rate (CTR) measures the percentage of viewers who click your video after seeing it. YouTube reports it in Studio. For most channels a CTR between 2% and 10% is normal, with strong thumbnails pushing toward the higher end.",
+      "The thumbnail is the dominant factor in CTR, so small design changes can move the number noticeably.",
+    ],
+    sections: [
+      ["What is a good CTR?", [
+        "2–4% is average for a channel with broad reach.",
+        "4–10% is strong and suggests your thumbnails and titles match the audience's intent.",
+        "Below 2% usually means the thumbnail or title is not compelling, or the video targets the wrong audience.",
+      ]],
+      ["Six changes that raise CTR", [
+        "Test a new thumbnail on your underperforming videos — change one element at a time.",
+        "Add a human face — emotional faces outperform faceless designs.",
+        "Shorten the text overlay to three words or fewer.",
+        "Increase contrast between the subject and the background.",
+        "Match the thumbnail to the exact promise in the title.",
+        "Compare with top videos in your niche and adapt their composition (not their content).",
+      ]],
+    ],
+    faq: [
+      ["What is a normal CTR on YouTube?", "Between 2% and 10%, depending on niche and audience size. Aim for 4% or higher."],
+      ["How do I check my CTR?", "YouTube Studio shows the impression CTR for each video in the Analytics tab."],
+      ["Does CTR matter for the algorithm?", "Yes — CTR is a strong ranking signal, but retention matters more. Never use misleading thumbnails."],
+    ],
+  },
+  {
+    slug: "is-it-legal-to-download-youtube-thumbnails",
+    title: "Is It Legal to Download YouTube Thumbnails? (Fair Use Explained)",
+    meta: "Is downloading a YouTube thumbnail legal? Understand fair use, copyright, and when you can and cannot reuse another creator's thumbnail.",
+    h1: "Is It Legal to Download YouTube Thumbnails?",
+    intro: [
+      "Downloading a thumbnail for personal reference is generally fine — the images are public and widely used in design work and research. Reusing another creator's thumbnail on your own video is different: it violates YouTube's terms and can lead to a copyright strike.",
+      "Here is the short version of the rules that apply.",
+    ],
+    sections: [
+      ["What is allowed", [
+        "Downloading thumbnails for personal reference, study, or inspiration.",
+        "Using them under fair use for commentary, criticism, news reporting, or education — with the creator credited and the use transformative.",
+        "Downloading and reusing your own thumbnails in any way you like.",
+      ]],
+      ["What is not allowed", [
+        "Copying another creator's thumbnail onto your own video.",
+        "Using a competitor's thumbnail in advertising or commercial material.",
+        "Reselling or redistributing thumbnail files you do not own.",
+      ]],
+    ],
+    faq: [
+      ["Is it legal to download a YouTube thumbnail?", "For personal use and study, yes. Commercial reuse of another creator's thumbnail is not."],
+      ["Can I use a thumbnail in a video about that creator?", "Short, transformative uses for commentary are generally covered by fair use, but credit the creator."],
+      ["What happens if I reuse a thumbnail?", "YouTube can remove the video and issue a copyright strike against your channel."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-for-chrome",
+    title: "YouTube Thumbnail Downloader for Chrome — No Extension Needed",
+    meta: "How to download YouTube thumbnails in Chrome without an extension. Use a web tool instead — no permissions, no install, works in any browser.",
+    h1: "YouTube Thumbnail Downloader for Chrome",
+    intro: [
+      "Browser extensions that download thumbnails request permission to read every page you visit — a lot of access for a simple job. A web tool needs no permissions and works in Chrome, Edge, Firefox, and Safari alike.",
+      "If you use Chrome, this page is the extension-free way to save thumbnails.",
+    ],
+    sections: [
+      ["Why skip the extension", [
+        "Extensions can read your browsing data on every site.",
+        "They need to be updated and maintained, and some stop working after browser updates.",
+        "A web tool does the same job with zero permissions and nothing installed.",
+      ]],
+      ["How to use it in Chrome", [
+        "Open this page in Chrome.",
+        "Paste the video link into the box.",
+        "Pick a resolution and click Download.",
+        "The file saves to your Downloads folder like any image.",
+      ]],
+    ],
+    faq: [
+      ["Do I need a Chrome extension?", "No — this works in Chrome with nothing installed."],
+      ["Is a web tool safer than an extension?", "Yes — it has no access to your browser and stores nothing about you."],
+      ["Does it work in other browsers?", "Yes — Edge, Firefox, Safari, and mobile browsers are all supported."],
+    ],
+  },
+  {
+    slug: "youtube-thumbnail-downloader-without-watermark",
+    title: "YouTube Thumbnail Downloader Without Watermark — Original Files Only",
+    meta: "Download YouTube thumbnails without watermarks. Every file is the original image from YouTube's CDN — clean, uncompressed, ready to use.",
+    h1: "YouTube Thumbnail Downloader Without Watermark",
+    intro: [
+      "Some downloaders overlay their own branding on the images you save. This tool never does. What you download is exactly what YouTube stores — no logo, no watermark, no compression.",
+      "That matters when you need a clean image for design work or a presentation.",
+    ],
+    sections: [
+      ["Why clean images matter", [
+        "A watermark ruins the image for design and professional use.",
+        "Original files keep their full resolution and sharpness.",
+        "Clean files are easy to edit in Photoshop, Canva, or PowerPoint.",
+      ]],
+    ],
+    faq: [
+      ["Are the images really watermark-free?", "Yes — the file is the original thumbnail straight from YouTube's image CDN."],
+      ["Is the quality compressed?", "No — each size is saved at the exact resolution YouTube publishes."],
+      ["Can I edit the downloaded image?", "Yes, it is a standard JPG that opens in any editor."],
+    ],
+  },
+  {
+    slug: "how-to-make-youtube-thumbnails",
+    title: "How to Make YouTube Thumbnails — Tools, Sizes & Design Rules",
+    meta: "How to make YouTube thumbnails that get clicks: the right tool, the 1280x720 canvas, and the design rules that separate good thumbnails from great ones.",
+    h1: "How to Make YouTube Thumbnails",
+    intro: [
+      "You do not need expensive software to make great thumbnails. With a 1280x720 canvas, a decent photo editor, and a few design rules, anyone can produce thumbnails that perform.",
+    ],
+    sections: [
+      ["Choose a tool", [
+        "Canva — free, template-heavy, and ideal for beginners.",
+        "Photoshop — full control for advanced designers.",
+        "Photopea — a free Photoshop alternative that runs in the browser.",
+        "Figma — great for creators who want reusable components.",
+      ]],
+      ["Design rules", [
+        "Work on a 1280x720 canvas and export as JPG under 2MB.",
+        "Keep the focal point in the center — corners get cropped on some devices.",
+        "Use one bold subject, high contrast, and at most three words of text.",
+        "Preview your design at a small size — that is how viewers see it.",
+      ]],
+    ],
+    faq: [
+      ["What program do YouTubers use for thumbnails?", "Canva is the most popular free option; Photoshop is the professional standard."],
+      ["What resolution should the canvas be?", "1280x720 pixels, the size YouTube recommends for uploads."],
+      ["What makes a thumbnail stand out?", "High contrast, a clear subject, and a short readable text overlay."],
+    ],
+  },
+];
+
+export const INFO = [
+  {
+    slug: "about",
+    title: "About — YouTube Thumbnail Downloader",
+    meta: "About the free YouTube Thumbnail Downloader tool: what it does, why it is free, and how it protects your privacy.",
+    h1: "About",
+    sections: [
+      ["What this is", "A free web tool that downloads the thumbnail image of any public YouTube video. Paste a link, choose a size, and the original image saves to your device."],
+      ["Why it is free", "The tool is simple and runs entirely in your browser. It fetches public images from YouTube's CDN, so there are no servers to run and no reason to charge."],
+      ["Privacy", "Links are processed locally in your browser. Nothing you paste is stored, logged, or shared."],
+    ],
+  },
+  {
+    slug: "contact",
+    title: "Contact — YouTube Thumbnail Downloader",
+    meta: "Contact the team behind the free YouTube Thumbnail Downloader. Report issues, suggest features, or ask questions.",
+    h1: "Contact",
+    sections: [
+      ["Get in touch", "Questions, feedback, or feature requests? Open an issue on the project repository on GitHub."],
+      ["Report a bug", "If a thumbnail fails to load or a page behaves unexpectedly, include the video link and browser version if possible."],
+    ],
+  },
+  {
+    slug: "privacy-policy",
+    title: "Privacy Policy — YouTube Thumbnail Downloader",
+    meta: "Privacy policy for the YouTube Thumbnail Downloader. What data the tool collects, how it is used, and why your links stay private.",
+    h1: "Privacy Policy",
+    sections: [
+      ["Summary", "The tool is designed to collect no personal data. Everything you paste is processed in your browser and is never sent to our servers."],
+      ["What we do not collect", "We do not collect names, emails, video links, search history, or any personal information."],
+      ["Third-party requests", "Thumbnail images are loaded directly from YouTube's public image CDN (i.ytimg.com) by your browser. Noembed may be queried for a video title; no data is stored."],
+      ["Cookies", "The tool does not set tracking cookies or advertising identifiers."],
+    ],
+  },
+  {
+    slug: "terms",
+    title: "Terms of Use — YouTube Thumbnail Downloader",
+    meta: "Terms of use for the YouTube Thumbnail Downloader tool, including acceptable use and copyright notice.",
+    h1: "Terms of Use",
+    sections: [
+      ["Acceptable use", "Use the tool to download thumbnails of public videos for lawful purposes: personal reference, study, design research, or your own content."],
+      ["Copyright", "Thumbnails are the property of their uploaders. Do not reuse another creator's thumbnail on your own video or in commercial material without permission."],
+      ["No warranty", "The tool is provided as-is without warranty. Availability depends on YouTube's public image servers."],
+    ],
+  },
+  {
+    slug: "disclaimer",
+    title: "Disclaimer — YouTube Thumbnail Downloader",
+    meta: "Disclaimer for the YouTube Thumbnail Downloader: trademark notice, image ownership, and fair use guidance.",
+    h1: "Disclaimer",
+    sections: [
+      ["Trademarks", "YouTube is a trademark of Google LLC. This is an independent tool and is not affiliated with, endorsed by, or sponsored by YouTube or Google."],
+      ["Image ownership", "Downloaded thumbnails belong to their respective uploaders. You are responsible for how you use them."],
+      ["Fair use", "Personal and educational use of thumbnails is generally accepted. Commercial reuse may require permission from the copyright holder."],
+    ],
+  },
 ];

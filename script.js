@@ -13,11 +13,17 @@ const UI_TEXT = window.UI_TEXT || {
   openVideo: "Open video on YouTube",
   qDefault: "Default",
   invalidMsg: "Couldn't find a video ID in that link. Paste a YouTube URL like watch, shorts, or youtu.be.",
+  copy: "Copy URL",
+  copied: "Copied!",
+  clear: "Clear",
+  qThumb1: "Thumb 1",
+  qThumb2: "Thumb 2",
 };
 
 const urlInput = document.getElementById("urlInput");
 const btnFetch = document.getElementById("btnFetch");
 const btnExample = document.getElementById("btnExample");
+const btnClear = document.getElementById("btnClear");
 const errorBox = document.getElementById("errorBox");
 const results = document.getElementById("results");
 const videoTitle = document.getElementById("videoTitle");
@@ -27,6 +33,11 @@ const preview = document.getElementById("preview");
 const thumbGrid = document.getElementById("thumbGrid");
 
 const EXAMPLE = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+const EXAMPLE_VIDEOS = [
+  { label: "Rick Astley", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+  { label: "First Video", url: "https://www.youtube.com/watch?v=jNQXAC9IVRw" },
+  { label: "Gangnam Style", url: "https://www.youtube.com/watch?v=9bZkp7q19f0" },
+];
 
 const QUALITIES = [
   { key: "maxresdefault", label: "HD", res: "1280\u00d7720", note: "Highest quality" },
@@ -34,6 +45,8 @@ const QUALITIES = [
   { key: "hqdefault", label: "HQ", res: "480\u00d7360", note: "High quality" },
   { key: "mqdefault", label: "MQ", res: "320\u00d7180", note: "Medium quality" },
   { key: "default", label: UI_TEXT.qDefault, res: "120\u00d790", note: "Smallest" },
+  { key: "1", label: UI_TEXT.qThumb1, res: "120\u00d790", note: "Row frame" },
+  { key: "2", label: UI_TEXT.qThumb2, res: "120\u00d790", note: "Row frame" },
 ];
 
 const PREVIEW_ORDER = ["maxresdefault", "sddefault", "hqdefault"];
@@ -110,6 +123,7 @@ function renderGrid(id) {
       '<div class="thumb-label"><span class="thumb-badge">' + q.label + "</span>" +
       '<span class="thumb-res">' + q.res + "</span></div>" +
       '<div class="thumb-actions">' +
+      '<button class="ghost small" data-copy="' + url + '" title="' + UI_TEXT.copy + '" aria-label="' + UI_TEXT.copy + '">' + UI_TEXT.copy + "</button>" +
       '<button class="ghost small" data-dl="' + url + '" data-name="' + id + "-" + q.key + '.jpg" disabled>' + UI_TEXT.download + "</button>" +
       '<a class="thumb-open" href="' + url + '" target="_blank" rel="noopener" title="' + UI_TEXT.open + '" aria-label="' + UI_TEXT.open + '">&#8599;</a>' +
       "</div>" +
@@ -193,10 +207,42 @@ async function loadVideo(value) {
   }
 }
 
+async function copyImageUrl(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    return true;
+  } catch (err) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch (err2) {
+      return false;
+    }
+  }
+}
+
 thumbGrid.addEventListener("click", (e) => {
   const btn = e.target.closest("button[data-dl]");
   if (btn) {
     downloadImage(btn.dataset.dl, btn.dataset.name);
+    return;
+  }
+  const cp = e.target.closest("button[data-copy]");
+  if (cp) {
+    copyImageUrl(cp.dataset.copy).then((ok) => {
+      const label = cp.textContent;
+      cp.textContent = ok ? UI_TEXT.copied : label;
+      setTimeout(() => {
+        cp.textContent = label;
+      }, 1600);
+    });
   }
 });
 
@@ -214,6 +260,23 @@ urlInput.addEventListener("paste", () => {
 });
 
 btnFetch.addEventListener("click", () => loadVideo(urlInput.value));
+const exampleChips = document.getElementById("exampleChips");
+EXAMPLE_VIDEOS.forEach((ex) => {
+  const chip = document.createElement("button");
+  chip.type = "button";
+  chip.className = "chip";
+  chip.textContent = ex.label;
+  chip.addEventListener("click", () => {
+    urlInput.value = ex.url;
+    loadVideo(ex.url);
+  });
+  exampleChips.appendChild(chip);
+});
+btnClear.addEventListener("click", () => {
+  urlInput.value = "";
+  urlInput.focus();
+  clearResults();
+});
 btnExample.addEventListener("click", () => {
   urlInput.value = EXAMPLE;
   loadVideo(EXAMPLE);
