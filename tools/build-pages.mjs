@@ -37,7 +37,7 @@ const LANG_H2 = {
 const favicon =
   "data:image/svg+xml," +
   encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#ef4444"/><path d="M26 21v22l18-11z" fill="#fff"/></svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#FE7F2D"/><path d="M26 21v22l18-11z" fill="#fff"/></svg>`
   );
 
 const escapeHtml = (s) =>
