@@ -1,5 +1,5 @@
 export const SITE = {
-  domain: "https://yt-thumbnail-downloader.site",
+  domain: "https://youtube-thumbnail-downloader.aziizboukerma.workers.dev",
   name: "YouTube Thumbnail Downloader",
   toolName: "YouTube Thumbnail Downloader",
 };

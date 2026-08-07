@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yt-thumbnail-downloader.site/sitemap.xml
+Sitemap: https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/sitemap.xml
