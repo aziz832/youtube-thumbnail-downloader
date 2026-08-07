@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{htmlTitle}}</title>
+  <meta name="description" content="{{metaDesc}}" />
+  <link rel="canonical" href="{{canonical}}" />
+  {{hreflangLinks}}
+  {{ogMeta}}
+  {{jsonld}}
+  <link rel="icon" href="{{favicon}}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>{{css}}</style>
+  {{dirCss}}
+</head>
+<body>
+  {{breadcrumbs}}
+  <main class="container">
+    <header class="hero">
+      <div class="logo-mark yt-logo" aria-hidden="true"></div>
+      <h1>{{h1}}</h1>
+      <p class="subtitle">{{subtitle}}</p>
+    </header>
+
+    <section class="card" aria-label="{{h1}}">
+      <div class="url-row">
+        <input id="urlInput" class="url-input" type="url" inputmode="url" spellcheck="false" autocomplete="off"
+          placeholder="{{placeholder}}" aria-label="{{placeholder}}" />
+        <button id="btnFetch" class="primary" title="{{getThumbs}}" aria-label="{{getThumbs}}">{{getThumbs}}</button>
+        <button id="btnExample" class="ghost" title="{{example}}" aria-label="{{example}}">{{example}}</button>
+      </div>
+      <p class="tips" role="note">{{tips}}</p>
+
+      <div id="errorBox" class="error-box" role="alert" hidden></div>
+
+      <div id="results" hidden>
+        <div class="video-meta">
+          <div class="video-title" id="videoTitle"></div>
+          <div class="video-channel" id="videoChannel" hidden></div>
+          <a id="videoLink" class="video-link" href="#" target="_blank" rel="noopener">{{openVideo}}</a>
+        </div>
+
+        <div class="preview-wrap">
+          <img id="preview" class="preview-img" alt="{{h1}}" />
+        </div>
+
+        <div class="grid-head">
+          <h2 class="grid-title">{{sizesTitle}}</h2>
+          <p class="grid-sub">{{sizesSub}}</p>
+        </div>
+        <div id="thumbGrid" class="thumb-grid"></div>
+      </div>
+    </section>
+
+    {{contentSections}}
+  </main>
+
+  {{footer}}
+
+  {{uiTextScript}}
+  <script>{{js}}</script>
+</body>
+</html>
