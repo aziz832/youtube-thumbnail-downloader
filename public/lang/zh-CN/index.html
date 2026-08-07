@@ -50,14 +50,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/zh-CN/","description":"免费的YouTube缩略图下载器。粘贴任意YouTube视频链接，一键下载HD、SD和HQ缩略图。无需注册、无水印、无限制——一切都在您的浏览器中运行。","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"zh-CN","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"YouTube缩略图下载器免费吗？","acceptedAnswer":{"@type":"Answer","text":"是的——完全免费，无需注册，且下载次数不限。"}},{"@type":"Question","name":"我需要安装任何东西吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。它是一个在浏览器中运行的网页应用，所以无需安装任何东西。"}},{"@type":"Question","name":"有哪些可用的缩略图尺寸？","acceptedAnswer":{"@type":"Answer","text":"大多数视频提供五种尺寸：1280x720 HD、640x480 SD、480x360、320x180和120x90。HD版本仅对拥有它的视频可用。"}},{"@type":"Question","name":"不知道视频ID也能下载缩略图吗？","acceptedAnswer":{"@type":"Answer","text":"可以——只需粘贴完整的YouTube链接（watch、short或youtu.be），视频ID就会自动提取。"}},{"@type":"Question","name":"我的视频链接会发送到服务器吗？","acceptedAnswer":{"@type":"Answer","text":"缩略图直接来自YouTube的公开图片CDN。不会存储、收集或分享任何数据。"}},{"@type":"Question","name":"我可以下载的最高质量的缩略图是什么？","acceptedAnswer":{"@type":"Answer","text":"最大值为1280x720 (maxresdefault)。该工具始终首先获取该文件，并在文件丢失时回退到下一个最佳大小。"}},{"@type":"Question","name":"为什么某些视频缺少高清缩略图？","acceptedAnswer":{"@type":"Answer","text":"仅当上传者启用高质量缩略图时才会生成1280x720图​​像。较旧或低分辨率上传的文件可能尺寸较小。"}},{"@type":"Question","name":"下载的文件是什么格式？","acceptedAnswer":{"@type":"Answer","text":"缩略图是标准JPG (JPEG) 图像文件，可以在任何查看器或编辑器中打开。"}},{"@type":"Question","name":"支持哪些 YouTube URL 格式？","acceptedAnswer":{"@type":"Answer","text":"观看链接、youtu.be 短链接、/shorts/、/embed/、/live/ 和裸露的11-character 视频 ID。"}},{"@type":"Question","name":"我可以下载私人视频的缩略图吗？","acceptedAnswer":{"@type":"Answer","text":"否 - 只能下载带有可公开访问的缩略图的公共视频。"}}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23ef4444%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" as="font" type="font/woff2" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  </noscript>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <style>:root {
   --bg: #f6f8fb;
   --surface: #ffffff;
@@ -79,6 +73,42 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: "Space Grotesk", var(--font-body);
   --font-mono: "Cascadia Code", Consolas, "Courier New", monospace;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 * {

@@ -50,14 +50,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/tl/","description":"Libreng YouTube thumbnail downloader. Idikit ang anumang YouTube video link at i-download ang HD, SD at HQ na thumbnail sa isang click. Walang sign-up, walang watermark, walang limitasyon — lahat ay tumatakbo sa iyong browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"tl","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Libre ba ang YouTube thumbnail downloader?","acceptedAnswer":{"@type":"Answer","text":"Oo — ganap itong libre, walang sign-up at walang limitasyon sa pag-download."}},{"@type":"Question","name":"Kailangan bang mag-install ng anuman?","acceptedAnswer":{"@type":"Answer","text":"Hindi. Isa itong web app na tumatakbo sa iyong browser, kaya walang i-install."}},{"@type":"Question","name":"Anong mga laki ng thumbnail ang available?","acceptedAnswer":{"@type":"Answer","text":"Karamihan sa mga video ay may limang laki: 1280x720 HD, 640x480 SD, 480x360, 320x180 at 120x90. Available lang ang HD version sa mga video na mayroon nito."}},{"@type":"Question","name":"Makaka-download ba ako ng thumbnail nang hindi alam ang video ID?","acceptedAnswer":{"@type":"Answer","text":"Oo — idikit lamang ang buong YouTube link (watch, short o youtu.be) at awtomatikong makukuha ang video ID."}},{"@type":"Question","name":"Ipinapadala ba ang aking video link sa isang server?","acceptedAnswer":{"@type":"Answer","text":"Direktang kinukuha ang mga larawan mula sa pampublikong image CDN ng YouTube. Walang datos na iniimbak, kinokolekta o ibinabahagi."}},{"@type":"Question","name":"Ano ang pinakamataas na kalidad na thumbnail na mada-download ko?","acceptedAnswer":{"@type":"Answer","text":"Ang maximum ay 1280x720 (maxresdefault). Palaging kinukuha ng tool na ito ang file na iyon muna at bumabalik sa susunod na pinakamagandang laki kapag nawawala ito."}},{"@type":"Question","name":"Bakit nawawala ang thumbnail ng HD para sa ilang video?","acceptedAnswer":{"@type":"Answer","text":"Ang 1280x720 na larawan ay nabuo lamang kapag pinagana ng uploader ang isang mataas na kalidad na thumbnail. Ang mga mas luma o mababang resolution ay maaari lamang magkaroon ng mas maliliit na laki."}},{"@type":"Question","name":"Anong mga format ang mga na-download na file?","acceptedAnswer":{"@type":"Answer","text":"Ang mga thumbnail ay karaniwang JPG (JPEG) na mga file ng imahe na nagbubukas sa anumang viewer o editor."}},{"@type":"Question","name":"Aling mga format ng URL ng YouTube ang sinusuportahan?","acceptedAnswer":{"@type":"Answer","text":"manood ng mga link, youtu.be maiikling link, /shorts/, /embed/, /live/, at isang hubad na 11-character video ID."}},{"@type":"Question","name":"Maaari ba akong mag-download ng mga thumbnail mula sa mga pribadong video?","acceptedAnswer":{"@type":"Answer","text":"Hindi — ang mga pampublikong video lamang na may mga thumbnail na naa-access ng publiko ang maaaring ma-download."}}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23ef4444%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" as="font" type="font/woff2" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  </noscript>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <style>:root {
   --bg: #f6f8fb;
   --surface: #ffffff;
@@ -79,6 +73,42 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: "Space Grotesk", var(--font-body);
   --font-mono: "Cascadia Code", Consolas, "Courier New", monospace;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 * {

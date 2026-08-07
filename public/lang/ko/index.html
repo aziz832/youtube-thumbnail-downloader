@@ -50,14 +50,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://youtube-thumbnail-downloader.aziizboukerma.workers.dev/lang/ko/","description":"무료 유튜브 썸네일 다운로더. 아무 유튜브 동영상 링크를 붙여넣고 HD, SD, HQ 썸네일을 한 번의 클릭으로 다운로드하세요. 가입 없이, 워터마크 없이, 제한 없이 — 모든 것이 브라우저에서 실행됩니다.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"ko","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"유튜브 썸네일 다운로더는 무료인가요?","acceptedAnswer":{"@type":"Answer","text":"네 — 완전히 무료이며, 가입 없이 다운로드 횟수 제한도 없습니다."}},{"@type":"Question","name":"설치해야 할 것이 있나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 브라우저에서 실행되는 웹 앱이라 설치할 것이 없습니다."}},{"@type":"Question","name":"어떤 썸네일 크기를 사용할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"대부분의 동영상은 1280x720 HD, 640x480 SD, 480x360, 320x180, 120x90의 다섯 가지 크기를 제공합니다. HD 버전은 해당 크기가 있는 동영상에서만 사용할 수 있습니다."}},{"@type":"Question","name":"동영상 ID를 몰라도 썸네일을 다운로드할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네 — YouTube 전체 링크(watch, short 또는 youtu.be)를 붙여넣으면 동영상 ID가 자동으로 추출됩니다."}},{"@type":"Question","name":"제 동영상 링크가 서버로 전송되나요?","acceptedAnswer":{"@type":"Answer","text":"썸네일 이미지는 YouTube 공개 이미지 CDN에서 직접 가져옵니다. 어떤 데이터도 저장, 수집 또는 공유되지 않습니다."}},{"@type":"Question","name":"다운로드할 수 있는 최고 품질의 썸네일은 무엇입니까?","acceptedAnswer":{"@type":"Answer","text":"최대값은 1280x720(maxresdefault)입니다. 이 도구는 항상 해당 파일을 먼저 가져오고 파일이 없으면 다음으로 가장 좋은 크기로 돌아갑니다."}},{"@type":"Question","name":"일부 동영상에 HD 미리보기 이미지가 없는 이유는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"1280x720 이미지는 업로더가 고품질 미리보기 이미지를 활성화한 경우에만 생성됩니다. 오래되었거나 저해상도 업로드는 크기가 더 작을 수 있습니다."}},{"@type":"Question","name":"다운로드한 파일은 어떤 형식인가요?","acceptedAnswer":{"@type":"Answer","text":"썸네일은 뷰어나 편집기에서 열리는 표준 JPG(JPEG) 이미지 파일입니다."}},{"@type":"Question","name":"어떤 YouTube URL 형식이 지원되나요?","acceptedAnswer":{"@type":"Answer","text":"시청 링크, youtu.be 짧은 링크, /shorts/, /embed/, /live/ 및 기본 11-character 동영상 ID입니다."}},{"@type":"Question","name":"비공개 동영상에서 미리보기 이미지를 다운로드할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 공개적으로 액세스할 수 있는 미리보기 이미지가 있는 공개 비디오만 다운로드할 수 있습니다."}}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23ef4444%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" as="font" type="font/woff2" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  </noscript>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <style>:root {
   --bg: #f6f8fb;
   --surface: #ffffff;
@@ -79,6 +73,42 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: "Space Grotesk", var(--font-body);
   --font-mono: "Cascadia Code", Consolas, "Courier New", monospace;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 * {
