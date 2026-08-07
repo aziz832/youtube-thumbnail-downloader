@@ -3,6 +3,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE, LANGUAGES, PSEO, BLOG, INFO } from "./site-data.mjs";
 import { L as T } from "./translations.mjs";
+import { PT } from "./pages-translations.mjs";
+import { EN_HOME, EN_LABELS, EN_FAQ } from "./content.mjs";
 
 const TOOLS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(TOOLS_DIR);
@@ -54,15 +56,110 @@ function render(tpl, vars) {
   });
 }
 
-function hreflangLinks() {
-  const links = [`<link rel="alternate" hreflang="x-default" href="${DOMAIN}/" />`];
+// ---- language routing ----
+
+function pathFor(code, type, slug) {
+  const base = code === "en" ? "" : `/lang/${code}`;
+  switch (type) {
+    case "home":
+      return `${base}/`;
+    case "tool":
+      return `${base}/tools/${slug}.html`;
+    case "blogIndex":
+      return `${base}/blog/`;
+    case "article":
+      return `${base}/blog/${slug}/`;
+    case "info":
+      return `${base}/${slug}.html`;
+    default:
+      throw new Error(`unknown page type ${type}`);
+  }
+}
+
+function hreflangFor(type, slug) {
+  const links = [
+    `<link rel="alternate" hreflang="x-default" href="${DOMAIN}${pathFor("en", type, slug)}" />`,
+  ];
   for (const lang of LANGUAGES) {
     links.push(
-      `<link rel="alternate" hreflang="${lang.code}" href="${DOMAIN}/lang/${lang.code}/" />`
+      `<link rel="alternate" hreflang="${lang.code}" href="${DOMAIN}${pathFor(lang.code, type, slug)}" />`
     );
   }
   return links.join("\n  ");
 }
+
+function altLinks(type, slug) {
+  const list = [{ code: "x-default", href: DOMAIN + pathFor("en", type, slug) }];
+  for (const lang of LANGUAGES) {
+    list.push({ code: lang.code, href: DOMAIN + pathFor(lang.code, type, slug) });
+  }
+  return list
+    .map((a) => `<xhtml:link rel="alternate" hreflang="${a.code}" href="${a.href}" />`)
+    .join("\n    ");
+}
+
+function labelsFor(lang) {
+  return { ...EN_LABELS, ...(PT[lang]?.labels || {}) };
+}
+
+function homeFor(lang) {
+  const en = EN_HOME;
+  const pt = PT[lang]?.home || {};
+  return {
+    ...en,
+    ...pt,
+    howCards: pt.howCards || en.howCards,
+    features: pt.features || en.features,
+    uses: pt.uses || en.uses,
+    resHead: { ...en.resHead, ...(pt.resHead || {}) },
+    urlList: pt.urlList || en.urlList,
+    resolutions: en.resolutions.map((row, i) => {
+      const ptRow = pt.resolutions?.[i] || [];
+      return [ptRow[0] || row[0], row[1], row[2], ptRow[1] || row[3]];
+    }),
+  };
+}
+
+function homeFaqFor(lang) {
+  if (lang === "en") return EN_FAQ;
+  return [...(T[lang].faq || []), ...(PT[lang]?.home?.faqExtra || [])];
+}
+
+// ---- language switcher ----
+
+function langSwitchHtml(current, label) {
+  const opts = LANGUAGES.map(
+    (l) =>
+      `      <option value="${l.code}"${l.code === current ? " selected" : ""}>${escapeHtml(l.name)}</option>`
+  ).join("\n");
+  return (
+    `<div class="lang-switch">\n` +
+    `  <label for="langSelect">${escapeHtml(label)}</label>\n` +
+    `  <select id="langSelect" aria-label="${escapeHtml(label)}">\n` +
+    opts +
+    `\n  </select>\n` +
+    `</div>`
+  );
+}
+
+function langSwitchScript() {
+  return (
+    `<script>(function () {\n` +
+    `  var sel = document.getElementById("langSelect");\n` +
+    `  if (!sel) return;\n` +
+    `  var m = location.pathname.match(/^\\/lang\\/[a-zA-Z-]+(?=\\/|$)/);\n` +
+    `  var base = m ? location.pathname.slice(m[0].length) : location.pathname;\n` +
+    `  if (base.charAt(0) !== "/") base = "/" + base;\n` +
+    `  sel.addEventListener("change", function () {\n` +
+    `    var code = sel.value;\n` +
+    `    if (code === "en") { location.assign(base === "/" ? "/" : base); return; }\n` +
+    `    location.assign("/lang/" + code + (base === "/" ? "/" : base));\n` +
+    `  });\n` +
+    `})();</script>`
+  );
+}
+
+// ---- meta / schema helpers ----
 
 function ogMeta(title, desc, canonical, locale) {
   return (
@@ -102,27 +199,26 @@ function faqJsonLd(entries) {
   };
 }
 
-function jsonldIndex(t, canonical, lang) {
+function jsonldIndex(t, canonical, lang, faq) {
   const features = [
     "Download YouTube thumbnails in all available resolutions",
     "Support for watch, youtu.be, Shorts, embed, live, and video ID inputs",
     "Original-quality images with no watermark",
     "Free, no sign-up, unlimited downloads",
   ];
-  const faq = lang === "en" ? EN_FAQ : t.faq;
   return (
     `<script type="application/ld+json">${jsonScript(webAppJsonLd(SITE.toolName, canonical, t.metaDesc, lang, features))}</script>\n  ` +
     `<script type="application/ld+json">${jsonScript(faqJsonLd(faq))}</script>`
   );
 }
 
-function jsonldTool(p, canonical) {
+function jsonldTool(page, canonical, lang) {
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: SITE.name, item: DOMAIN + "/" },
-      { "@type": "ListItem", position: 2, name: p.h1, item: canonical },
+      { "@type": "ListItem", position: 1, name: SITE.name, item: DOMAIN + pathFor(lang, "home") },
+      { "@type": "ListItem", position: 2, name: page.h1, item: canonical },
     ],
   };
   const features = [
@@ -132,8 +228,8 @@ function jsonldTool(p, canonical) {
     "Free, no sign-up, unlimited downloads",
   ];
   return (
-    `<script type="application/ld+json">${jsonScript(webAppJsonLd(SITE.toolName, canonical, p.meta, "en", features))}</script>\n  ` +
-    `<script type="application/ld+json">${jsonScript(faqJsonLd(p.faq))}</script>\n  ` +
+    `<script type="application/ld+json">${jsonScript(webAppJsonLd(SITE.toolName, canonical, page.meta, lang, features))}</script>\n  ` +
+    `<script type="application/ld+json">${jsonScript(faqJsonLd(page.faq))}</script>\n  ` +
     `<script type="application/ld+json">${jsonScript(breadcrumb)}</script>`
   );
 }
@@ -147,8 +243,8 @@ function dirCssFor(t) {
   );
 }
 
-function uiTextScriptFor(t) {
-  const merged = { ...T.en, ...t };
+function uiTextScriptFor(t, lang) {
+  const merged = { ...T.en, ...t, ...(PT[lang]?.ui || {}) };
   return `<script>window.UI_TEXT=${jsonScript({
     placeholder: merged.placeholder,
     tips: merged.tips,
@@ -172,39 +268,105 @@ function uiTextScriptFor(t) {
   })};</script>`;
 }
 
-function contentSectionsForTranslation(t) {
-  const steps = t.howSteps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
-  const uses = t.usesList.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
-  const faq = t.faq
+// ---- page section builders ----
+
+function homeContent(home, faq) {
+  const cards = home.howCards
+    .map(
+      ([t, d], i) =>
+        `<div class="how-card"><div class="how-num">${i + 1}</div><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
+    )
+    .join("\n        ");
+
+  const features = home.features
+    .map(
+      ([t, d]) =>
+        `<div class="feature-card"><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
+    )
+    .join("\n        ");
+
+  const uses = home.uses
+    .map(
+      ([t, d]) =>
+        `<div class="use-card"><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
+    )
+    .join("\n        ");
+
+  const resolutions = home.resolutions
+    .map(
+      ([n, dim, file, note]) =>
+        `<tr><td>${escapeHtml(n)}</td><td>${escapeHtml(dim)}</td><td><code>${escapeHtml(file)}</code></td><td>${escapeHtml(note)}</td></tr>`
+    )
+    .join("\n        ");
+
+  const faqHtml = faq
     .map(
       ([q, a]) =>
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
     )
-    .join("\n");
+    .join("\n        ");
+
+  const urlList = home.urlList.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
+
   return (
+    `\n    <nav class="quicknav" aria-label="${escapeHtml(home.qnHow)}">\n` +
+    `      <a href="#how-it-works">${escapeHtml(home.qnHow)}</a>\n` +
+    `      <a href="#features">${escapeHtml(home.qnFeatures)}</a>\n` +
+    `      <a href="#who-uses">${escapeHtml(home.qnUses)}</a>\n` +
+    `      <a href="#resolutions">${escapeHtml(home.qnRes)}</a>\n` +
+    `      <a href="#faq">${escapeHtml(home.qnFaq)}</a>\n` +
+    `    </nav>\n` +
+    `\n    <section class="stats" aria-label="${escapeHtml(home.qnFeatures)}">\n` +
+    `      <div class="stat"><strong>100%</strong><span>${escapeHtml(home.statFree)}</span></div>\n` +
+    `      <div class="stat"><strong>5</strong><span>${escapeHtml(home.statRes)}</span></div>\n` +
+    `      <div class="stat"><strong>0</strong><span>${escapeHtml(home.statLogin)}</span></div>\n` +
+    `      <div class="stat"><strong>1280×720</strong><span>${escapeHtml(home.statMax)}</span></div>\n` +
+    `    </section>\n` +
+    `\n    <section class="seo-section" id="how-it-works">\n` +
+    `      <h2>${escapeHtml(home.howH2)}</h2>\n` +
+    `      <div class="how-grid">\n        ${cards}\n      </div>\n` +
+    `    </section>\n` +
+    `\n    <section class="seo-section" id="features">\n` +
+    `      <h2>${escapeHtml(home.featuresH2)}</h2>\n` +
+    `      <div class="feature-grid">\n        ${features}\n      </div>\n` +
+    `    </section>\n` +
+    `\n    <section class="seo-section" id="who-uses">\n` +
+    `      <h2>${escapeHtml(home.usesH2)}</h2>\n` +
+    `      <div class="use-grid">\n        ${uses}\n      </div>\n` +
+    `    </section>\n` +
+    `\n    <section class="seo-section" id="resolutions">\n` +
+    `      <h2>${escapeHtml(home.resH2)}</h2>\n` +
+    `      <div class="table-wrap"><table class="res-table">\n` +
+    `        <thead><tr><th>${escapeHtml(home.resHead.size)}</th><th>${escapeHtml(home.resHead.dim)}</th><th>${escapeHtml(home.resHead.file)}</th><th>${escapeHtml(home.resHead.notes)}</th></tr></thead>\n` +
+    `        <tbody>\n        ${resolutions}\n        </tbody>\n` +
+    `      </table></div>\n` +
+    `    </section>\n` +
     `\n    <section class="seo-section">\n` +
-    `      <h2>${escapeHtml(t.secIntroH2)}</h2>\n` +
-    `      <p>${escapeHtml(t.intro)}</p>\n` +
+    `      <h2>${escapeHtml(home.whatH2)}</h2>\n` +
+    `      <p>${escapeHtml(home.whatP1)}</p>\n` +
+    `      <p>${escapeHtml(home.whatP2)}</p>\n` +
     `    </section>\n` +
-    `    <section class="seo-section">\n` +
-    `      <h2>${escapeHtml(t.secHowH2)}</h2>\n` +
-    `      <ol>\n${steps}\n      </ol>\n` +
+    `\n    <section class="seo-section">\n` +
+    `      <h2>${escapeHtml(home.urlH2)}</h2>\n` +
+    `      <p>${escapeHtml(home.urlP)}</p>\n` +
+    `      <ul>\n        ${urlList}\n      </ul>\n` +
     `    </section>\n` +
-    `    <section class="seo-section">\n` +
-    `      <h2>${escapeHtml(t.secUsesH2)}</h2>\n` +
-    `      <ul>\n${uses}\n      </ul>\n` +
+    `\n    <section class="seo-section">\n` +
+    `      <h2>${escapeHtml(home.whyH2)}</h2>\n` +
+    `      <p>${escapeHtml(home.whyP1)}</p>\n` +
+    `      <p>${escapeHtml(home.whyP2)}</p>\n` +
     `    </section>\n` +
-    `    <section class="seo-section">\n` +
-    `      <h2>${escapeHtml(t.secFaqH2)}</h2>\n` +
-    `      ${faq}\n` +
+    `\n    <section class="seo-section" id="faq">\n` +
+    `      <h2>${escapeHtml(home.faqH2)}</h2>\n` +
+    `      ${faqHtml}\n` +
     `    </section>`
   );
 }
 
-function contentSectionsForTool(p, t) {
-  const intro = p.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
-  const steps = p.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
-  const faq = p.faq
+function contentSectionsForTool(page, t) {
+  const intro = page.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
+  const steps = page.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
+  const faq = page.faq
     .map(
       ([q, a]) =>
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
@@ -212,7 +374,7 @@ function contentSectionsForTool(p, t) {
     .join("\n");
   return (
     `\n    <section class="seo-section">\n` +
-    `      <h2>How to ${escapeHtml(p.primary)}</h2>\n` +
+    `      <h2>${escapeHtml(page.howH2)}</h2>\n` +
     `      ${intro}\n` +
     `      <ol>\n${steps}\n      </ol>\n` +
     `    </section>\n` +
@@ -223,19 +385,20 @@ function contentSectionsForTool(p, t) {
   );
 }
 
-function footerHtml(t, langH2) {
+function footerHtml(t, langH2, labels, langCode, type, slug) {
   const related = PSEO.map(
     (p) =>
-      `<a href="/tools/${p.slug}.html">${escapeHtml(p.title.split(" — ")[0])}</a>`
+      `<a href="${pathFor(langCode, "tool", p.slug)}">${escapeHtml(p.title.split(" — ")[0])}</a>`
   ).join("\n");
   const guides = BLOG.map(
-    (b) => `<a href="/blog/${b.slug}/">${escapeHtml(b.h1)}</a>`
+    (b) => `<a href="${pathFor(langCode, "article", b.slug)}">${escapeHtml(b.h1)}</a>`
   ).join("\n");
   const info = INFO.map(
-    (i) => `<a href="/${i.slug}.html">${escapeHtml(i.h1)}</a>`
+    (i) => `<a href="${pathFor(langCode, "info", i.slug)}">${escapeHtml(i.h1)}</a>`
   ).join("\n");
   const langs = LANGUAGES.map(
-    (l) => `<a href="/lang/${l.code}/" hreflang="${l.code}">${escapeHtml(l.name)}</a>`
+    (l) =>
+      `<a href="${DOMAIN}${pathFor(l.code, type, slug)}" hreflang="${l.code}">${escapeHtml(l.name)}</a>`
   ).join("\n");
   return (
     `\n  <footer class="site-footer">\n` +
@@ -244,7 +407,7 @@ function footerHtml(t, langH2) {
     `      <div class="related-grid">\n${related}\n      </div>\n` +
     `    </section>\n` +
     `    <section class="footer-block">\n` +
-    `      <h2 class="footer-title">Guides</h2>\n` +
+    `      <h2 class="footer-title">${escapeHtml(labels.guidesH2)}</h2>\n` +
     `      <div class="related-grid">\n${guides}\n      </div>\n` +
     `    </section>\n` +
     `    <section class="footer-block">\n` +
@@ -252,7 +415,7 @@ function footerHtml(t, langH2) {
     `      <div class="related-grid lang-grid">\n${langs}\n      </div>\n` +
     `    </section>\n` +
     `    <section class="footer-block">\n` +
-    `      <h2 class="footer-title">Site</h2>\n` +
+    `      <h2 class="footer-title">${escapeHtml(labels.siteH2)}</h2>\n` +
     `      <div class="related-grid">\n${info}\n      </div>\n` +
     `    </section>\n` +
     `    <p class="footer-note">${escapeHtml(t.metaDesc)}</p>\n` +
@@ -260,151 +423,31 @@ function footerHtml(t, langH2) {
   );
 }
 
-function breadcrumbHtml(h1) {
+function breadcrumbHtml(h1, langCode) {
   return (
     `<nav class="crumbs" aria-label="Breadcrumb">\n` +
-    `  <a href="/">${escapeHtml(SITE.name)}</a>\n` +
+    `  <a href="${pathFor(langCode, "home")}">${escapeHtml(SITE.name)}</a>\n` +
     `  <span aria-hidden="true">›</span>\n` +
     `  <span aria-current="page">${escapeHtml(h1)}</span>\n` +
     `</nav>`
   );
 }
 
-const EN_FAQ = [
-  ["Is the YouTube thumbnail downloader free?", "Yes — it is 100% free with no hidden fees, no sign-up, and no download limits."],
-  ["What is the highest quality thumbnail I can download?", "The maximum is 1280x720 (maxresdefault). This tool always fetches that file first and falls back to the next-best size when it is missing."],
-  ["Do I need an account or login?", "No. There is no account, email, or password — the tool is completely anonymous."],
-  ["Can I download thumbnails from YouTube Shorts?", "Yes — /shorts/ links are supported and return the same set of sizes as regular videos."],
-  ["Does it add a watermark?", "No. Downloaded images are the exact original files from YouTube's servers, with no watermark or branding."],
-  ["Why is the HD thumbnail missing for some videos?", "The 1280x720 image is only generated when the uploader enabled a high-quality thumbnail. Older or low-resolution uploads may only have smaller sizes."],
-  ["What formats are the downloaded files?", "Thumbnails are standard JPG (JPEG) image files that open in any viewer or editor."],
-  ["Which YouTube URL formats are supported?", "watch links, youtu.be short links, /shorts/, /embed/, /live/, and a bare 11-character video ID."],
-  ["Is my video link stored anywhere?", "No. Links are processed locally in your browser and never uploaded to a server."],
-  ["Can I download thumbnails from private videos?", "No — only public videos with publicly accessible thumbnails can be downloaded."],
-];
-
-function enHomeContent() {
-  const steps = [
-    ["Copy the YouTube URL", "Open any YouTube video and copy its link from the address bar or share button. Watch, Shorts, embed, and youtu.be links all work."],
-    ["Paste & preview", "Paste the link into the box and press Enter. The video metadata loads and every thumbnail size is fetched at once."],
-    ["Download instantly", "Click Download on the size you want — the original JPG saves straight to your device. No watermark, no sign-up."],
-  ]
-    .map(
-      ([t, d], i) =>
-        `<div class="how-card"><div class="how-num">${i + 1}</div><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
-    )
-    .join("\n        ");
-
-  const features = [
-    ["HD & 4K-quality originals", "Every thumbnail is the original file from YouTube's image CDN — no re-compression, no quality loss."],
-    ["No watermark, ever", "Downloaded images are exactly what YouTube stores, with nothing overlaid on top."],
-    ["No account needed", "No email, no password, no sign-up. The tool is completely anonymous to use."],
-    ["All 5 resolutions", "Get maxresdefault HD, SD, HQ, MQ, and the tiny default image for any video."],
-    ["Shorts & live streams", "Watch links, Shorts, embeds, youtu.be, and live stream URLs are all detected automatically."],
-    ["100% private", "Links are processed in your browser. Nothing is stored, collected, or shared."],
-  ]
-    .map(
-      ([t, d]) =>
-        `<div class="feature-card"><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
-    )
-    .join("\n        ");
-
-  const uses = [
-    ["Content creators", "Study competitor thumbnails, get design inspiration, and archive your own uploads."],
-    ["Digital marketers", "Download thumbnails for A/B testing, competitive research, and campaign planning."],
-    ["Graphic designers", "Save covers as visual references for mood boards, presentations, and client work."],
-    ["Educators & researchers", "Grab thumbnails for lectures, media-literacy classes, and visual communication research."],
-  ]
-    .map(
-      ([t, d]) =>
-        `<div class="use-card"><h3>${escapeHtml(t)}</h3><p>${escapeHtml(d)}</p></div>`
-    )
-    .join("\n        ");
-
-  const resolutions = [
-    ["Max HD", "1280 × 720", "maxresdefault", "Only when the uploader used a high-quality thumbnail"],
-    ["SD", "640 × 480", "sddefault", "Available for almost every video"],
-    ["HQ", "480 × 360", "hqdefault", "The classic sidebar size"],
-    ["MQ", "320 × 180", "mqdefault", "Compact 16:9 preview"],
-    ["Default", "120 × 90", "default.jpg", "Small playlist icon"],
-    ["Thumb 1 / Thumb 2", "120 × 90", "1.jpg / 2.jpg", "Additional row frames"],
-  ]
-    .map(
-      ([n, dim, file, note]) =>
-        `<tr><td>${escapeHtml(n)}</td><td>${escapeHtml(dim)}</td><td><code>${escapeHtml(file)}</code></td><td>${escapeHtml(note)}</td></tr>`
-    )
-    .join("\n        ");
-
-  const faq = EN_FAQ
-    .map(
-      ([q, a]) =>
-        `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
-    )
-    .join("\n        ");
-
+function articleBreadcrumbHtml(h1, langCode, labels) {
   return (
-    `\n    <nav class="quicknav" aria-label="Page sections">\n` +
-    `      <a href="#how-it-works">How It Works</a>\n` +
-    `      <a href="#features">Features</a>\n` +
-    `      <a href="#who-uses">Who Uses It</a>\n` +
-    `      <a href="#resolutions">Resolutions</a>\n` +
-    `      <a href="#faq">FAQ</a>\n` +
-    `    </nav>\n` +
-    `\n    <section class="stats" aria-label="Tool stats">\n` +
-    `      <div class="stat"><strong>100%</strong><span>Free forever</span></div>\n` +
-    `      <div class="stat"><strong>5</strong><span>Resolutions</span></div>\n` +
-    `      <div class="stat"><strong>0</strong><span>Login required</span></div>\n` +
-    `      <div class="stat"><strong>1280×720</strong><span>Max quality</span></div>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section" id="how-it-works">\n` +
-    `      <h2>How It Works</h2>\n` +
-    `      <div class="how-grid">\n        ${steps}\n      </div>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section" id="features">\n` +
-    `      <h2>Features</h2>\n` +
-    `      <div class="feature-grid">\n        ${features}\n      </div>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section" id="who-uses">\n` +
-    `      <h2>Who Uses Our YouTube Thumbnail Downloader?</h2>\n` +
-    `      <div class="use-grid">\n        ${uses}\n      </div>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section" id="resolutions">\n` +
-    `      <h2>Supported Resolutions</h2>\n` +
-    `      <div class="table-wrap"><table class="res-table">\n` +
-    `        <thead><tr><th>Size</th><th>Dimensions</th><th>File</th><th>Notes</th></tr></thead>\n` +
-    `        <tbody>\n        ${resolutions}\n        </tbody>\n` +
-    `      </table></div>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section">\n` +
-    `      <h2>What Is a YouTube Thumbnail Downloader?</h2>\n` +
-    `      <p>A YouTube thumbnail downloader extracts the preview image of any video from its public image CDN and saves it to your device. You only need the video link — the tool finds the video ID automatically, checks every available resolution, and lets you download the HD, SD, or HQ version with one click. It is useful for creating custom thumbnails for your own videos, referencing designs, or simply saving a frame you like.</p>\n` +
-    `      <p>Unlike screenshots, the downloaded file is the original image YouTube stores — sharp at full resolution and free of player UI, play buttons, and compression artifacts.</p>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section">\n` +
-    `      <h2>Supported URL Formats</h2>\n` +
-    `      <p>The tool detects the video ID from every common YouTube link format:</p>\n` +
-    `      <ul>\n` +
-    `        <li>Standard: youtube.com/watch?v=VIDEO_ID</li>\n` +
-    `        <li>Short: youtu.be/VIDEO_ID</li>\n` +
-    `        <li>Embedded: youtube.com/embed/VIDEO_ID</li>\n` +
-    `        <li>Shorts: youtube.com/shorts/VIDEO_ID</li>\n` +
-    `        <li>Live streams and playlist video URLs</li>\n` +
-    `        <li>A bare 11-character video ID</li>\n` +
-    `      </ul>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section">\n` +
-    `      <h2>Why Use a Thumbnail Downloader Instead of a Screenshot?</h2>\n` +
-    `      <p>Screenshots capture the player on screen: compressed, small, and covered with the play button and UI. A downloader fetches the original file from YouTube's servers at its true resolution, so the image stays sharp when you crop, zoom, or place it in a design.</p>\n` +
-    `      <p>You also get every size YouTube offers at once, instead of hunting through the page source for image URLs.</p>\n` +
-    `    </section>\n` +
-    `\n    <section class="seo-section" id="faq">\n` +
-    `      <h2>Frequently Asked Questions</h2>\n` +
-    `      ${faq}\n` +
-    `    </section>`
+    `<nav class="crumbs" aria-label="Breadcrumb">\n` +
+    `  <a href="${pathFor(langCode, "home")}">${escapeHtml(SITE.name)}</a>\n` +
+    `  <span aria-hidden="true">›</span>\n` +
+    `  <a href="${pathFor(langCode, "blogIndex")}">${escapeHtml(labels.guidesCrumb)}</a>\n` +
+    `  <span aria-hidden="true">›</span>\n` +
+    `  <span aria-current="page">${escapeHtml(h1)}</span>\n` +
+    `</nav>`
   );
 }
 
-function baseVars(t, lang, canonical) {
+// ---- page builders ----
+
+function baseVars(t, lang, canonical, labels) {
   return {
     ...T.en,
     ...t,
@@ -418,71 +461,68 @@ function baseVars(t, lang, canonical) {
     favicon,
     css,
     js,
+    langSwitch: langSwitchHtml(lang, labels.langLabel),
+    langSwitchScript: langSwitchScript(),
   };
 }
 
 function homeVars(lang, t) {
-  const canonical = `${DOMAIN}/lang/${lang}/`;
-  const vars = baseVars(t, lang, canonical);
-  vars.hreflangLinks = hreflangLinks();
+  const canonical = `${DOMAIN}${pathFor(lang, "home")}`;
+  const labels = labelsFor(lang);
+  const vars = baseVars(t, lang, canonical, labels);
+  vars.hreflangLinks = hreflangFor("home");
   vars.ogMeta = ogMeta(t.htmlTitle, t.metaDesc, canonical, OG_LOCALES[lang] || lang.replace("-", "_"));
-  vars.jsonld = jsonldIndex(t, canonical, lang);
+  vars.jsonld = jsonldIndex(t, canonical, lang, homeFaqFor(lang));
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = "";
-  vars.contentSections = lang === "en" ? enHomeContent() : contentSectionsForTranslation(t);
-  vars.footer = footerHtml(t, LANG_H2[lang]);
-  vars.uiTextScript = uiTextScriptFor(t);
+  vars.contentSections = homeContent(homeFor(lang), homeFaqFor(lang));
+  vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "home");
+  vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
 }
 
-function toolVars(p, t) {
-  const canonical = `${DOMAIN}/tools/${p.slug}.html`;
-  const vars = baseVars(t, "en", canonical);
-  vars.htmlTitle = p.title;
-  vars.metaDesc = p.meta;
-  vars.h1 = p.h1;
-  vars.hreflangLinks = hreflangLinks();
-  vars.ogMeta = ogMeta(p.title, p.meta, canonical, "en_US");
-  vars.jsonld = jsonldTool(p, canonical);
-  vars.dirCss = "";
-  vars.breadcrumbs = breadcrumbHtml(p.h1);
-  vars.contentSections = contentSectionsForTool(p, t);
-  vars.footer = footerHtml(t, LANG_H2.en);
-  vars.uiTextScript = uiTextScriptFor(t);
+function toolVars(p, t, lang, page, labels) {
+  const canonical = `${DOMAIN}${pathFor(lang, "tool", p.slug)}`;
+  const vars = baseVars(t, lang, canonical, labels);
+  vars.htmlTitle = page.title;
+  vars.metaDesc = page.meta;
+  vars.h1 = page.h1;
+  vars.hreflangLinks = hreflangFor("tool", p.slug);
+  vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
+  vars.jsonld = jsonldTool(page, canonical, lang);
+  vars.dirCss = dirCssFor(t);
+  vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
+  vars.contentSections = contentSectionsForTool(page, t);
+  vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "tool", p.slug);
+  vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
 }
 
-function articleVars(b) {
-  const canonical = `${DOMAIN}/blog/${b.slug}/`;
-  const vars = baseVars(T.en, "en", canonical);
-  vars.htmlTitle = b.title;
-  vars.metaDesc = b.meta;
-  vars.h1 = b.h1;
-  vars.hreflangLinks = "";
-  vars.ogMeta = ogMeta(b.title, b.meta, canonical, "en_US");
+function articleVars(b, lang, page, labels) {
+  const canonical = `${DOMAIN}${pathFor(lang, "article", b.slug)}`;
+  const t = T[lang];
+  const vars = baseVars(t, lang, canonical, labels);
+  vars.htmlTitle = page.title;
+  vars.metaDesc = page.meta;
+  vars.h1 = page.h1;
+  vars.hreflangLinks = hreflangFor("article", b.slug);
+  vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
   const article = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: b.h1,
-    description: b.meta,
+    headline: page.h1,
+    description: page.meta,
     url: canonical,
-    inLanguage: "en",
+    inLanguage: lang,
     publisher: { "@type": "Organization", name: SITE.name },
   };
   vars.jsonld =
     `<script type="application/ld+json">${jsonScript(article)}</script>\n  ` +
-    `<script type="application/ld+json">${jsonScript(faqJsonLd(b.faq))}</script>`;
-  vars.dirCss = "";
-  vars.breadcrumbs =
-    `<nav class="crumbs" aria-label="Breadcrumb">\n` +
-    `  <a href="/">${escapeHtml(SITE.name)}</a>\n` +
-    `  <span aria-hidden="true">›</span>\n` +
-    `  <a href="/blog/">Guides</a>\n` +
-    `  <span aria-hidden="true">›</span>\n` +
-    `  <span aria-current="page">${escapeHtml(b.h1)}</span>\n` +
-    `</nav>`;
-  const intro = b.intro.map((p) => `<p>${escapeHtml(p)}</p>`).join("\n      ");
-  const sections = b.sections
+    `<script type="application/ld+json">${jsonScript(faqJsonLd(page.faq))}</script>`;
+  vars.dirCss = dirCssFor(t);
+  vars.breadcrumbs = articleBreadcrumbHtml(page.h1, lang, labels);
+  const intro = page.intro.map((p) => `<p>${escapeHtml(p)}</p>`).join("\n      ");
+  const sections = page.sections
     .map(
       ([h, items]) =>
         `<h2>${escapeHtml(h)}</h2>\n      <ul>\n        ${items
@@ -490,56 +530,100 @@ function articleVars(b) {
           .join("\n        ")}\n      </ul>`
     )
     .join("\n      ");
-  const faq = b.faq
+  const faq = page.faq
     .map(
       ([q, a]) =>
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
     )
     .join("\n        ");
+  const faqH2 = homeFor(lang).faqH2;
   vars.contentSections =
     `\n    <section class="seo-section article">\n      ${intro}\n      ${sections}\n    </section>\n` +
-    `    <section class="seo-section">\n      <h2>Frequently Asked Questions</h2>\n      ${faq}\n    </section>\n` +
-    `    <section class="seo-section">\n      <h2>Download a thumbnail now</h2>\n      <p>Paste any YouTube link into the tool above to preview and download every available thumbnail size for free.</p>\n    </section>`;
-  vars.footer = footerHtml(T.en, LANG_H2.en);
-  vars.uiTextScript = uiTextScriptFor(T.en);
+    `    <section class="seo-section">\n      <h2>${escapeHtml(faqH2)}</h2>\n      ${faq}\n    </section>\n` +
+    `    <section class="seo-section">\n      <h2>${escapeHtml(labels.blogCtaH2)}</h2>\n      <p>${escapeHtml(labels.blogCtaP)}</p>\n    </section>`;
+  vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "article", b.slug);
+  vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
 }
 
-function infoVars(i) {
-  const canonical = `${DOMAIN}/${i.slug}.html`;
-  const vars = baseVars(T.en, "en", canonical);
-  vars.htmlTitle = i.title;
-  vars.metaDesc = i.meta;
-  vars.h1 = i.h1;
-  vars.hreflangLinks = "";
-  vars.ogMeta = ogMeta(i.title, i.meta, canonical, "en_US");
+function infoVars(i, lang, page, labels) {
+  const canonical = `${DOMAIN}${pathFor(lang, "info", i.slug)}`;
+  const t = T[lang];
+  const vars = baseVars(t, lang, canonical, labels);
+  vars.htmlTitle = page.title;
+  vars.metaDesc = page.meta;
+  vars.h1 = page.h1;
+  vars.hreflangLinks = hreflangFor("info", i.slug);
+  vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
   vars.jsonld =
     `<script type="application/ld+json">${jsonScript({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: i.h1,
-      description: i.meta,
+      name: page.h1,
+      description: page.meta,
       url: canonical,
-      inLanguage: "en",
+      inLanguage: lang,
     })}</script>`;
-  vars.dirCss = "";
-  vars.breadcrumbs =
-    `<nav class="crumbs" aria-label="Breadcrumb">\n` +
-    `  <a href="/">${escapeHtml(SITE.name)}</a>\n` +
-    `  <span aria-hidden="true">›</span>\n` +
-    `  <span aria-current="page">${escapeHtml(i.h1)}</span>\n` +
-    `</nav>`;
-  const sections = i.sections
+  vars.dirCss = dirCssFor(t);
+  vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
+  const sections = page.sections
     .map(
       ([h, par]) =>
         `<h2>${escapeHtml(h)}</h2>\n      <p>${escapeHtml(par)}</p>`
     )
     .join("\n      ");
   vars.contentSections = `\n    <section class="seo-section article">\n      ${sections}\n    </section>`;
-  vars.footer = footerHtml(T.en, LANG_H2.en);
-  vars.uiTextScript = uiTextScriptFor(T.en);
+  vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "info", i.slug);
+  vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
 }
+
+function blogIndexHtmlFor(lang) {
+  const t = T[lang];
+  const labels = labelsFor(lang);
+  const canonical = `${DOMAIN}${pathFor(lang, "blogIndex")}`;
+  const cards = BLOG.map((b) => {
+    const page = lang === "en" ? b : PT[lang].blog[b.slug];
+    return (
+      `<a class="blog-card" href="${pathFor(lang, "article", b.slug)}"><h2>${escapeHtml(page.title)}</h2><p>${escapeHtml(page.meta)}</p></a>`
+    );
+  }).join("\n      ");
+  return (
+    `<!DOCTYPE html>\n<html lang="${lang}" dir="${t.dir}">\n<head>\n  <meta charset="UTF-8" />\n` +
+    `  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n` +
+    `  <title>${escapeHtml(labels.blogIndexTitle)}</title>\n` +
+    `  <meta name="description" content="${escapeHtml(labels.blogIndexMeta)}" />\n` +
+    `  <link rel="canonical" href="${canonical}" />\n` +
+    `  ${hreflangFor("blogIndex")}\n` +
+    `  ${ogMeta(labels.blogIndexTitle, labels.blogIndexMeta, canonical, OG_LOCALES[lang] || "en_US")}\n` +
+    `  <link rel="icon" href="${favicon}" />\n` +
+    `  <style>${css}</style>\n` +
+    `  ${dirCssFor(t)}\n` +
+    `</head>\n<body>\n  <main class="container">\n` +
+    `    <header class="hero"><div class="logo-mark yt-logo" aria-hidden="true"></div><h1>${escapeHtml(labels.guidesCrumb)}</h1><p class="subtitle">${escapeHtml(labels.blogIndexSubtitle)}</p>\n` +
+    `    ${langSwitchHtml(lang, labels.langLabel)}\n` +
+    `    </header>\n` +
+    `    <div class="blog-grid">\n` +
+    cards +
+    `\n    </div>\n  </main>\n` +
+    footerHtml(t, LANG_H2[lang], labels, lang, "blogIndex") +
+    `\n  ${langSwitchScript()}\n` +
+    `\n</body>\n</html>`
+  );
+}
+
+function fsPath(code, type, slug) {
+  const enUrl = pathFor("en", type, slug);
+  const rel =
+    enUrl === "/"
+      ? "index.html"
+      : enUrl.endsWith("/")
+        ? enUrl.slice(1) + "index.html"
+        : enUrl.slice(1);
+  return code === "en" ? rel : join("lang", code, rel);
+}
+
+// ---- generate ----
 
 const written = [];
 
@@ -549,89 +633,86 @@ function write(filePath, content) {
   written.push(filePath);
 }
 
-const en = T.en;
-write(join(PROJECT, "index.html"), render(template, homeVars("en", en)));
-
 for (const lang of LANGUAGES) {
   const t = T[lang.code];
   if (!t) throw new Error(`Missing translation for ${lang.code}`);
   const html = render(template, homeVars(lang.code, t));
-  write(join(PROJECT, "lang", lang.code, "index.html"), html);
+  write(join(PROJECT, fsPath(lang.code, "home")), html);
 }
 
-for (const p of PSEO) {
-  const html = render(template, toolVars(p, en));
-  write(join(PROJECT, "tools", `${p.slug}.html`), html);
+for (const lang of LANGUAGES) {
+  const t = T[lang.code];
+  const labels = labelsFor(lang.code);
+  for (const p of PSEO) {
+    const page = lang.code === "en" ? { ...p, howH2: `How to ${p.primary}` } : PT[lang.code].tools[p.slug];
+    const html = render(template, toolVars(p, t, lang.code, page, labels));
+    write(join(PROJECT, fsPath(lang.code, "tool", p.slug)), html);
+  }
 }
 
-const blogIndexHtml =
-  `<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<head>\n  <meta charset="UTF-8" />\n` +
-  `  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n` +
-  `  <title>Guides — YouTube Thumbnail Downloader</title>\n` +
-  `  <meta name="description" content="Guides on downloading YouTube thumbnails, thumbnail sizes, best practices, CTR, and tools. Learn how to get any video thumbnail in HD for free." />\n` +
-  `  <link rel="canonical" href="${DOMAIN}/blog/" />\n` +
-  `  <link rel="icon" href="${favicon}" />\n` +
-  `  <style>${css}</style>\n</head>\n<body>\n  <main class="container">\n` +
-  `    <header class="hero"><div class="logo-mark yt-logo" aria-hidden="true"></div><h1>Guides</h1><p class="subtitle">Learn how to download and design YouTube thumbnails.</p></header>\n` +
-  `    <div class="blog-grid">\n` +
-  BLOG.map(
-    (b) =>
-      `<a class="blog-card" href="/blog/${b.slug}/"><h2>${escapeHtml(b.h1)}</h2><p>${escapeHtml(b.meta)}</p></a>`
-  ).join("\n      ") +
-  `\n    </div>\n  </main>\n` +
-  footerHtml(T.en, LANG_H2.en) +
-  `\n</body>\n</html>`;
-write(join(PROJECT, "blog", "index.html"), blogIndexHtml);
-
-for (const b of BLOG) {
-  const html = render(template, articleVars(b));
-  write(join(PROJECT, "blog", b.slug, "index.html"), html);
+for (const lang of LANGUAGES) {
+  write(join(PROJECT, fsPath(lang.code, "blogIndex")), blogIndexHtmlFor(lang.code));
+  const labels = labelsFor(lang.code);
+  for (const b of BLOG) {
+    const page = lang.code === "en" ? b : PT[lang.code].blog[b.slug];
+    const html = render(template, articleVars(b, lang.code, page, labels));
+    write(join(PROJECT, fsPath(lang.code, "article", b.slug)), html);
+  }
 }
 
-for (const i of INFO) {
-  const html = render(template, infoVars(i));
-  write(join(PROJECT, `${i.slug}.html`), html);
+for (const lang of LANGUAGES) {
+  const t = T[lang.code];
+  const labels = labelsFor(lang.code);
+  for (const i of INFO) {
+    const page = lang.code === "en" ? i : PT[lang.code].info[i.slug];
+    const html = render(template, infoVars(i, lang.code, page, labels));
+    write(join(PROJECT, fsPath(lang.code, "info", i.slug)), html);
+  }
 }
 
-const alternateSet = () => {
-  const alts = [{ code: "x-default", href: DOMAIN + "/" }];
-  for (const lang of LANGUAGES) alts.push({ code: lang.code, href: `${DOMAIN}/lang/${lang.code}/` });
-  return alts;
-};
+const lastmod = "2026-01-01";
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>${DOMAIN}/</loc>
-    ${alternateSet().map((a) => `<xhtml:link rel="alternate" hreflang="${a.code}" href="${a.href}" />`).join("\n    ")}
-  </url>
 ${LANGUAGES.map(
   (lang) => `  <url>
-    <loc>${DOMAIN}/lang/${lang.code}/</loc>
-    ${alternateSet().map((a) => `<xhtml:link rel="alternate" hreflang="${a.code}" href="${a.href}" />`).join("\n    ")}
+    <loc>${DOMAIN}${pathFor(lang.code, "home")}</loc>
+    ${altLinks("home")}
   </url>`
 ).join("\n")}
-${PSEO.map(
-  (p) => `  <url>
-    <loc>${DOMAIN}/tools/${p.slug}.html</loc>
-    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
+${LANGUAGES.flatMap((lang) =>
+  PSEO.map(
+    (p) => `  <url>
+    <loc>${DOMAIN}${pathFor(lang.code, "tool", p.slug)}</loc>
+    ${altLinks("tool", p.slug)}
+    <lastmod>${lastmod}</lastmod>
+  </url>`
+  )
+).join("\n")}
+${LANGUAGES.map(
+  (lang) => `  <url>
+    <loc>${DOMAIN}${pathFor(lang.code, "blogIndex")}</loc>
+    ${altLinks("blogIndex")}
+    <lastmod>${lastmod}</lastmod>
   </url>`
 ).join("\n")}
-  <url>
-    <loc>${DOMAIN}/blog/</loc>
-    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
-  </url>
-${BLOG.map(
-  (b) => `  <url>
-    <loc>${DOMAIN}/blog/${b.slug}/</loc>
-    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
+${LANGUAGES.flatMap((lang) =>
+  BLOG.map(
+    (b) => `  <url>
+    <loc>${DOMAIN}${pathFor(lang.code, "article", b.slug)}</loc>
+    ${altLinks("article", b.slug)}
+    <lastmod>${lastmod}</lastmod>
   </url>`
+  )
 ).join("\n")}
-${INFO.map(
-  (i) => `  <url>
-    <loc>${DOMAIN}/${i.slug}.html</loc>
-    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
+${LANGUAGES.flatMap((lang) =>
+  INFO.map(
+    (i) => `  <url>
+    <loc>${DOMAIN}${pathFor(lang.code, "info", i.slug)}</loc>
+    ${altLinks("info", i.slug)}
+    <lastmod>${lastmod}</lastmod>
   </url>`
+  )
 ).join("\n")}
 </urlset>
 `;
@@ -659,6 +740,6 @@ for (const f of written) {
   }
 }
 console.log(
-  `Generated ${written.length} files (${LANGUAGES.length} locales, ${PSEO.length} tool pages, ${BLOG.length} guides, ${INFO.length} info pages).`
+  `Generated ${written.length} files (${LANGUAGES.length} locales x home/tools/blog/info).`
 );
 console.log(errors ? `${errors} verification error(s)!` : "Verification OK.");
