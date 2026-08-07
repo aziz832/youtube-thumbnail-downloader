@@ -3,7 +3,10 @@ main = "src/index.js"
 compatibility_date = "2026-08-07"
 workers_dev = true
 
+routes = [
+  { pattern = "yt-thumbnail-downloader.site/*", zone_name = "yt-thumbnail-downloader.site" },
+  { pattern = "www.yt-thumbnail-downloader.site/*", zone_name = "yt-thumbnail-downloader.site" },
+]
+
 [assets]
 directory = "public"
-
-routes = [{ pattern = "yt-thumbnail-downloader.site", custom_domain = true }]
