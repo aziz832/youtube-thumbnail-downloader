@@ -102,7 +102,7 @@ function renderGrid(id) {
     card.className = "thumb-card";
     card.innerHTML =
       '<div class="thumb-wrap">' +
-      '<img src="' + url + '" alt="' + q.label + " " + q.res + " " + UI_TEXT.getThumbs + '" loading="lazy" />' +
+      '<img src="' + url + '" alt="' + q.label + " " + q.res + " " + UI_TEXT.getThumbs + '" />' +
       '<div class="thumb-loading" aria-hidden="true"><span class="spinner"></span></div>' +
       '<div class="thumb-missing" hidden>' + UI_TEXT.notAvailable + "</div>" +
       "</div>" +
@@ -116,11 +116,17 @@ function renderGrid(id) {
       "</div>";
 
     const img = card.querySelector("img");
+    let retried = false;
     img.addEventListener("load", () => {
       card.querySelector(".thumb-loading").hidden = true;
       card.querySelector("button[data-dl]").disabled = false;
     });
     img.addEventListener("error", () => {
+      if (!retried) {
+        retried = true;
+        img.src = url;
+        return;
+      }
       card.querySelector(".thumb-loading").hidden = true;
       card.querySelector(".thumb-missing").hidden = false;
     });
