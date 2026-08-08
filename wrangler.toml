@@ -10,3 +10,5 @@ routes = [
 
 [assets]
 directory = "public"
+run_worker_first = true
+binding = "ASSETS"

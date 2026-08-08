@@ -725,6 +725,14 @@ Sitemap: ${DOMAIN}/sitemap.xml
 `;
 write(join(PROJECT, "robots.txt"), robots);
 
+const securityTxt = `Contact: mailto:aziizboukerma@gmail.com
+Expires: 2027-08-08T00:00:00.000Z
+Preferred-Languages: en
+Canonical: ${DOMAIN}/security.txt
+`;
+write(join(PROJECT, "security.txt"), securityTxt);
+write(join(PROJECT, ".well-known", "security.txt"), securityTxt);
+
 let errors = 0;
 for (const f of written) {
   if (f.endsWith(".html")) {
