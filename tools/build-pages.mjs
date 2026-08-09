@@ -64,13 +64,13 @@ function pathFor(code, type, slug) {
     case "home":
       return `${base}/`;
     case "tool":
-      return `${base}/tools/${slug}.html`;
+      return `${base}/tools/${slug}`;
     case "blogIndex":
       return `${base}/blog/`;
     case "article":
       return `${base}/blog/${slug}/`;
     case "info":
-      return `${base}/${slug}.html`;
+      return `${base}/${slug}`;
     default:
       throw new Error(`unknown page type ${type}`);
   }
@@ -121,8 +121,17 @@ function homeFor(lang) {
 }
 
 function homeFaqFor(lang) {
-  if (lang === "en") return EN_FAQ;
-  return [...(T[lang].faq || []), ...(PT[lang]?.home?.faqExtra || [])];
+  const merged =
+    lang === "en"
+      ? [...EN_FAQ, ...(EN_HOME.faqExtra || [])]
+      : [...(T[lang].faq || []), ...(PT[lang]?.home?.faqExtra || [])];
+  const seen = new Set();
+  return merged.filter(([q]) => {
+    const key = q.toLowerCase().replace(/\s+/g, " ").trim();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 // ---- language switcher ----
@@ -168,6 +177,10 @@ function ogMeta(title, desc, canonical, locale) {
     `<meta property="og:description" content="${escapeHtml(desc)}" />\n  ` +
     `<meta property="og:url" content="${canonical}" />\n  ` +
     `<meta property="og:locale" content="${locale}" />\n  ` +
+    `<meta property="og:site_name" content="${escapeHtml(SITE.name)}" />\n  ` +
+    `<meta property="og:image" content="${DOMAIN}/og-image.png" />\n  ` +
+    `<meta property="og:image:width" content="1200" />\n  ` +
+    `<meta property="og:image:height" content="630" />\n  ` +
     `<meta name="twitter:card" content="summary_large_image" />`
   );
 }
@@ -619,7 +632,7 @@ function fsPath(code, type, slug) {
       ? "index.html"
       : enUrl.endsWith("/")
         ? enUrl.slice(1) + "index.html"
-        : enUrl.slice(1);
+        : enUrl.slice(1) + ".html";
   return code === "en" ? rel : join("lang", code, rel);
 }
 
@@ -672,62 +685,53 @@ for (const lang of LANGUAGES) {
 
 const lastmod = new Date().toISOString().slice(0, 10);
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${LANGUAGES.map(
-  (lang) => `  <url>
-    <loc>${DOMAIN}${pathFor(lang.code, "home")}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    ${altLinks("home")}
-  </url>`
-).join("\n")}
-${LANGUAGES.flatMap((lang) =>
-  PSEO.map(
-    (p) => `  <url>
-    <loc>${DOMAIN}${pathFor(lang.code, "tool", p.slug)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    ${altLinks("tool", p.slug)}
-  </url>`
-  )
-).join("\n")}
-${LANGUAGES.map(
-  (lang) => `  <url>
-    <loc>${DOMAIN}${pathFor(lang.code, "blogIndex")}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    ${altLinks("blogIndex")}
-  </url>`
-).join("\n")}
-${LANGUAGES.flatMap((lang) =>
-  BLOG.map(
-    (b) => `  <url>
-    <loc>${DOMAIN}${pathFor(lang.code, "article", b.slug)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    ${altLinks("article", b.slug)}
-  </url>`
-  )
-).join("\n")}
-${LANGUAGES.flatMap((lang) =>
-  INFO.map(
-    (i) => `  <url>
-    <loc>${DOMAIN}${pathFor(lang.code, "info", i.slug)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-    ${altLinks("info", i.slug)}
-  </url>`
-  )
-).join("\n")}
-</urlset>
-`;
-write(join(PROJECT, "sitemap.xml"), sitemap);
+function sitemapEntry(lang, type, slug, priority, changefreq) {
+  return (
+    `  <url>\n` +
+    `    <loc>${DOMAIN}${pathFor(lang, type, slug)}</loc>\n` +
+    `    <lastmod>${lastmod}</lastmod>\n` +
+    `    <changefreq>${changefreq}</changefreq>\n` +
+    `    <priority>${priority}</priority>\n` +
+    `    ${altLinks(type, slug)}\n` +
+    `  </url>`
+  );
+}
+
+const SM_HEADER =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`;
+
+for (const lang of LANGUAGES) {
+  const entries = [];
+  entries.push(sitemapEntry(lang.code, "home", null, "1.0", "daily"));
+  for (const p of PSEO) {
+    entries.push(sitemapEntry(lang.code, "tool", p.slug, "0.8", "weekly"));
+  }
+  entries.push(sitemapEntry(lang.code, "blogIndex", null, "0.6", "weekly"));
+  for (const b of BLOG) {
+    entries.push(sitemapEntry(lang.code, "article", b.slug, "0.6", "monthly"));
+  }
+  for (const i of INFO) {
+    entries.push(sitemapEntry(lang.code, "info", i.slug, "0.3", "yearly"));
+  }
+  write(
+    join(PROJECT, `sitemap-${lang.code}.xml`),
+    SM_HEADER + entries.join("\n") + "\n</urlset>\n"
+  );
+}
+
+const sitemapIndex =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  LANGUAGES.map(
+    (lang) =>
+      `  <sitemap>\n` +
+      `    <loc>${DOMAIN}/sitemap-${lang.code}.xml</loc>\n` +
+      `    <lastmod>${lastmod}</lastmod>\n` +
+      `  </sitemap>`
+  ).join("\n") +
+  `\n</sitemapindex>\n`;
+write(join(PROJECT, "sitemap.xml"), sitemapIndex);
 
 const robots = `User-agent: *
 Allow: /
