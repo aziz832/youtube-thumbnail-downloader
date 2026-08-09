@@ -414,7 +414,53 @@ function homeContent(home, faq) {
   );
 }
 
-function contentSectionsForTool(page, t) {
+const RELATED_MAP = {
+  "youtube-thumbnail-downloader": ["download-youtube-thumbnails", "free-youtube-thumbnail-downloader", "best-youtube-thumbnail-downloader", "hd-youtube-thumbnail-downloader", "youtube-thumbnail-downloader-online"],
+  "download-youtube-thumbnails": ["youtube-thumbnail-downloader", "download-thumbnail-from-youtube-link", "youtube-thumbnail-sizes", "youtube-thumbnail-4k-downloader"],
+  "youtube-thumbnail-grabber": ["youtube-thumbnail-extractor", "youtube-thumbnail-viewer", "youtube-thumbnail-preview", "youtube-thumbnail-saver"],
+  "youtube-thumbnail-extractor": ["youtube-thumbnail-grabber", "thumbnail-from-video-id", "get-youtube-thumbnail-url", "youtube-thumbnail-preview"],
+  "youtube-thumbnail-saver": ["youtube-thumbnail-image-downloader", "download-youtube-thumbnails", "youtube-thumbnail-downloader-no-watermark", "download-youtube-video-thumbnail"],
+  "hd-youtube-thumbnail-downloader": ["download-maxresdefault-thumbnail", "youtube-thumbnail-4k-downloader", "youtube-thumbnail-downloader", "youtube-thumbnail-sizes"],
+  "download-maxresdefault-thumbnail": ["hd-youtube-thumbnail-downloader", "youtube-thumbnail-4k-downloader", "youtube-thumbnail-sizes", "youtube-thumbnail-downloader"],
+  "youtube-shorts-thumbnail-downloader": ["download-thumbnails-from-youtube-shorts", "youtube-thumbnail-downloader", "download-youtube-thumbnails", "youtube-thumbnail-preview"],
+  "thumbnail-from-video-id": ["youtube-thumbnail-extractor", "get-youtube-thumbnail-url", "copy-youtube-thumbnail-url", "youtube-thumbnail-downloader"],
+  "youtube-thumbnail-viewer": ["youtube-thumbnail-preview", "youtube-thumbnail-grabber", "youtube-thumbnail-sizes", "youtube-thumbnail-image-downloader"],
+  "copy-youtube-thumbnail-url": ["get-youtube-thumbnail-url", "thumbnail-from-video-id", "youtube-thumbnail-extractor", "youtube-thumbnail-sizes"],
+  "youtube-thumbnail-downloader-without-extension": ["youtube-thumbnail-downloader-online", "youtube-thumbnail-downloader-no-login", "free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader"],
+  "download-thumbnail-from-youtube-link": ["download-youtube-thumbnails", "download-youtube-video-thumbnail", "youtube-thumbnail-downloader", "download-video-cover-image"],
+  "youtube-thumbnail-sizes": ["hd-youtube-thumbnail-downloader", "download-maxresdefault-thumbnail", "youtube-thumbnail-preview", "youtube-thumbnail-downloader"],
+  "download-video-cover-image": ["download-youtube-video-thumbnail", "download-thumbnail-from-youtube-link", "youtube-thumbnail-image-downloader", "youtube-thumbnail-saver"],
+  "free-youtube-thumbnail-downloader": ["youtube-thumbnail-downloader", "youtube-thumbnail-downloader-no-login", "youtube-thumbnail-downloader-no-watermark", "download-youtube-thumbnails"],
+  "youtube-thumbnail-4k-downloader": ["hd-youtube-thumbnail-downloader", "download-maxresdefault-thumbnail", "youtube-thumbnail-sizes", "youtube-thumbnail-downloader"],
+  "download-youtube-video-thumbnail": ["download-thumbnail-from-youtube-link", "download-video-cover-image", "youtube-thumbnail-saver", "youtube-thumbnail-image-downloader"],
+  "youtube-thumbnail-downloader-no-watermark": ["free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader", "youtube-thumbnail-image-downloader", "download-youtube-thumbnails"],
+  "youtube-thumbnail-downloader-free-online": ["youtube-thumbnail-downloader-online", "youtube-thumbnail-downloader-without-extension", "free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader"],
+  "youtube-thumbnail-downloader-no-login": ["free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader-without-extension", "youtube-thumbnail-downloader", "download-youtube-thumbnail-without-signup"],
+  "youtube-thumbnail-downloader-for-creators": ["youtube-thumbnail-downloader", "youtube-thumbnail-4k-downloader", "youtube-thumbnail-sizes", "youtube-thumbnail-preview"],
+  "youtube-thumbnail-downloader-online": ["free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader-without-extension", "youtube-thumbnail-downloader", "download-youtube-thumbnails"],
+  "download-youtube-thumbnail-without-signup": ["youtube-thumbnail-downloader-no-login", "free-youtube-thumbnail-downloader", "youtube-thumbnail-downloader", "download-youtube-thumbnails"],
+  "get-youtube-thumbnail-url": ["copy-youtube-thumbnail-url", "thumbnail-from-video-id", "youtube-thumbnail-extractor", "youtube-thumbnail-sizes"],
+  "youtube-thumbnail-preview": ["youtube-thumbnail-viewer", "youtube-thumbnail-grabber", "youtube-thumbnail-sizes", "youtube-thumbnail-downloader"],
+  "youtube-thumbnail-image-downloader": ["youtube-thumbnail-saver", "download-video-cover-image", "youtube-thumbnail-downloader-no-watermark", "download-youtube-video-thumbnail"],
+  "download-thumbnails-from-youtube-shorts": ["youtube-shorts-thumbnail-downloader", "youtube-thumbnail-downloader", "download-youtube-thumbnails", "youtube-thumbnail-preview"],
+  "best-youtube-thumbnail-downloader": ["youtube-thumbnail-downloader", "free-youtube-thumbnail-downloader", "youtube-thumbnail-4k-downloader", "youtube-thumbnail-sizes"],
+};
+
+function relatedToolsFor(page, lang) {
+  const slugs = (page.related && page.related.length) ? page.related : (RELATED_MAP[page.slug] || []);
+  return slugs
+    .map((slug) => {
+      const p = PSEO.find((x) => x.slug === slug);
+      if (!p) return "";
+      const localized = lang === "en" ? p : PT[lang]?.tools?.[slug];
+      const label = localized?.h1 || p.h1;
+      return `        <a href="${pathFor(lang, "tool", slug)}">${escapeHtml(label)}</a>`;
+    })
+    .filter(Boolean)
+    .join("\n");
+}
+
+function contentSectionsForTool(page, t, lang) {
   const intro = page.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
   const steps = page.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
   const faq = page.faq
@@ -423,16 +469,34 @@ function contentSectionsForTool(page, t) {
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
     )
     .join("\n");
+  const benefits = (page.benefits || [])
+    .map((b) => `      <li>${escapeHtml(b)}</li>`)
+    .join("\n");
+  const benefitsSection = benefits
+    ? `\n    <section class="seo-section">\n` +
+      `      <h2>${escapeHtml(page.benefitsH2 || t.secUsesH2)}</h2>\n` +
+      `      <ul class="benefit-list">\n${benefits}\n      </ul>\n` +
+      `    </section>\n`
+    : "";
+  const related = relatedToolsFor(page, lang);
+  const relatedSection = related
+    ? `\n    <section class="seo-section related-tools">\n` +
+      `      <h2>${escapeHtml(t.relatedH2)}</h2>\n` +
+      `      <div class="related-grid">\n${related}\n      </div>\n` +
+      `    </section>\n`
+    : "";
   return (
     `\n    <section class="seo-section">\n` +
     `      <h2>${escapeHtml(page.howH2)}</h2>\n` +
     `      ${intro}\n` +
     `      <ol>\n${steps}\n      </ol>\n` +
     `    </section>\n` +
+    benefitsSection +
     `    <section class="seo-section">\n` +
     `      <h2>${escapeHtml(t.secFaqH2)}</h2>\n` +
     `      ${faq}\n` +
-    `    </section>`
+    `    </section>\n` +
+    relatedSection
   );
 }
 
@@ -543,7 +607,7 @@ function toolVars(p, t, lang, page, labels) {
   vars.jsonld = jsonldSite() + jsonldTool(page, canonical, lang);
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
-  vars.contentSections = contentSectionsForTool(page, t);
+  vars.contentSections = contentSectionsForTool(page, t, lang);
   vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "tool", p.slug);
   vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
@@ -702,7 +766,7 @@ for (const lang of LANGUAGES) {
   const t = T[lang.code];
   const labels = labelsFor(lang.code);
   for (const p of PSEO) {
-    const page = lang.code === "en" ? { ...p, howH2: `How to ${p.primary}` } : PT[lang.code].tools[p.slug];
+    const page = lang.code === "en" ? { ...p, howH2: p.howH2 || `How to ${p.primary}` } : PT[lang.code].tools[p.slug];
     const html = render(template, toolVars(p, t, lang.code, page, labels));
     write(join(PROJECT, fsPath(lang.code, "tool", p.slug)), html);
   }
