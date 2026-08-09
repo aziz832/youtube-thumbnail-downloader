@@ -778,8 +778,6 @@ function blogIndexHtmlFor(lang) {
     `  <link rel="icon" href="${favicon}" />\n` +
     `  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />\n` +
     `  <meta name="theme-color" content="#233D4D" />\n` +
-    `  <link rel="preconnect" href="https://i.ytimg.com" crossorigin />\n` +
-    `  <link rel="preconnect" href="https://www.youtube.com" crossorigin />\n` +
     `  <style>${css}</style>\n` +
     `  ${dirCssFor(t)}\n` +
     `  ${jsonldSite()}\n` +

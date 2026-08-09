@@ -6,7 +6,7 @@
   --border-soft: #e4e7ec;
   --text: #000000;
   --text-muted: #233D4D;
-  --text-dim: #6d7b85;
+  --text-dim: #46545f;
   --accent: #FE7F2D;
   --accent-2: #233D4D;
   --cyan: #233D4D;
@@ -946,7 +946,7 @@ button.small {
 .res-table code {
   font-family: var(--font-mono);
   font-size: 0.76rem;
-  color: var(--accent);
+  color: #c2410c;
 }
 
 /* ---------- Blog ---------- */

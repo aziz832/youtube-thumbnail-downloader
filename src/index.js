@@ -22,11 +22,14 @@ export default {
     const headers = new Headers(response.headers);
     headers.set("Strict-Transport-Security", HSTS);
     const type = response.headers.get("content-type") || "";
+    const isFont = type.includes("font") || url.pathname.includes("/fonts/");
     headers.set(
       "Cache-Control",
       type.includes("text/html")
         ? "public, max-age=3600, s-maxage=3600"
-        : "public, max-age=86400, s-maxage=86400"
+        : isFont
+          ? "public, max-age=31536000, immutable"
+          : "public, max-age=86400, s-maxage=86400"
     );
     return new Response(response.body, {
       status: response.status,
