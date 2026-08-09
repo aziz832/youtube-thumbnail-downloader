@@ -34,4 +34,8 @@ export default {
       headers,
     });
   },
+
+  async email(message, env, ctx) {
+    await message.forward(env.CONTACT_DESTINATION);
+  },
 };

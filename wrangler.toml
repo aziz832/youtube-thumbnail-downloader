@@ -3,6 +3,9 @@ main = "src/index.js"
 compatibility_date = "2026-08-07"
 workers_dev = true
 
+[vars]
+CONTACT_DESTINATION = "aziizboukerma@gmail.com"
+
 routes = [
   { pattern = "yt-thumbnail-downloader.site/*", zone_name = "yt-thumbnail-downloader.site" },
   { pattern = "www.yt-thumbnail-downloader.site/*", zone_name = "yt-thumbnail-downloader.site" },

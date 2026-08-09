@@ -1221,11 +1221,12 @@ export const INFO = [
     title: "Contact — YouTube Thumbnail Downloader",
     meta: "Contact the team behind the free YouTube Thumbnail Downloader. Report issues, suggest features, or ask questions.",
     h1: "Contact",
+    contactForm: true,
     sections: [
-      ["Get in touch", "Questions, feedback, or feature requests? Reach us by email at aziizboukerma@gmail.com. We read every message, though a reply can take a few days."],
+      ["Get in touch", "Questions, feedback, or feature requests? Use the form below and your message will be delivered to us. We read every message, though a reply can take a few days."],
       ["Report a bug", "If a thumbnail fails to load, a page behaves unexpectedly, or a supported URL format is rejected, include the video link, your browser name and version, and a short description of what happened."],
       ["Feature requests", "Suggestions are welcome. Popular ideas that fit the tool's simple, privacy-first design are usually implemented first."],
-      ["Abuse and legal notices", "To report a suspected copyright issue or send a legal notice about content on this site, email aziizboukerma@gmail.com with the subject “Legal notice” so it reaches the right person quickly."],
+      ["Abuse and legal notices", "To report a suspected copyright issue or send a legal notice about content on this site, use the form below and mark the subject as “Legal notice” so it reaches the right person quickly."],
     ],
   },
   {
@@ -1240,10 +1241,11 @@ export const INFO = [
       ["Third-party requests", "Thumbnail images are loaded directly from YouTube's public image CDN (i.ytimg.com) by your browser, subject to Google's own privacy policies. The video title shown next to a thumbnail may be fetched from YouTube's public pages or the noembed service; no data about you is sent with those requests."],
       ["Cookies and tracking", "The tool does not set tracking cookies, advertising identifiers, or fingerprinting scripts. We have nothing to sell and nothing to track."],
       ["Hosting and analytics", "The site is served through Cloudflare's CDN. Cloudflare may process standard technical data (IP address, user agent, request time) as part of normal internet routing and its security features, subject to Cloudflare's privacy policy. We do not run analytics or advertising trackers of our own."],
+      ["Contact messages", "If you use the contact form, your message is delivered to us by email so we can respond. The message itself is not stored in any database, and it is never shared with third parties."],
       ["Children's privacy", "This tool is a general utility and is not directed at children under 13. We do not knowingly collect any information from children."],
-      ["Your rights", "Because we hold no personal data about you, there is nothing to access, correct, or delete. If you believe we hold data we should not, contact us at aziizboukerma@gmail.com and we will resolve it promptly."],
+      ["Your rights", "Because we hold no personal data about you, there is nothing to access, correct, or delete. If you believe we hold data we should not, contact us through the contact form and we will resolve it promptly."],
       ["Changes to this policy", "If this policy changes, the updated version will be posted on this page with a revised date. Material changes will be highlighted."],
-      ["Contact", "Questions about this policy? Email aziizboukerma@gmail.com."],
+      ["Contact", "Questions about this policy? Use the contact form on the Contact page."],
     ],
   },
   {
@@ -1261,7 +1263,7 @@ export const INFO = [
       ["No warranty", "The tool is provided “as is” and “as available”, without warranties of any kind, express or implied, including fitness for a particular purpose. We do not guarantee that downloads will always succeed or that images will be available."],
       ["Limitation of liability", "To the maximum extent permitted by law, we are not liable for any direct, indirect, incidental, or consequential damages arising from your use of, or inability to use, this tool."],
       ["Changes to these terms", "We may update these Terms from time to time. Continued use of the tool after changes are posted constitutes acceptance of the revised terms."],
-      ["Contact", "Questions about these Terms? Email aziizboukerma@gmail.com."],
+      ["Contact", "Questions about these Terms? Use the contact form on the Contact page."],
     ],
   },
   {
@@ -1276,7 +1278,7 @@ export const INFO = [
       ["Informational purposes", "Content on this site, including the blog and FAQ sections, is provided for general information only and does not constitute legal advice. Copyright and fair use rules vary by jurisdiction."],
       ["No guarantee", "The tool is provided “as is”. We do not guarantee uninterrupted availability, and thumbnail files may be removed or changed by YouTube at any time."],
       ["Third-party links", "Pages may link to external services such as YouTube, noembed, or others. We are not responsible for the content or privacy practices of those sites."],
-      ["Contact", "Questions about this disclaimer? Email aziizboukerma@gmail.com."],
+      ["Contact", "Questions about this disclaimer? Use the contact form on the Contact page."],
     ],
   },
 ];

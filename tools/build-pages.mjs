@@ -718,7 +718,29 @@ function infoVars(i, lang, page, labels) {
         `<h2>${escapeHtml(h)}</h2>\n      <p>${escapeHtml(par)}</p>`
     )
     .join("\n      ");
-  vars.contentSections = `\n    <section class="seo-section article">\n      ${sections}\n    </section>`;
+  const form = page.contactForm
+    ? `\n    <section class="seo-section">\n` +
+      `      <form class="contact-form" action="mailto:contact@yt-thumbnail-downloader.site" method="post" enctype="text/plain">\n` +
+      `        <div class="url-row">\n` +
+      `          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" required />\n` +
+      `        </div>\n` +
+      `        <div class="url-row">\n` +
+      `          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" required />\n` +
+      `        </div>\n` +
+      `        <div class="url-row">\n` +
+      `          <input class="url-input" type="text" name="Subject" placeholder="Subject" aria-label="Subject" required />\n` +
+      `        </div>\n` +
+      `        <div class="url-row">\n` +
+      `          <textarea class="url-input contact-msg" name="Message" rows="6" placeholder="Your message" aria-label="Your message" required></textarea>\n` +
+      `        </div>\n` +
+      `        <div class="url-row">\n` +
+      `          <button class="primary" type="submit">Send message</button>\n` +
+      `        </div>\n` +
+      `        <p class="tips" role="note">This form opens your email app with the message ready to send to our contact address.</p>\n` +
+      `      </form>\n` +
+      `    </section>\n`
+    : "";
+  vars.contentSections = `\n    <section class="seo-section article">\n      ${sections}\n    </section>\n${form}`;
   vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "info", i.slug);
   vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
@@ -878,7 +900,7 @@ Sitemap: ${DOMAIN}/sitemap.xml
 `;
 write(join(PROJECT, "robots.txt"), robots);
 
-const securityTxt = `Contact: mailto:aziizboukerma@gmail.com
+const securityTxt = `Contact: ${DOMAIN}/contact
 Expires: 2027-08-08T00:00:00.000Z
 Preferred-Languages: en
 Canonical: ${DOMAIN}/security.txt

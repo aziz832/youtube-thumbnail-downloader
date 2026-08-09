@@ -434,6 +434,22 @@ input[type="text"]:focus-visible {
   box-shadow: 0 0 0 3px rgba(254, 127, 45, 0.12);
 }
 
+.contact-form .url-row {
+  margin-bottom: 0.6rem;
+}
+
+.contact-form .contact-msg {
+  border-radius: var(--radius-sm);
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.contact-form .primary {
+  min-height: 52px;
+  padding: 0 1.6rem;
+}
+
 /* ---------- Example chips ---------- */
 
 .example-chips {
@@ -1241,14 +1257,36 @@ button.small {
     
     <section class="seo-section article">
       <h2>Get in touch</h2>
-      <p>Questions, feedback, or feature requests? Reach us by email at aziizboukerma@gmail.com. We read every message, though a reply can take a few days.</p>
+      <p>Questions, feedback, or feature requests? Use the form below and your message will be delivered to us. We read every message, though a reply can take a few days.</p>
       <h2>Report a bug</h2>
       <p>If a thumbnail fails to load, a page behaves unexpectedly, or a supported URL format is rejected, include the video link, your browser name and version, and a short description of what happened.</p>
       <h2>Feature requests</h2>
       <p>Suggestions are welcome. Popular ideas that fit the tool's simple, privacy-first design are usually implemented first.</p>
       <h2>Abuse and legal notices</h2>
-      <p>To report a suspected copyright issue or send a legal notice about content on this site, email aziizboukerma@gmail.com with the subject “Legal notice” so it reaches the right person quickly.</p>
+      <p>To report a suspected copyright issue or send a legal notice about content on this site, use the form below and mark the subject as “Legal notice” so it reaches the right person quickly.</p>
     </section>
+
+    <section class="seo-section">
+      <form class="contact-form" action="mailto:contact@yt-thumbnail-downloader.site" method="post" enctype="text/plain">
+        <div class="url-row">
+          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" required />
+        </div>
+        <div class="url-row">
+          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" required />
+        </div>
+        <div class="url-row">
+          <input class="url-input" type="text" name="Subject" placeholder="Subject" aria-label="Subject" required />
+        </div>
+        <div class="url-row">
+          <textarea class="url-input contact-msg" name="Message" rows="6" placeholder="Your message" aria-label="Your message" required></textarea>
+        </div>
+        <div class="url-row">
+          <button class="primary" type="submit">Send message</button>
+        </div>
+        <p class="tips" role="note">This form opens your email app with the message ready to send to our contact address.</p>
+      </form>
+    </section>
+
   </main>
 
   
