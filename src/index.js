@@ -1,5 +1,8 @@
 const HSTS = "max-age=31536000; includeSubDomains";
 
+const CANONICAL_HOST = "yt-thumbnail-downloader.site";
+const OLD_HOSTS = ["youtube-thumbnail-downloader.aziizboukerma.workers.dev"];
+
 const BOT_AGENTS = [
   "GPTBot", "ChatGPT-User", "OAI-SearchBot", "CCBot", "ClaudeBot",
   "Claude-Web", "Claude-SearchBot", "anthropic-ai", "Google-Extended",
@@ -26,6 +29,11 @@ export default {
 
     if (url.protocol === "http:") {
       url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    }
+
+    if (OLD_HOSTS.includes(url.hostname)) {
+      url.hostname = CANONICAL_HOST;
       return Response.redirect(url.toString(), 301);
     }
 
