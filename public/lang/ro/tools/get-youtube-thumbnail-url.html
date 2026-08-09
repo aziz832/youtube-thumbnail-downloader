@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/ro/tools/get-youtube-thumbnail-url","description":"Obțineți adresa URL directă a miniaturii YouTube pentru orice videoclip. Lipiți linkul și copiați adresa URL a imaginii i.ytimg.com pentru fiecare dimensiune. Instrument gratuit.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"ro","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cum arată URL-urile?","acceptedAnswer":{"@type":"Answer","text":"Ei folosesc modelul https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg."}},{"@type":"Question","name":"Am nevoie de o cheie API?","acceptedAnswer":{"@type":"Answer","text":"Nu — imaginile sunt publice și nu necesită autentificare."}},{"@type":"Question","name":"Pot conecta imaginea?","acceptedAnswer":{"@type":"Answer","text":"Da, adresa URL este o simplă JPG care poate fi încorporată în majoritatea platformelor."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cum arată URL-urile?","acceptedAnswer":{"@type":"Answer","text":"Ei folosesc modelul https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg."}},{"@type":"Question","name":"Am nevoie de o cheie API?","acceptedAnswer":{"@type":"Answer","text":"Nu — imaginile sunt publice și nu necesită autentificare."}},{"@type":"Question","name":"Pot conecta imaginea?","acceptedAnswer":{"@type":"Answer","text":"Da, adresa URL este o simplă JPG care poate fi încorporată în majoritatea platformelor."}},{"@type":"Question","name":"Care este structura URL-ului?","acceptedAnswer":{"@type":"Answer","text":"https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg cu SIZE înlocuit cu maxresdefault, sddefault, hqdefault, mqdefault sau implicit."}},{"@type":"Question","name":"Pot conecta aceste adrese URL?","acceptedAnswer":{"@type":"Answer","text":"Da, sunt JPG-uri simple servite de la un CDN public și care pot fi încorporate în majoritatea platformelor."}},{"@type":"Question","name":"De ce ar lipsi o dimensiune URL?","acceptedAnswer":{"@type":"Answer","text":"Deoarece această dimensiune nu există pentru videoclip - instrumentul listează doar dimensiunile care sunt efectiv difuzate."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/ro/"},{"@type":"ListItem","position":2,"name":"Obțineți adresa URL a miniaturii YouTube","item":"https://yt-thumbnail-downloader.site/lang/ro/tools/get-youtube-thumbnail-url"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1182,8 +1182,8 @@ button.small {
       <h1>Obțineți adresa URL a miniaturii YouTube</h1>
       <p class="subtitle">Lipiți orice link YouTube pentru a previzualiza și descărca miniatura videoclipului în HD, SD, HQ și nu numai — gratuit, rapid și 100 % în browser.</p>
       <div class="lang-switch">
-  <label for="langSelect">Limbă</label>
-  <select id="langSelect" aria-label="Limbă">
+  <label for="langSelect">Limba</label>
+  <select id="langSelect" aria-label="Limba">
       <option value="en">English</option>
       <option value="de">Deutsch</option>
       <option value="es">Español</option>
@@ -1256,7 +1256,7 @@ button.small {
 
     
     <section class="seo-section">
-      <h2>Cum să obțineți adresa URL a miniaturii YouTube</h2>
+      <h2>Cum să obțineți o adresă URL pentru o miniatură YouTube</h2>
       <p>Acest instrument dezvăluie adresa URL exactă a imaginii pentru fiecare dimensiune de miniatură pe care YouTube a generat-o pentru un videoclip. Utilizați linkurile din încorporare, aplicații sau instrumente care au nevoie de o sursă de imagine directă.</p>
 <p>Adresele URL urmează modelul public i.ytimg.com și nu au nevoie de cheie API.</p>
       <ol>
@@ -1266,11 +1266,48 @@ button.small {
 <li>Lipiți-l oriunde.</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>Ce este o adresă URL pentru o miniatură YouTube?</h2>
+      <p>Acest instrument dezvăluie adresa URL directă a imaginii a fiecărei dimensiuni de miniatură pe care YouTube a generat-o pentru un videoclip. Lipiți un link și fiecare dimensiune disponibilă este afișată cu adresa sa exactă i.ytimg.com, gata de copiere.</p>
+      <p>Este cea mai rapidă modalitate de a obține o adresă URL de miniatură verificată și funcțională fără o cheie API sau o inspecție a sursei paginii.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>Utilizări frecvente</h2>
+      <ul class="benefit-list">
+      <li>Dezvăluie adresa URL exactă a imaginii pentru fiecare dimensiune de miniatură pentru un videoclip.</li>
+      <li>Adresele URL urmează modelul public i.ytimg.com și nu au nevoie de cheie API.</li>
+      <li>Copiați orice adresă URL pentru încorporare, aplicații sau instrumente care au nevoie de o sursă de imagine directă.</li>
+      <li>Acoperă toate cele cinci dimensiuni oficiale plus ramele de rând.</li>
+      <li>Gratuit și instantaneu în browser.</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>De ce să folosiți această adresă URL Obțineți miniatură YouTube?</h2>
+      <p>Aplicațiile, prototipurile și scripturile de automatizare au adesea nevoie de adrese URL de imagini brute, mai degrabă decât de fișiere descărcate. Obținerea lor dintr-un instrument în loc să le construiască manual garantează că adresele URL există de fapt pentru acel videoclip - nu există 404 pentru a ghici dimensiunea greșită.</p>
+      <ul class="benefit-list">
+      <li>Adrese URL verificate pentru fiecare dimensiune care există.</li>
+      <li>Copiați linkurile individuale sau setul complet.</li>
+      <li>Fără cheie API, fără autentificare.</li>
+      <li>Perfect pentru încorporare, prototipuri și scripturi.</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>Întrebări frecvente</h2>
       <details class="faq-item"><summary>Cum arată URL-urile?</summary><p>Ei folosesc modelul https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg.</p></details>
 <details class="faq-item"><summary>Am nevoie de o cheie API?</summary><p>Nu — imaginile sunt publice și nu necesită autentificare.</p></details>
 <details class="faq-item"><summary>Pot conecta imaginea?</summary><p>Da, adresa URL este o simplă JPG care poate fi încorporată în majoritatea platformelor.</p></details>
+<details class="faq-item"><summary>Care este structura URL-ului?</summary><p>https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg cu SIZE înlocuit cu maxresdefault, sddefault, hqdefault, mqdefault sau implicit.</p></details>
+<details class="faq-item"><summary>Pot conecta aceste adrese URL?</summary><p>Da, sunt JPG-uri simple servite de la un CDN public și care pot fi încorporate în majoritatea platformelor.</p></details>
+<details class="faq-item"><summary>De ce ar lipsi o dimensiune URL?</summary><p>Deoarece această dimensiune nu există pentru videoclip - instrumentul listează doar dimensiunile care sunt efectiv difuzate.</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>Începeți cu această adresă URL Obțineți miniatură YouTube</h2>
+      <p>Obțineți adresa URL directă a miniaturii YouTube pentru orice videoclip - de orice dimensiune, verificată, gata de copiere.</p>
+      <p>Modul prietenos pentru dezvoltatori de a obține link-uri în miniatură.</p>
     </section>
 
     <section class="seo-section related-tools">

@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/pl/tools/thumbnail-from-video-id","description":"Pobierz miniaturę dowolnego filmu YouTube z jego identyfikatora wideo 11-character. Wklej identyfikator i natychmiast pobierz każdy dostępny rozmiar. Bezpłatne narzędzie.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"pl","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Gdzie znajduje się identyfikator wideo w adresie URL?","acceptedAnswer":{"@type":"Answer","text":"Po v= w linkach do oglądania (youtube.com/watch?v=VIDEO_ID) lub po ukośniku w linkach youtu.be/@3@@."}},{"@type":"Question","name":"Czy mogę wkleić sam identyfikator?","acceptedAnswer":{"@type":"Answer","text":"Tak — akceptowany jest sam identyfikator 11-character."}},{"@type":"Question","name":"Czy identyfikator został kiedykolwiek przesłany?","acceptedAnswer":{"@type":"Answer","text":"Nie, służy on wyłącznie do tworzenia publicznego adresu URL miniatury w przeglądarce."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Gdzie znajduje się identyfikator wideo w adresie URL?","acceptedAnswer":{"@type":"Answer","text":"Po v= w linkach do oglądania (youtube.com/watch?v=VIDEO_ID) lub po ukośniku w linkach youtu.be/@3@@."}},{"@type":"Question","name":"Czy mogę wkleić sam identyfikator?","acceptedAnswer":{"@type":"Answer","text":"Tak — akceptowany jest sam identyfikator 11-character."}},{"@type":"Question","name":"Czy identyfikator został kiedykolwiek przesłany?","acceptedAnswer":{"@type":"Answer","text":"Nie, służy on wyłącznie do tworzenia publicznego adresu URL miniatury w przeglądarce."}},{"@type":"Question","name":"Gdzie mogę znaleźć identyfikator wideo?","acceptedAnswer":{"@type":"Answer","text":"W adresie URL po v= (linki do oglądania), po ukośniku w linkach youtu.be, w kodach osadzania po /embed/ i w większości odpowiedzi API YouTube."}},{"@type":"Question","name":"Czy wszystkie filmy z identyfikatorem mają miniatury?","acceptedAnswer":{"@type":"Answer","text":"Tak — każdy publiczny film wideo ma co najmniej standardowe rozmiary miniatur. Prywatne lub usunięte filmy nic nie zwracają."}},{"@type":"Question","name":"Czy zamiast tego mogę wkleić pełny adres URL?","acceptedAnswer":{"@type":"Answer","text":"Tak, pełne adresy URL też działają. Narzędzie po prostu umożliwia wklejenie samego identyfikatora."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/pl/"},{"@type":"ListItem","position":2,"name":"Pobierz miniaturę YouTube z identyfikatora wideo","item":"https://yt-thumbnail-downloader.site/lang/pl/tools/thumbnail-from-video-id"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1256,7 +1256,7 @@ button.small {
 
     
     <section class="seo-section">
-      <h2>Jak uzyskać miniaturę YouTube z identyfikatora wideo</h2>
+      <h2>Jak uzyskać miniaturę z identyfikatora wideo</h2>
       <p>Każdy film w YouTube ma unikalny identyfikator 11-character. Jeśli masz już identyfikator — z osadzonego elementu, interfejsu API lub listy odtwarzania — możesz wkleić go bezpośrednio, bez pełnego adresu URL.</p>
 <p>Narzędzie tworzy dla Ciebie adresy URL miniatur i wyświetla każdy istniejący rozmiar.</p>
       <ol>
@@ -1266,11 +1266,48 @@ button.small {
 <li>Pobierz rozmiar, którego potrzebujesz.</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>Co to jest pobieranie miniatury YouTube z identyfikatora wideo?</h2>
+      <p>Każdy film w YouTube ma unikalny identyfikator filmu 11-character — ciąg znaków po v= w linkach do odtwarzania lub po ukośniku w linkach do youtu.be. To narzędzie bezpośrednio akceptuje sam identyfikator filmu, tworzy dla Ciebie adresy URL miniatur i wyświetla każdy dostępny rozmiar tego filmu.</p>
+      <p>Wklejenie identyfikatora jest przydatne, jeśli masz go już w kodzie osadzania, eksporcie listy odtwarzania, odpowiedzi API lub bazie danych – bez konieczności podawania pełnego adresu URL.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>Typowe zastosowania</h2>
+      <ul class="benefit-list">
+      <li>Umożliwia wklejenie samego identyfikatora wideo 11-character — nie jest potrzebny pełny adres URL.</li>
+      <li>Tworzy dla Ciebie wszystkie adresy URL miniatur i pokazuje każdy istniejący rozmiar.</li>
+      <li>Idealny do identyfikatorów osadzonych, list odtwarzania, interfejsów API lub udostępnianych linków.</li>
+      <li>Natychmiast pobiera oryginalny plik HD, SD lub HQ.</li>
+      <li>Bezpłatny i prywatny — identyfikator jest używany tylko lokalnie w Twojej przeglądarce.</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>Dlaczego warto skorzystać z tej opcji Pobierz miniaturę YouTube z identyfikatora wideo?</h2>
+      <p>Programiści i zaawansowani użytkownicy często pracują z identyfikatorami wideo, a nie z pełnymi adresami URL. Zamiast ręcznie konstruować wzór i.ytimg.com/vi/VIDEO_ID/SIZE.jpg i zgadywać, jakie rozmiary istnieją, możesz wkleić identyfikator i uzyskać natychmiastową, zweryfikowaną listę miniatur do pobrania.</p>
+      <ul class="benefit-list">
+      <li>Akceptuje sam identyfikator wideo 11-character bez konieczności analizowania adresu URL.</li>
+      <li>Automatycznie tworzy i weryfikuje każdy adres URL miniatury.</li>
+      <li>Zapisuje dowolny rozmiar jednym kliknięciem.</li>
+      <li>Idealny dla programistów, umożliwia osadzanie przepływów pracy i eksport danych.</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>Często zadawane pytania</h2>
       <details class="faq-item"><summary>Gdzie znajduje się identyfikator wideo w adresie URL?</summary><p>Po v= w linkach do oglądania (youtube.com/watch?v=VIDEO_ID) lub po ukośniku w linkach youtu.be/@3@@.</p></details>
 <details class="faq-item"><summary>Czy mogę wkleić sam identyfikator?</summary><p>Tak — akceptowany jest sam identyfikator 11-character.</p></details>
 <details class="faq-item"><summary>Czy identyfikator został kiedykolwiek przesłany?</summary><p>Nie, służy on wyłącznie do tworzenia publicznego adresu URL miniatury w przeglądarce.</p></details>
+<details class="faq-item"><summary>Gdzie mogę znaleźć identyfikator wideo?</summary><p>W adresie URL po v= (linki do oglądania), po ukośniku w linkach youtu.be, w kodach osadzania po /embed/ i w większości odpowiedzi API YouTube.</p></details>
+<details class="faq-item"><summary>Czy wszystkie filmy z identyfikatorem mają miniatury?</summary><p>Tak — każdy publiczny film wideo ma co najmniej standardowe rozmiary miniatur. Prywatne lub usunięte filmy nic nie zwracają.</p></details>
+<details class="faq-item"><summary>Czy zamiast tego mogę wkleić pełny adres URL?</summary><p>Tak, pełne adresy URL też działają. Narzędzie po prostu umożliwia wklejenie samego identyfikatora.</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>Zacznij od tego Pobierz miniaturę YouTube z identyfikatora wideo</h2>
+      <p>Uzyskaj dowolną miniaturę YouTube bezpośrednio z identyfikatora filmu — nie jest wymagany adres URL. Wklej identyfikator 11-character, pobierz oryginalny obraz i kontynuuj.</p>
+      <p>Najszybsza opcja dla każdego, kto ma już identyfikator w ręku.</p>
     </section>
 
     <section class="seo-section related-tools">

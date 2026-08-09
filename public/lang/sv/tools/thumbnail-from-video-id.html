@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/sv/tools/thumbnail-from-video-id","description":"Hämta miniatyrbilden av en YouTube-video från dess 11-character video-ID. Klistra in ID:t och ladda ner alla tillgängliga storlekar direkt. Gratis verktyg.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"sv","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Var finns video-ID:t i en URL?","acceptedAnswer":{"@type":"Answer","text":"Efter v= i tittalänkar (youtube.com/watch?v=VIDEO_ID), eller efter snedstrecket i youtu.be/VIDEO_ID länkar."}},{"@type":"Question","name":"Kan jag klistra in bara ID?","acceptedAnswer":{"@type":"Answer","text":"Ja — ett fritt 11-character ID accepteras."}},{"@type":"Question","name":"Har ID någonsin laddats upp?","acceptedAnswer":{"@type":"Answer","text":"Nej, den används bara för att skapa den offentliga webbadressen för miniatyrer i din webbläsare."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Var finns video-ID:t i en URL?","acceptedAnswer":{"@type":"Answer","text":"Efter v= i tittalänkar (youtube.com/watch?v=VIDEO_ID), eller efter snedstrecket i youtu.be/VIDEO_ID länkar."}},{"@type":"Question","name":"Kan jag klistra in bara ID?","acceptedAnswer":{"@type":"Answer","text":"Ja — ett fritt 11-character ID accepteras."}},{"@type":"Question","name":"Har ID någonsin laddats upp?","acceptedAnswer":{"@type":"Answer","text":"Nej, den används bara för att skapa den offentliga webbadressen för miniatyrer i din webbläsare."}},{"@type":"Question","name":"Var kan jag hitta ett video-ID?","acceptedAnswer":{"@type":"Answer","text":"I webbadressen efter v= (titta på länkar), efter snedstrecket i youtu.be-länkar, i inbäddningskoder efter /embed/ och i de flesta YouTube API-svar."}},{"@type":"Question","name":"Har alla videor med ett ID miniatyrer?","acceptedAnswer":{"@type":"Answer","text":"Ja – alla offentliga videoklipp har åtminstone standardstorlekarna för miniatyrer. Privata eller raderade videor returnerar ingenting."}},{"@type":"Question","name":"Kan jag klistra in en fullständig URL istället?","acceptedAnswer":{"@type":"Answer","text":"Ja, fullständiga webbadresser fungerar också. Verktyget ger dig helt enkelt möjlighet att klistra in bara ID:t."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/sv/"},{"@type":"ListItem","position":2,"name":"Få YouTube-miniatyr från video-ID","item":"https://yt-thumbnail-downloader.site/lang/sv/tools/thumbnail-from-video-id"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1256,7 +1256,7 @@ button.small {
 
     
     <section class="seo-section">
-      <h2>Hur man hämtar youtube-miniatyrbild från video-id</h2>
+      <h2>Hur man får en miniatyrbild från ett video-ID</h2>
       <p>Varje YouTube-video har ett unikt 11-character-ID. Om du redan har ID - från en inbäddning, ett API eller en spellista - kan du klistra in det direkt utan en fullständig URL.</p>
 <p>Verktyget bygger webbadresserna för miniatyrbilder åt dig och visar alla storlekar som finns.</p>
       <ol>
@@ -1266,11 +1266,48 @@ button.small {
 <li>Ladda ner den storlek du behöver.</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>Vad är en få YouTube-miniatyr från video-ID?</h2>
+      <p>Varje YouTube-video har ett unikt 11-character video-ID — strängen efter v= i tittarlänkar eller efter snedstrecket i youtu.be-länkar. Det här verktyget accepterar det blotta video-ID:t direkt, skapar miniatyradresserna för dig och visar alla storlekar som finns för den videon.</p>
+      <p>Att klistra in ID:t är användbart när du redan har det från en inbäddningskod, en spellistaxport, ett API-svar eller en databas – utan att behöva hela URL:en.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>Vanliga användningsområden</h2>
+      <ul class="benefit-list">
+      <li>Låter dig klistra in ett obefläckat 11-character video-ID – ingen fullständig URL behövs.</li>
+      <li>Bygger alla webbadresser för miniatyrbilder åt dig och visar alla storlekar som finns.</li>
+      <li>Idealisk för ID:n från inbäddningar, spellistor, API:er eller dela länkar.</li>
+      <li>Laddar ner den ursprungliga HD-, SD- eller HQ-filen direkt.</li>
+      <li>Gratis och privat – ID:t används endast lokalt i din webbläsare.</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>Varför använda denna Hämta YouTube-miniatyrbild från video-ID?</h2>
+      <p>Utvecklare och avancerade användare arbetar ofta med video-ID:n snarare än fullständiga webbadresser. Istället för att konstruera i.ytimg.com/vi/VIDEO_ID/SIZE.jpg-mönstret för hand och gissa vilka storlekar som finns, kan du klistra in ID:t och få en omedelbar, verifierad lista med nedladdningsbara miniatyrer.</p>
+      <ul class="benefit-list">
+      <li>Accepterar ett blott 11-character video-ID utan att webbadressen behöver analyseras.</li>
+      <li>Bygger och verifierar varje webbadress för miniatyrer automatiskt.</li>
+      <li>Sparar valfri storlek med ett klick.</li>
+      <li>Perfekt för utvecklare, inbäddade arbetsflöden och dataexport.</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>Vanliga frågor</h2>
       <details class="faq-item"><summary>Var finns video-ID:t i en URL?</summary><p>Efter v= i tittalänkar (youtube.com/watch?v=VIDEO_ID), eller efter snedstrecket i youtu.be/VIDEO_ID länkar.</p></details>
 <details class="faq-item"><summary>Kan jag klistra in bara ID?</summary><p>Ja — ett fritt 11-character ID accepteras.</p></details>
 <details class="faq-item"><summary>Har ID någonsin laddats upp?</summary><p>Nej, den används bara för att skapa den offentliga webbadressen för miniatyrer i din webbläsare.</p></details>
+<details class="faq-item"><summary>Var kan jag hitta ett video-ID?</summary><p>I webbadressen efter v= (titta på länkar), efter snedstrecket i youtu.be-länkar, i inbäddningskoder efter /embed/ och i de flesta YouTube API-svar.</p></details>
+<details class="faq-item"><summary>Har alla videor med ett ID miniatyrer?</summary><p>Ja – alla offentliga videoklipp har åtminstone standardstorlekarna för miniatyrer. Privata eller raderade videor returnerar ingenting.</p></details>
+<details class="faq-item"><summary>Kan jag klistra in en fullständig URL istället?</summary><p>Ja, fullständiga webbadresser fungerar också. Verktyget ger dig helt enkelt möjlighet att klistra in bara ID:t.</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>Kom igång med denna Få YouTube-miniatyrbild från video-ID</h2>
+      <p>Få valfri YouTube-miniatyrbild direkt från video-ID:t – ingen URL krävs. Klistra in 11-character ID, ladda ner originalbilden och gå vidare.</p>
+      <p>Det snabbaste alternativet för alla som redan har ID i handen.</p>
     </section>
 
     <section class="seo-section related-tools">

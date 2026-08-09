@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/zh-TW/tools/thumbnail-from-video-id","description":"從 11-character 影片 ID 取得任何 YouTube 影片的縮圖。貼上 ID 並立即下載每個可用尺寸。免費工具。","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"zh-TW","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"URL 中的影片 ID 位於何處？","acceptedAnswer":{"@type":"Answer","text":"在監視連結 (youtube.com/watch?v=VIDEO_ID) 中的 v= 之後，或在 youtu.be/VIDEO_ID 連結中的斜線之後。"}},{"@type":"Question","name":"可以只貼ID嗎？","acceptedAnswer":{"@type":"Answer","text":"是的 — 接受裸露的 11-character ID。"}},{"@type":"Question","name":"ID上傳了嗎？","acceptedAnswer":{"@type":"Answer","text":"不，它僅用於在您的瀏覽器中建立公共縮圖 URL。"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"URL 中的影片 ID 位於何處？","acceptedAnswer":{"@type":"Answer","text":"在監視連結 (youtube.com/watch?v=VIDEO_ID) 中的 v= 之後，或在 youtu.be/VIDEO_ID 連結中的斜線之後。"}},{"@type":"Question","name":"可以只貼ID嗎？","acceptedAnswer":{"@type":"Answer","text":"是的 — 接受裸露的 11-character ID。"}},{"@type":"Question","name":"ID上傳了嗎？","acceptedAnswer":{"@type":"Answer","text":"不，它僅用於在您的瀏覽器中建立公共縮圖 URL。"}},{"@type":"Question","name":"在哪裡可以找到視頻 ID？","acceptedAnswer":{"@type":"Answer","text":"在 v=（觀看連結）之後的 URL、youtu.be 連結中的斜杠之後、/embed/ 之後的嵌入代碼以及大多數 YouTube API 回應中。"}},{"@type":"Question","name":"所有有 ID 的影片都有縮圖嗎？","acceptedAnswer":{"@type":"Answer","text":"是的 - 每個公共影片都至少具有標準縮圖大小。私有或刪除的影片不會回傳任何內容。"}},{"@type":"Question","name":"我可以貼上完整的網址嗎？","acceptedAnswer":{"@type":"Answer","text":"是的，完整的 URL 也可以。該工具僅提供僅貼上 ID 的選項。"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/zh-TW/"},{"@type":"ListItem","position":2,"name":"從影片 ID 取得 YouTube 縮圖","item":"https://yt-thumbnail-downloader.site/lang/zh-TW/tools/thumbnail-from-video-id"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1256,7 +1256,7 @@ button.small {
 
     
     <section class="seo-section">
-      <h2>如何從影片 ID 取得 YouTube 縮圖</h2>
+      <h2>如何從影片 ID 取得縮圖</h2>
       <p>每個 YouTube 影片都有一個獨特的11-character ID。如果您已經從嵌入、API 或播放清單中獲得了 ID，則可以直接貼上它，無需完整的 URL。</p>
 <p>該工具為您建立縮圖 URL 並顯示現有的每種尺寸。</p>
       <ol>
@@ -1266,11 +1266,48 @@ button.small {
 <li>下載您需要的尺寸。</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>什麼是從影片 ID 取得 YouTube 縮圖？</h2>
+      <p>每個 YouTube 影片都有一個獨特的 11-character 影片 ID — 觀看連結中 v= 後面的字串或 youtu.be 連結中斜杠後面的字串。該工具直接接受裸視訊 ID，為您建立縮圖 URL，並顯示該影片存在的每個尺寸。</p>
+      <p>當您已從嵌入程式碼、播放清單匯出、API 回應或資料庫中取得 ID 時，貼上 ID 非常有用，而無需完整的 URL。</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>常見用途</h2>
+      <ul class="benefit-list">
+      <li>讓您可以貼上裸露的11-character 影片 ID — 無需完整的 URL。</li>
+      <li>為您建立所有縮圖 URL 並顯示現有的每種尺寸。</li>
+      <li>非常適合來自嵌入、播放清單、API 或共享連結的 ID。</li>
+      <li>立即下載原廠 HD、SD 或 HQ 檔案。</li>
+      <li>免費且私密 — 該 ID 僅在您的瀏覽器本地使用。</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>為什麼要使用此從影片 ID 取得 YouTube 縮圖？</h2>
+      <p>開發人員和進階用戶經常使用影片 ID，而不是完整的 URL。您無需手動建立 i.ytimg.com/vi/VIDEO_ID/SIZE.jpg 模式並猜測存在哪些尺寸，而是可以貼上 ID 並獲得即時、經過驗證的可下載縮圖清單。</p>
+      <ul class="benefit-list">
+      <li>接受裸11-character影片ID，無需URL解析。</li>
+      <li>自動建置並驗證每個縮圖 URL。</li>
+      <li>一鍵保存任何尺寸。</li>
+      <li>非常適合開發人員、嵌入工作流程和資料匯出。</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>常見問題</h2>
       <details class="faq-item"><summary>URL 中的影片 ID 位於何處？</summary><p>在監視連結 (youtube.com/watch?v=VIDEO_ID) 中的 v= 之後，或在 youtu.be/VIDEO_ID 連結中的斜線之後。</p></details>
 <details class="faq-item"><summary>可以只貼ID嗎？</summary><p>是的 — 接受裸露的 11-character ID。</p></details>
 <details class="faq-item"><summary>ID上傳了嗎？</summary><p>不，它僅用於在您的瀏覽器中建立公共縮圖 URL。</p></details>
+<details class="faq-item"><summary>在哪裡可以找到視頻 ID？</summary><p>在 v=（觀看連結）之後的 URL、youtu.be 連結中的斜杠之後、/embed/ 之後的嵌入代碼以及大多數 YouTube API 回應中。</p></details>
+<details class="faq-item"><summary>所有有 ID 的影片都有縮圖嗎？</summary><p>是的 - 每個公共影片都至少具有標準縮圖大小。私有或刪除的影片不會回傳任何內容。</p></details>
+<details class="faq-item"><summary>我可以貼上完整的網址嗎？</summary><p>是的，完整的 URL 也可以。該工具僅提供僅貼上 ID 的選項。</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>開始使用此從影片 ID 取得 YouTube 縮圖</h2>
+      <p>直接從影片 ID 取得任何 YouTube 縮圖 - 無需 URL。貼上11-character ID，下載原始圖像，然後繼續。</p>
+      <p>對於已經擁有 ID 的人來說，這是最快的選擇。</p>
     </section>
 
     <section class="seo-section related-tools">

@@ -265,8 +265,9 @@ function jsonldIndex(t, canonical, lang, faq) {
 }
 
 function jsonldTool(page, canonical, lang, slug) {
-  const deep = lang === "en" ? TOOL_CONTENT[slug] : null;
-  const faqList = deep ? [...page.faq, ...(deep.extraFaq || [])] : page.faq;
+  const enDeep = TOOL_CONTENT[slug];
+  const extra = page.extraFaq || enDeep?.extraFaq || [];
+  const faqList = [...page.faq, ...extra];
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -464,17 +465,23 @@ function relatedToolsFor(page, lang, slug) {
 }
 
 function contentSectionsForTool(page, t, lang, slug) {
-  const deep = lang === "en" ? TOOL_CONTENT[slug] : null;
+  const enDeep = TOOL_CONTENT[slug];
+  const deep = page.whatIs || page.why || page.conclusion || page.extraFaq
+    ? page
+    : lang === "en"
+      ? enDeep
+      : null;
+  const deepData = deep || enDeep || {};
   const intro = page.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
   const steps = page.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
-  const faqList = deep ? [...page.faq, ...(deep.extraFaq || [])] : page.faq;
+  const faqList = deepData.extraFaq ? [...page.faq, ...deepData.extraFaq] : page.faq;
   const faq = faqList
     .map(
       ([q, a]) =>
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
     )
     .join("\n");
-  const benefits = (page.benefits || [])
+  const benefits = (page.benefits || deepData.benefits || [])
     .map((b) => `      <li>${escapeHtml(b)}</li>`)
     .join("\n");
   const benefitsSection = benefits
@@ -490,25 +497,25 @@ function contentSectionsForTool(page, t, lang, slug) {
       `      <div class="related-grid">\n${related}\n      </div>\n` +
       `    </section>\n`
     : "";
-  const whatIsSection = deep && deep.whatIs
+  const whatIsSection = deepData.whatIs && deepData.whatIs.length
     ? `\n    <section class="seo-section">\n` +
-      `      <h2>What is a ${page.h1}?</h2>\n` +
-      deep.whatIs.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
+      `      <h2>${escapeHtml(page.whatIsH2 || enDeep?.whatIsH2 || `What is a ${page.h1}?`)}</h2>\n` +
+      deepData.whatIs.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
       `\n    </section>\n`
     : "";
-  const whySection = deep && deep.why
+  const whySection = deepData.why
     ? `\n    <section class="seo-section">\n` +
-      `      <h2>Why use this ${page.h1}?</h2>\n` +
-      `      <p>${escapeHtml(deep.why.para)}</p>\n` +
-      `      <ul class="benefit-list">\n${deep.why.bullets
+      `      <h2>${escapeHtml(page.whyH2 || enDeep?.whyH2 || `Why use this ${page.h1}?`)}</h2>\n` +
+      `      <p>${escapeHtml(deepData.why.para)}</p>\n` +
+      `      <ul class="benefit-list">\n${deepData.why.bullets
         .map((b) => `      <li>${escapeHtml(b)}</li>`)
         .join("\n")}\n      </ul>\n` +
       `    </section>\n`
     : "";
-  const conclusionSection = deep && deep.conclusion
+  const conclusionSection = deepData.conclusion && deepData.conclusion.length
     ? `\n    <section class="seo-section">\n` +
-      `      <h2>Get started with this ${page.h1}</h2>\n` +
-      deep.conclusion.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
+      `      <h2>${escapeHtml(page.startH2 || enDeep?.startH2 || `Get started with this ${page.h1}`)}</h2>\n` +
+      deepData.conclusion.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
       `\n    </section>\n`
     : "";
   return (

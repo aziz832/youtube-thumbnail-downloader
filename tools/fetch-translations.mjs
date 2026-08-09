@@ -2,6 +2,7 @@ import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { LANGUAGES, PSEO, BLOG, INFO } from "./site-data.mjs";
 import { EN_LABELS, EN_UI, EN_HOME } from "./content.mjs";
+import { TOOL_CONTENT } from "./tool-content.mjs";
 
 const BATCH = 40;
 const MAX_ATTEMPTS = 3;
@@ -49,13 +50,30 @@ function registerStrings(set) {
     add(p.meta);
     add(p.h1);
     add(p.primary);
-    add("How to " + p.primary);
+    add(p.howH2);
+    add(`What is a ${p.h1}?`);
+    add(`Why use this ${p.h1}?`);
+    add(`Get started with this ${p.h1}`);
     p.intro.forEach(add);
     p.steps.forEach(add);
+    p.benefits?.forEach(add);
     p.faq.forEach(([q, a]) => {
       add(q);
       add(a);
     });
+    const dc = TOOL_CONTENT[p.slug];
+    if (dc) {
+      dc.whatIs?.forEach(add);
+      if (dc.why) {
+        add(dc.why.para);
+        dc.why.bullets.forEach(add);
+      }
+      dc.conclusion?.forEach(add);
+      dc.extraFaq?.forEach(([q, a]) => {
+        add(q);
+        add(a);
+      });
+    }
   }
   for (const b of BLOG) {
     add(b.title);
@@ -217,15 +235,31 @@ function buildLang(tl, map) {
 
   const tools = {};
   for (const p of PSEO) {
+    const dc = TOOL_CONTENT[p.slug];
+    const h1 = p.h1;
     tools[p.slug] = {
       title: tr(p.title),
       meta: tr(p.meta),
-      h1: tr(p.h1),
+      h1: tr(h1),
       primary: tr(p.primary),
-      howH2: tr("How to " + p.primary),
+      howH2: tr(p.howH2),
       intro: p.intro.map(tr),
       steps: p.steps.map(tr),
+      benefits: p.benefits?.map(tr),
       faq: p.faq.map(trPair),
+      whatIsH2: tr(`What is a ${h1}?`),
+      whyH2: tr(`Why use this ${h1}?`),
+      startH2: tr(`Get started with this ${h1}`),
+      ...(dc
+        ? {
+            whatIs: dc.whatIs?.map(tr),
+            why: dc.why
+              ? { para: tr(dc.why.para), bullets: dc.why.bullets.map(tr) }
+              : undefined,
+            conclusion: dc.conclusion?.map(tr),
+            extraFaq: dc.extraFaq?.map(trPair),
+          }
+        : {}),
     };
   }
 

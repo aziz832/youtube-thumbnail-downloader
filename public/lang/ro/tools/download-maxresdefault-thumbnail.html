@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/ro/tools/download-maxresdefault-thumbnail","description":"Descărcați miniatura maxresdefault (1280x720 HD) a oricărui videoclip YouTube. Obțineți imaginea de previzualizare de calitate completă direct de pe CDN-ul YouTube.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"ro","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ce este maxresdefault?","acceptedAnswer":{"@type":"Answer","text":"Numele de fișier pe care YouTube îl folosește pentru cea mai mare miniatură, 1280x720 HD."}},{"@type":"Question","name":"De unde vine imaginea?","acceptedAnswer":{"@type":"Answer","text":"Este preluat de pe serverul de imagini publice al YouTube (i.ytimg.com)."}},{"@type":"Question","name":"Îl pot obține fără un instrument?","acceptedAnswer":{"@type":"Answer","text":"Da, dar adresa URL trebuie creată manual - acest instrument o face pentru tine."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ce este maxresdefault?","acceptedAnswer":{"@type":"Answer","text":"Numele de fișier pe care YouTube îl folosește pentru cea mai mare miniatură, 1280x720 HD."}},{"@type":"Question","name":"De unde vine imaginea?","acceptedAnswer":{"@type":"Answer","text":"Este preluat de pe serverul de imagini publice al YouTube (i.ytimg.com)."}},{"@type":"Question","name":"Îl pot obține fără un instrument?","acceptedAnswer":{"@type":"Answer","text":"Da, dar adresa URL trebuie creată manual - acest instrument o face pentru tine."}},{"@type":"Question","name":"Ce înseamnă „maxresdefault”?","acceptedAnswer":{"@type":"Answer","text":"Este numele fișierului pe care YouTube îl atribuie celei mai mari rezoluții de miniaturi pe care o stochează (1280x720). Numele este un rămas din schema de denumire „rezoluție maximă prestabilită” a YouTube."}},{"@type":"Question","name":"Fișierul maxresdefault este întotdeauna 1280x720?","acceptedAnswer":{"@type":"Answer","text":"Da, când există. Unele videoclipuri le pot stoca la dimensiuni ușor diferite pentru încărcări mai vechi, dar 1280x720 este standardul."}},{"@type":"Question","name":"De ce lipsește maxresdefault din unele videoclipuri?","acceptedAnswer":{"@type":"Answer","text":"YouTube îl generează numai atunci când persoana care a încărcat a folosit o miniatură personalizată de înaltă calitate. Nu este creat pentru miniaturi implicite sau de calitate scăzută."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/ro/"},{"@type":"ListItem","position":2,"name":"Descărcați miniatura maxresdefault","item":"https://yt-thumbnail-downloader.site/lang/ro/tools/download-maxresdefault-thumbnail"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1182,8 +1182,8 @@ button.small {
       <h1>Descărcați miniatura maxresdefault</h1>
       <p class="subtitle">Lipiți orice link YouTube pentru a previzualiza și descărca miniatura videoclipului în HD, SD, HQ și nu numai — gratuit, rapid și 100 % în browser.</p>
       <div class="lang-switch">
-  <label for="langSelect">Limbă</label>
-  <select id="langSelect" aria-label="Limbă">
+  <label for="langSelect">Limba</label>
+  <select id="langSelect" aria-label="Limba">
       <option value="en">English</option>
       <option value="de">Deutsch</option>
       <option value="es">Español</option>
@@ -1266,11 +1266,48 @@ button.small {
 <li>Folosiți dimensiunile alternative dacă nu.</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>Ce este o miniatură de descărcare maxresdefault?</h2>
+      <p>maxresdefault este numele de fișier pe care YouTube îl folosește pentru cea mai mare miniatură pe care o stochează: un 1280x720 pixel JPG. Descărcarea miniaturii maxresdefault înseamnă preluarea acestui fișier exact pentru un anumit videoclip, direct de pe serverul de imagini YouTube.</p>
+      <p>Acest instrument verifică dacă videoclipul are un fișier maxresdefault și, dacă are, îl face disponibil pentru descărcare cu un singur clic. Dacă fișierul nu există, instrumentul revine la următoarea dimensiune disponibilă.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>Utilizări frecvente</h2>
+      <ul class="benefit-list">
+      <li>Preia imaginea HD maxresdefault 1280x720 direct de pe CDN-ul YouTube.</li>
+      <li>Verifică automat dimensiunile rămase atunci când un videoclip nu are miniatură HD.</li>
+      <li>Salvează cea mai mare imagine de previzualizare pe care o publică YouTube pentru videoclip.</li>
+      <li>Acceptă fiecare format obișnuit de adresă URL YouTube plus ID-uri video simple.</li>
+      <li>Fără cont, fără filigran și descărcări gratuite nelimitate.</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>De ce să folosiți această miniatură Descărcare maxresdefault?</h2>
+      <p>Imaginea maxresdefault este coperta care apare în rezultatele căutării și videoclipurile sugerate — cea care generează clicuri. Obținerea fișierului original vă permite să-l studiați îndeaproape, să vă arhivați propriile încărcări la calitate maximă sau să reutilizați imaginea pe alte platforme pe care le dețineți.</p>
+      <ul class="benefit-list">
+      <li>Acces direct la fișierul 1280x720 maxresdefault.</li>
+      <li>Comandă de rezervă transparentă atunci când HD nu este disponibil.</li>
+      <li>Fără filigran, fără recomprimare - fișierul CDN exact.</li>
+      <li>Descărcări gratuite și nelimitate.</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>Întrebări frecvente</h2>
       <details class="faq-item"><summary>Ce este maxresdefault?</summary><p>Numele de fișier pe care YouTube îl folosește pentru cea mai mare miniatură, 1280x720 HD.</p></details>
 <details class="faq-item"><summary>De unde vine imaginea?</summary><p>Este preluat de pe serverul de imagini publice al YouTube (i.ytimg.com).</p></details>
 <details class="faq-item"><summary>Îl pot obține fără un instrument?</summary><p>Da, dar adresa URL trebuie creată manual - acest instrument o face pentru tine.</p></details>
+<details class="faq-item"><summary>Ce înseamnă „maxresdefault”?</summary><p>Este numele fișierului pe care YouTube îl atribuie celei mai mari rezoluții de miniaturi pe care o stochează (1280x720). Numele este un rămas din schema de denumire „rezoluție maximă prestabilită” a YouTube.</p></details>
+<details class="faq-item"><summary>Fișierul maxresdefault este întotdeauna 1280x720?</summary><p>Da, când există. Unele videoclipuri le pot stoca la dimensiuni ușor diferite pentru încărcări mai vechi, dar 1280x720 este standardul.</p></details>
+<details class="faq-item"><summary>De ce lipsește maxresdefault din unele videoclipuri?</summary><p>YouTube îl generează numai atunci când persoana care a încărcat a folosit o miniatură personalizată de înaltă calitate. Nu este creat pentru miniaturi implicite sau de calitate scăzută.</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>Începeți cu această miniatură Descărcați maxresdefault</h2>
+      <p>Descărcați miniatura maxresdefault – cea mai clară imagine de copertă pe care YouTube o are pentru un videoclip – direct de pe CDN. Lipiți linkul, descărcați fișierul HD și păstrați-l pentru totdeauna.</p>
+      <p>Acesta este același fișier pe care YouTube îl servește în rezultatele căutării, la rezoluție completă.</p>
     </section>
 
     <section class="seo-section related-tools">

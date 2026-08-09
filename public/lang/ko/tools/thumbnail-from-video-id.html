@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/ko/tools/thumbnail-from-video-id","description":"11-character 동영상 ID에서 YouTube 동영상의 미리보기 이미지를 가져옵니다. ID를 붙여넣고 사용 가능한 모든 크기를 즉시 다운로드하세요. 무료 도구.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"ko","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"URL에서 동영상 ID는 어디에 있나요?","acceptedAnswer":{"@type":"Answer","text":"감시 링크(youtube.com/watch?v=VIDEO_ID)에서 v= 뒤 또는 youtu.be/VIDEO_ID 링크에서 슬래시 뒤."}},{"@type":"Question","name":"아이디만 붙여넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"예. 11-character ID만 허용됩니다."}},{"@type":"Question","name":"ID가 업로드된 적이 있나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 브라우저에서 공개 썸네일 URL을 구축하는 데에만 사용됩니다."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"URL에서 동영상 ID는 어디에 있나요?","acceptedAnswer":{"@type":"Answer","text":"감시 링크(youtube.com/watch?v=VIDEO_ID)에서 v= 뒤 또는 youtu.be/VIDEO_ID 링크에서 슬래시 뒤."}},{"@type":"Question","name":"아이디만 붙여넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"예. 11-character ID만 허용됩니다."}},{"@type":"Question","name":"ID가 업로드된 적이 있나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 브라우저에서 공개 썸네일 URL을 구축하는 데에만 사용됩니다."}},{"@type":"Question","name":"동영상 ID는 어디서 찾을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"v=(보기 링크) 뒤의 URL, youtu.be 링크의 슬래시 뒤, /embed/ 뒤의 삽입 코드 및 대부분의 YouTube API 응답에서."}},{"@type":"Question","name":"ID가 있는 모든 동영상에 미리보기 이미지가 있나요?","acceptedAnswer":{"@type":"Answer","text":"예. 모든 공개 동영상에는 최소한 표준 썸네일 크기가 있습니다. 비공개 또는 삭제된 동영상은 아무것도 반환하지 않습니다."}},{"@type":"Question","name":"대신 전체 URL을 붙여넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"예, 전체 URL도 작동합니다. 이 도구는 단순히 ID만 붙여넣을 수 있는 옵션을 제공합니다."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/ko/"},{"@type":"ListItem","position":2,"name":"비디오 ID에서 YouTube 썸네일 가져오기","item":"https://yt-thumbnail-downloader.site/lang/ko/tools/thumbnail-from-video-id"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1256,7 +1256,7 @@ button.small {
 
     
     <section class="seo-section">
-      <h2>동영상 ID에서 YouTube 썸네일을 얻는 방법</h2>
+      <h2>비디오 ID에서 썸네일을 얻는 방법</h2>
       <p>모든 YouTube 동영상에는 고유한 11-character ID가 있습니다. 삽입, API 또는 재생 목록을 통해 이미 ID가 있는 경우 전체 URL 없이 직접 붙여넣을 수 있습니다.</p>
 <p>이 도구는 썸네일 URL을 생성하고 존재하는 모든 크기를 표시합니다.</p>
       <ol>
@@ -1266,11 +1266,48 @@ button.small {
 <li>필요한 크기를 다운로드하세요.</li>
       </ol>
     </section>
+
+    <section class="seo-section">
+      <h2>동영상 ID에서 YouTube 썸네일 가져오기란 무엇인가요?</h2>
+      <p>모든 YouTube 동영상에는 고유한 11-character 동영상 ID가 있습니다. 이는 시청 링크의 v= 뒤 또는 youtu.be 링크의 슬래시 뒤의 문자열입니다. 이 도구는 기본 동영상 ID를 직접 받아들이고, 썸네일 URL을 생성하고, 해당 동영상에 존재하는 모든 크기를 표시합니다.</p>
+      <p>전체 URL이 필요 없이 삽입 코드, 재생 목록 내보내기, API 응답 또는 데이터베이스에서 ID를 이미 가지고 있는 경우 ID를 붙여넣는 것이 유용합니다.</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>일반적인 용도</h2>
+      <ul class="benefit-list">
+      <li>11-character 동영상 ID만 붙여넣을 수 있습니다. 전체 URL은 필요하지 않습니다.</li>
+      <li>모든 썸네일 URL을 작성하고 존재하는 모든 크기를 표시합니다.</li>
+      <li>삽입, 재생 목록, API 또는 공유 링크의 ID에 적합합니다.</li>
+      <li>원본 HD, SD 또는 HQ 파일을 즉시 다운로드합니다.</li>
+      <li>무료 및 비공개 — ID는 브라우저에서 로컬로만 사용됩니다.</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>비디오 ID에서 YouTube 썸네일 가져오기를 사용하는 이유는 무엇입니까?</h2>
+      <p>개발자와 고급 사용자는 전체 URL이 아닌 비디오 ID로 작업하는 경우가 많습니다. i.ytimg.com/vi/VIDEO_ID/SIZE.jpg 패턴을 직접 구성하고 어떤 크기가 있는지 추측하는 대신 ID를 붙여넣고 다운로드 가능한 썸네일의 확인된 즉시 목록을 얻을 수 있습니다.</p>
+      <ul class="benefit-list">
+      <li>URL 구문 분석이 필요하지 않은 기본 11-character 비디오 ID를 허용합니다.</li>
+      <li>모든 썸네일 URL을 자동으로 구축하고 확인합니다.</li>
+      <li>한 번의 클릭으로 모든 크기를 저장합니다.</li>
+      <li>개발자, 워크플로 삽입 및 데이터 내보내기에 적합합니다.</li>
+      </ul>
+    </section>
     <section class="seo-section">
       <h2>자주 묻는 질문</h2>
       <details class="faq-item"><summary>URL에서 동영상 ID는 어디에 있나요?</summary><p>감시 링크(youtube.com/watch?v=VIDEO_ID)에서 v= 뒤 또는 youtu.be/VIDEO_ID 링크에서 슬래시 뒤.</p></details>
 <details class="faq-item"><summary>아이디만 붙여넣을 수 있나요?</summary><p>예. 11-character ID만 허용됩니다.</p></details>
 <details class="faq-item"><summary>ID가 업로드된 적이 있나요?</summary><p>아니요. 브라우저에서 공개 썸네일 URL을 구축하는 데에만 사용됩니다.</p></details>
+<details class="faq-item"><summary>동영상 ID는 어디서 찾을 수 있나요?</summary><p>v=(보기 링크) 뒤의 URL, youtu.be 링크의 슬래시 뒤, /embed/ 뒤의 삽입 코드 및 대부분의 YouTube API 응답에서.</p></details>
+<details class="faq-item"><summary>ID가 있는 모든 동영상에 미리보기 이미지가 있나요?</summary><p>예. 모든 공개 동영상에는 최소한 표준 썸네일 크기가 있습니다. 비공개 또는 삭제된 동영상은 아무것도 반환하지 않습니다.</p></details>
+<details class="faq-item"><summary>대신 전체 URL을 붙여넣을 수 있나요?</summary><p>예, 전체 URL도 작동합니다. 이 도구는 단순히 ID만 붙여넣을 수 있는 옵션을 제공합니다.</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>동영상 ID에서 YouTube 썸네일 가져오기 시작하기</h2>
+      <p>URL이 필요하지 않으며 동영상 ID에서 바로 YouTube 썸네일을 가져옵니다. 11-character 아이디를 붙여넣고 원본 이미지를 다운로드한 후 진행하세요.</p>
+      <p>이미 신분증을 가지고 있는 사람이라면 누구에게나 가장 빠른 옵션입니다.</p>
     </section>
 
     <section class="seo-section related-tools">

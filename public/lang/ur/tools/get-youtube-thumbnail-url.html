@@ -89,7 +89,7 @@
   <meta name="twitter:image" content="https://yt-thumbnail-downloader.site/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","description":"YouTube Thumbnail Downloader","inLanguage":"en","publisher":{"@type":"Organization","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/","logo":{"@type":"ImageObject","url":"https://yt-thumbnail-downloader.site/og-image.png","width":1200,"height":630}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://yt-thumbnail-downloader.site/lang/ur/tools/get-youtube-thumbnail-url","description":"کسی بھی ویڈیو کے لیے براہ راست YouTube تھمب نیل URL حاصل کریں۔ لنک پیسٹ کریں اور ہر سائز کے لیے i.ytimg.com تصویر کا URL کاپی کریں۔ مفت ٹول۔","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"ur","featureList":["Download YouTube thumbnails in all available resolutions","Support for watch, youtu.be, Shorts, embed, live, and video ID inputs","Original-quality images with no watermark","Free, no sign-up, unlimited downloads"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"یو آر ایل کس طرح نظر آتے ہیں؟","acceptedAnswer":{"@type":"Answer","text":"وہ پیٹرن https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg. استعمال کرتے ہیں"}},{"@type":"Question","name":"کیا مجھے API کلید کی ضرورت ہے؟","acceptedAnswer":{"@type":"Answer","text":"نہیں - تصاویر عوامی ہیں اور ان کی تصدیق کی ضرورت نہیں ہے۔"}},{"@type":"Question","name":"کیا میں تصویر کو ہاٹ لنک کر سکتا ہوں؟","acceptedAnswer":{"@type":"Answer","text":"ہاں، URL ایک سادہ JPG ہے جسے زیادہ تر پلیٹ فارمز میں سرایت کیا جا سکتا ہے۔"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"یو آر ایل کس طرح نظر آتے ہیں؟","acceptedAnswer":{"@type":"Answer","text":"وہ پیٹرن https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg. استعمال کرتے ہیں"}},{"@type":"Question","name":"کیا مجھے API کلید کی ضرورت ہے؟","acceptedAnswer":{"@type":"Answer","text":"نہیں - تصاویر عوامی ہیں اور ان کی تصدیق کی ضرورت نہیں ہے۔"}},{"@type":"Question","name":"کیا میں تصویر کو ہاٹ لنک کر سکتا ہوں؟","acceptedAnswer":{"@type":"Answer","text":"ہاں، URL ایک سادہ JPG ہے جسے زیادہ تر پلیٹ فارمز میں سرایت کیا جا سکتا ہے۔"}},{"@type":"Question","name":"یو آر ایل کی ساخت کیا ہے؟","acceptedAnswer":{"@type":"Answer","text":"https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg کے ساتھ SIZE کی جگہ maxresdefault، sddefault، hqdefault، mqdefault، یا ڈیفالٹ۔"}},{"@type":"Question","name":"کیا میں ان URLs کو ہاٹ لنک کر سکتا ہوں؟","acceptedAnswer":{"@type":"Answer","text":"ہاں، وہ سادہ JPGs ہیں جو عوامی CDN سے پیش کیے جاتے ہیں اور زیادہ تر پلیٹ فارمز میں سرایت کے قابل ہیں۔"}},{"@type":"Question","name":"سائز کا URL کیوں غائب ہو گا؟","acceptedAnswer":{"@type":"Answer","text":"کیونکہ وہ سائز ویڈیو کے لیے موجود نہیں ہے — ٹول صرف ان سائزوں کی فہرست دیتا ہے جو حقیقت میں پیش کیے جاتے ہیں۔"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Thumbnail Downloader","item":"https://yt-thumbnail-downloader.site/lang/ur/"},{"@type":"ListItem","position":2,"name":"YouTube تھمب نیل URL حاصل کریں۔","item":"https://yt-thumbnail-downloader.site/lang/ur/tools/get-youtube-thumbnail-url"}]}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23FE7F2D%22%2F%3E%3Cpath%20d%3D%22M26%2021v22l18-11z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1260,17 +1260,54 @@ button.small {
       <p>یہ ٹول ہر تھمب نیل سائز کے عین مطابق تصویری یو آر ایل کو ظاہر کرتا ہے جو YouTube نے ویڈیو کے لیے تیار کیا ہے۔ ایمبیڈز، ایپس یا ٹولز میں ایسے لنکس کا استعمال کریں جن کو براہ راست تصویری ذریعہ کی ضرورت ہے۔</p>
 <p>URLs عوامی i.ytimg.com پیٹرن کی پیروی کرتے ہیں اور انہیں API کلید کی ضرورت نہیں ہے۔</p>
       <ol>
-<li>ویڈیو یو آر ایل چسپاں کریں۔</li>
+<li>ویڈیو URL چسپاں کریں۔</li>
 <li>ہر تھمب نیل یو آر ایل دکھایا گیا ہے۔</li>
 <li>اپنی ضرورت کے آگے کاپی پر کلک کریں۔</li>
 <li>اسے کہیں بھی چسپاں کریں۔</li>
       </ol>
+    </section>
+
+    <section class="seo-section">
+      <h2>یوٹیوب تھمب نیل یو آر ایل حاصل کرنا کیا ہے؟</h2>
+      <p>یہ ٹول ہر تھمب نیل سائز کے براہ راست تصویری URL کو ظاہر کرتا ہے جو YouTube نے ویڈیو کے لیے تیار کیا ہے۔ ایک لنک پیسٹ کریں اور ہر دستیاب سائز اس کے عین مطابق i.ytimg.com ایڈریس کے ساتھ دکھایا جائے گا، کاپی کرنے کے لیے تیار ہے۔</p>
+      <p>API کلید یا صفحہ کے ماخذ کے معائنہ کے بغیر تصدیق شدہ، کام کرنے والے تھمب نیل URL کو حاصل کرنے کا یہ تیز ترین طریقہ ہے۔</p>
+    </section>
+
+    <section class="seo-section">
+      <h2>عام استعمال</h2>
+      <ul class="benefit-list">
+      <li>کسی ویڈیو کے لیے ہر تھمب نیل سائز کے عین مطابق تصویری URL کو ظاہر کرتا ہے۔</li>
+      <li>URLs عوامی i.ytimg.com پیٹرن کی پیروی کرتے ہیں اور کسی API کلید کی ضرورت نہیں ہے۔</li>
+      <li>ایمبیڈز، ایپس یا ٹولز کے لیے کسی بھی یو آر ایل کو کاپی کریں جس کے لیے براہ راست تصویری ذریعہ کی ضرورت ہو۔</li>
+      <li>تمام پانچ سرکاری سائز کے علاوہ قطار کے فریموں کا احاطہ کرتا ہے۔</li>
+      <li>آپ کے براؤزر میں مفت اور فوری۔</li>
+      </ul>
+    </section>
+
+    <section class="seo-section">
+      <h2>یہ یوٹیوب تھمب نیل یو آر ایل حاصل کریں کیوں استعمال کریں؟</h2>
+      <p>ایپلیکیشنز، پروٹو ٹائپس، اور آٹومیشن اسکرپٹس کو اکثر ڈاؤن لوڈ فائلوں کے بجائے خام تصویری URLs کی ضرورت ہوتی ہے۔ انہیں ہاتھ سے بنانے کے بجائے کسی ٹول سے حاصل کرنا اس ویڈیو کے لیے اصل میں موجود URLs کی ضمانت دیتا ہے — غلط سائز کا اندازہ لگانے سے کوئی 404 نہیں ہے۔</p>
+      <ul class="benefit-list">
+      <li>موجود ہر سائز کے لیے تصدیق شدہ URLs۔</li>
+      <li>انفرادی لنکس یا مکمل سیٹ کاپی کریں۔</li>
+      <li>کوئی API کلید نہیں، کوئی توثیق نہیں۔</li>
+      <li>ایمبیڈز، پروٹو ٹائپس اور اسکرپٹس کے لیے بہترین۔</li>
+      </ul>
     </section>
     <section class="seo-section">
       <h2>اکثر پوچھے گئے سوالات</h2>
       <details class="faq-item"><summary>یو آر ایل کس طرح نظر آتے ہیں؟</summary><p>وہ پیٹرن https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg. استعمال کرتے ہیں</p></details>
 <details class="faq-item"><summary>کیا مجھے API کلید کی ضرورت ہے؟</summary><p>نہیں - تصاویر عوامی ہیں اور ان کی تصدیق کی ضرورت نہیں ہے۔</p></details>
 <details class="faq-item"><summary>کیا میں تصویر کو ہاٹ لنک کر سکتا ہوں؟</summary><p>ہاں، URL ایک سادہ JPG ہے جسے زیادہ تر پلیٹ فارمز میں سرایت کیا جا سکتا ہے۔</p></details>
+<details class="faq-item"><summary>یو آر ایل کی ساخت کیا ہے؟</summary><p>https://i.ytimg.com/vi/VIDEO_ID/SIZE.jpg کے ساتھ SIZE کی جگہ maxresdefault، sddefault، hqdefault، mqdefault، یا ڈیفالٹ۔</p></details>
+<details class="faq-item"><summary>کیا میں ان URLs کو ہاٹ لنک کر سکتا ہوں؟</summary><p>ہاں، وہ سادہ JPGs ہیں جو عوامی CDN سے پیش کیے جاتے ہیں اور زیادہ تر پلیٹ فارمز میں سرایت کے قابل ہیں۔</p></details>
+<details class="faq-item"><summary>سائز کا URL کیوں غائب ہو گا؟</summary><p>کیونکہ وہ سائز ویڈیو کے لیے موجود نہیں ہے — ٹول صرف ان سائزوں کی فہرست دیتا ہے جو حقیقت میں پیش کیے جاتے ہیں۔</p></details>
+    </section>
+
+    <section class="seo-section">
+      <h2>اس کے ساتھ شروع کریں YouTube تھمب نیل URL حاصل کریں۔</h2>
+      <p>کسی بھی ویڈیو کے لیے براہ راست YouTube تھمب نیل URL حاصل کریں — ہر سائز، تصدیق شدہ، کاپی کرنے کے لیے تیار۔</p>
+      <p>تھمب نیل لنکس حاصل کرنے کا ڈویلپر دوستانہ طریقہ۔</p>
     </section>
 
     <section class="seo-section related-tools">
@@ -1400,7 +1437,7 @@ button.small {
     location.assign("/lang/" + code + (base === "/" ? "/" : base));
   });
 })();</script>
-  <script>window.UI_TEXT={"placeholder":"یوٹیوب لنک چسپاں کریں — مثلاً https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"ویڈیو URL چسپاں کریں اور Enter دبائیں · watch، youtu.be، shorts اور embed لنکس معاون ہیں","getThumbs":"تھمب نیل حاصل کریں","example":"مثال","loading":"لوڈ ہو رہا ہے…","download":"ڈاؤن لوڈ","open":"نئی ٹیب میں کھولیں","notAvailable":"دستیاب نہیں","sizesTitle":"دستیاب تھمب نیلز","sizesSub":"تصویر اپنے آلے پر محفوظ کرنے کے لیے ڈاؤن لوڈ پر کلک کریں۔","videoTitle":"یوٹیوب ویڈیو","openVideo":"یوٹیوب پر ویڈیو کھولیں","qDefault":"پہلے سے طے شدہ","invalidMsg":"اس لنک میں ویڈیو آئی ڈی نہیں ملی۔ watch، shorts یا youtu.be جیسا یوٹیوب URL چسپاں کریں۔","copy":"یو آر ایل کاپی کریں۔","copied":"کاپی کیا گیا!","clear":"صاف کریں","qThumb1":"تھمب نیل 1","qThumb2":"تھمب نیل 2"};</script>
+  <script>window.UI_TEXT={"placeholder":"یوٹیوب لنک چسپاں کریں — مثلاً https://www.youtube.com/watch?v=dQw4w9WgXcQ","tips":"ویڈیو URL چسپاں کریں اور Enter دبائیں · watch، youtu.be، shorts اور embed لنکس معاون ہیں","getThumbs":"تھمب نیل حاصل کریں","example":"مثال","loading":"لوڈ ہو رہا ہے…","download":"ڈاؤن لوڈ","open":"نئی ٹیب میں کھولیں","notAvailable":"دستیاب نہیں","sizesTitle":"دستیاب تھمب نیلز","sizesSub":"تصویر اپنے آلے پر محفوظ کرنے کے لیے ڈاؤن لوڈ پر کلک کریں۔","videoTitle":"یوٹیوب ویڈیو","openVideo":"یوٹیوب پر ویڈیو کھولیں","qDefault":"پہلے سے طے شدہ","invalidMsg":"اس لنک میں ویڈیو آئی ڈی نہیں ملی۔ watch، shorts یا youtu.be جیسا یوٹیوب URL چسپاں کریں۔","copy":"یو آر ایل کاپی کریں۔","copied":"نقل کیا گیا!","clear":"صاف کریں","qThumb1":"تھمب نیل 1","qThumb2":"تھمب نیل 2"};</script>
   <script>const UI_TEXT = window.UI_TEXT || {
   placeholder: "Paste a YouTube link \u2014 e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   tips: "Paste a video URL and press Enter \u00b7 Supports watch, youtu.be, shorts and embed links",
