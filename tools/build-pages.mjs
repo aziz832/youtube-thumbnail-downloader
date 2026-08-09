@@ -748,6 +748,10 @@ Canonical: ${DOMAIN}/security.txt
 write(join(PROJECT, "security.txt"), securityTxt);
 write(join(PROJECT, ".well-known", "security.txt"), securityTxt);
 
+const adsTxt = `google.com, pub-7868097386681738, DIRECT, f08c47fec0942fa0
+`;
+write(join(PROJECT, "ads.txt"), adsTxt);
+
 let errors = 0;
 for (const f of written) {
   if (f.endsWith(".html")) {
