@@ -720,12 +720,12 @@ function infoVars(i, lang, page, labels) {
     .join("\n      ");
   const form = page.contactForm
     ? `\n    <section class="seo-section">\n` +
-      `      <form class="contact-form" action="mailto:contact@yt-thumbnail-downloader.site" method="post" enctype="text/plain">\n` +
+      `      <form class="contact-form" id="contactForm" autocomplete="on">\n` +
       `        <div class="url-row">\n` +
-      `          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" required />\n` +
+      `          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" autocomplete="name" required />\n` +
       `        </div>\n` +
       `        <div class="url-row">\n` +
-      `          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" required />\n` +
+      `          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" autocomplete="email" required />\n` +
       `        </div>\n` +
       `        <div class="url-row">\n` +
       `          <input class="url-input" type="text" name="Subject" placeholder="Subject" aria-label="Subject" required />\n` +
@@ -738,6 +738,17 @@ function infoVars(i, lang, page, labels) {
       `        </div>\n` +
       `        <p class="tips" role="note">This form opens your email app with the message ready to send to our contact address.</p>\n` +
       `      </form>\n` +
+      `      <script>(function () {\n` +
+      `        var form = document.getElementById("contactForm");\n` +
+      `        if (!form) return;\n` +
+      `        form.addEventListener("submit", function (e) {\n` +
+      `          e.preventDefault();\n` +
+      `          var f = form.elements;\n` +
+      `          var subject = f.Subject.value.trim();\n` +
+      `          var body = "Name: " + f.Name.value.trim() + "\\nEmail: " + f.Email.value.trim() + "\\n\\n" + f.Message.value.trim();\n` +
+      `          window.location.href = "mailto:contact@yt-thumbnail-downloader.site?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);\n` +
+      `        });\n` +
+      `      })();</script>\n` +
       `    </section>\n`
     : "";
   vars.contentSections = `\n    <section class="seo-section article">\n      ${sections}\n    </section>\n${form}`;

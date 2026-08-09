@@ -1267,12 +1267,12 @@ button.small {
     </section>
 
     <section class="seo-section">
-      <form class="contact-form" action="mailto:contact@yt-thumbnail-downloader.site" method="post" enctype="text/plain">
+      <form class="contact-form" id="contactForm" autocomplete="on">
         <div class="url-row">
-          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" required />
+          <input class="url-input" type="text" name="Name" placeholder="Your name" aria-label="Your name" autocomplete="name" required />
         </div>
         <div class="url-row">
-          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" required />
+          <input class="url-input" type="email" name="Email" placeholder="Your email address" aria-label="Your email address" autocomplete="email" required />
         </div>
         <div class="url-row">
           <input class="url-input" type="text" name="Subject" placeholder="Subject" aria-label="Subject" required />
@@ -1285,6 +1285,17 @@ button.small {
         </div>
         <p class="tips" role="note">This form opens your email app with the message ready to send to our contact address.</p>
       </form>
+      <script>(function () {
+        var form = document.getElementById("contactForm");
+        if (!form) return;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var f = form.elements;
+          var subject = f.Subject.value.trim();
+          var body = "Name: " + f.Name.value.trim() + "\nEmail: " + f.Email.value.trim() + "\n\n" + f.Message.value.trim();
+          window.location.href = "mailto:contact@yt-thumbnail-downloader.site?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        });
+      })();</script>
     </section>
 
   </main>
