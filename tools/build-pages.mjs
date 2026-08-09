@@ -670,13 +670,16 @@ for (const lang of LANGUAGES) {
   }
 }
 
-const lastmod = "2026-01-01";
+const lastmod = new Date().toISOString().slice(0, 10);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${LANGUAGES.map(
   (lang) => `  <url>
     <loc>${DOMAIN}${pathFor(lang.code, "home")}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
     ${altLinks("home")}
   </url>`
 ).join("\n")}
@@ -684,24 +687,30 @@ ${LANGUAGES.flatMap((lang) =>
   PSEO.map(
     (p) => `  <url>
     <loc>${DOMAIN}${pathFor(lang.code, "tool", p.slug)}</loc>
-    ${altLinks("tool", p.slug)}
     <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    ${altLinks("tool", p.slug)}
   </url>`
   )
 ).join("\n")}
 ${LANGUAGES.map(
   (lang) => `  <url>
     <loc>${DOMAIN}${pathFor(lang.code, "blogIndex")}</loc>
-    ${altLinks("blogIndex")}
     <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    ${altLinks("blogIndex")}
   </url>`
 ).join("\n")}
 ${LANGUAGES.flatMap((lang) =>
   BLOG.map(
     (b) => `  <url>
     <loc>${DOMAIN}${pathFor(lang.code, "article", b.slug)}</loc>
-    ${altLinks("article", b.slug)}
     <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    ${altLinks("article", b.slug)}
   </url>`
   )
 ).join("\n")}
@@ -709,8 +718,10 @@ ${LANGUAGES.flatMap((lang) =>
   INFO.map(
     (i) => `  <url>
     <loc>${DOMAIN}${pathFor(lang.code, "info", i.slug)}</loc>
-    ${altLinks("info", i.slug)}
     <lastmod>${lastmod}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    ${altLinks("info", i.slug)}
   </url>`
   )
 ).join("\n")}
