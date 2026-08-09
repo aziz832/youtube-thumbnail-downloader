@@ -171,18 +171,56 @@ function langSwitchScript() {
 // ---- meta / schema helpers ----
 
 function ogMeta(title, desc, canonical, locale) {
+  const localeAlternates = LANGUAGES.filter(
+    (l) => OG_LOCALES[l.code] !== locale
+  )
+    .map(
+      (l) =>
+        `<meta property="og:locale:alternate" content="${OG_LOCALES[l.code]}" />`
+    )
+    .join("\n  ");
   return (
     `<meta property="og:type" content="website" />\n  ` +
     `<meta property="og:title" content="${escapeHtml(title)}" />\n  ` +
     `<meta property="og:description" content="${escapeHtml(desc)}" />\n  ` +
     `<meta property="og:url" content="${canonical}" />\n  ` +
     `<meta property="og:locale" content="${locale}" />\n  ` +
+    `${localeAlternates}\n  ` +
     `<meta property="og:site_name" content="${escapeHtml(SITE.name)}" />\n  ` +
     `<meta property="og:image" content="${DOMAIN}/og-image.png" />\n  ` +
     `<meta property="og:image:width" content="1200" />\n  ` +
     `<meta property="og:image:height" content="630" />\n  ` +
-    `<meta name="twitter:card" content="summary_large_image" />`
+    `<meta name="twitter:card" content="summary_large_image" />\n  ` +
+    `<meta name="twitter:title" content="${escapeHtml(title)}" />\n  ` +
+    `<meta name="twitter:description" content="${escapeHtml(desc)}" />\n  ` +
+    `<meta name="twitter:image" content="${DOMAIN}/og-image.png" />`
   );
+}
+
+function siteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.name,
+    url: DOMAIN + "/",
+    description: SITE.toolName,
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: DOMAIN + "/",
+      logo: {
+        "@type": "ImageObject",
+        url: DOMAIN + "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    },
+  };
+}
+
+function jsonldSite() {
+  return `<script type="application/ld+json">${jsonScript(siteJsonLd())}</script>\n  `;
 }
 
 function webAppJsonLd(name, url, desc, lang, featureList) {
@@ -485,7 +523,7 @@ function homeVars(lang, t) {
   const vars = baseVars(t, lang, canonical, labels);
   vars.hreflangLinks = hreflangFor("home");
   vars.ogMeta = ogMeta(t.htmlTitle, t.metaDesc, canonical, OG_LOCALES[lang] || lang.replace("-", "_"));
-  vars.jsonld = jsonldIndex(t, canonical, lang, homeFaqFor(lang));
+  vars.jsonld = jsonldSite() + jsonldIndex(t, canonical, lang, homeFaqFor(lang));
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = "";
   vars.contentSections = homeContent(homeFor(lang), homeFaqFor(lang));
@@ -502,7 +540,7 @@ function toolVars(p, t, lang, page, labels) {
   vars.h1 = page.h1;
   vars.hreflangLinks = hreflangFor("tool", p.slug);
   vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
-  vars.jsonld = jsonldTool(page, canonical, lang);
+  vars.jsonld = jsonldSite() + jsonldTool(page, canonical, lang);
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
   vars.contentSections = contentSectionsForTool(page, t);
@@ -530,6 +568,7 @@ function articleVars(b, lang, page, labels) {
     publisher: { "@type": "Organization", name: SITE.name },
   };
   vars.jsonld =
+    jsonldSite() +
     `<script type="application/ld+json">${jsonScript(article)}</script>\n  ` +
     `<script type="application/ld+json">${jsonScript(faqJsonLd(page.faq))}</script>`;
   vars.dirCss = dirCssFor(t);
@@ -569,6 +608,7 @@ function infoVars(i, lang, page, labels) {
   vars.hreflangLinks = hreflangFor("info", i.slug);
   vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
   vars.jsonld =
+    jsonldSite() +
     `<script type="application/ld+json">${jsonScript({
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -610,8 +650,13 @@ function blogIndexHtmlFor(lang) {
     `  ${hreflangFor("blogIndex")}\n` +
     `  ${ogMeta(labels.blogIndexTitle, labels.blogIndexMeta, canonical, OG_LOCALES[lang] || "en_US")}\n` +
     `  <link rel="icon" href="${favicon}" />\n` +
+    `  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />\n` +
+    `  <meta name="theme-color" content="#233D4D" />\n` +
+    `  <link rel="preconnect" href="https://i.ytimg.com" crossorigin />\n` +
+    `  <link rel="preconnect" href="https://www.youtube.com" crossorigin />\n` +
     `  <style>${css}</style>\n` +
     `  ${dirCssFor(t)}\n` +
+    `  ${jsonldSite()}\n` +
     `</head>\n<body>\n  <main class="container">\n` +
     `    <header class="hero"><div class="logo-mark yt-logo" aria-hidden="true"></div><h1>${escapeHtml(labels.guidesCrumb)}</h1><p class="subtitle">${escapeHtml(labels.blogIndexSubtitle)}</p>\n` +
     `    ${langSwitchHtml(lang, labels.langLabel)}\n` +

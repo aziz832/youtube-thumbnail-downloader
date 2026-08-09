@@ -21,6 +21,13 @@ export default {
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set("Strict-Transport-Security", HSTS);
+    const type = response.headers.get("content-type") || "";
+    headers.set(
+      "Cache-Control",
+      type.includes("text/html")
+        ? "public, max-age=3600, s-maxage=3600"
+        : "public, max-age=86400, s-maxage=86400"
+    );
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
