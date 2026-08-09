@@ -446,8 +446,8 @@ const RELATED_MAP = {
   "best-youtube-thumbnail-downloader": ["youtube-thumbnail-downloader", "free-youtube-thumbnail-downloader", "youtube-thumbnail-4k-downloader", "youtube-thumbnail-sizes"],
 };
 
-function relatedToolsFor(page, lang) {
-  const slugs = (page.related && page.related.length) ? page.related : (RELATED_MAP[page.slug] || []);
+function relatedToolsFor(page, lang, slug) {
+  const slugs = (page.related && page.related.length) ? page.related : (RELATED_MAP[slug] || []);
   return slugs
     .map((slug) => {
       const p = PSEO.find((x) => x.slug === slug);
@@ -460,7 +460,7 @@ function relatedToolsFor(page, lang) {
     .join("\n");
 }
 
-function contentSectionsForTool(page, t, lang) {
+function contentSectionsForTool(page, t, lang, slug) {
   const intro = page.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
   const steps = page.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
   const faq = page.faq
@@ -478,7 +478,7 @@ function contentSectionsForTool(page, t, lang) {
       `      <ul class="benefit-list">\n${benefits}\n      </ul>\n` +
       `    </section>\n`
     : "";
-  const related = relatedToolsFor(page, lang);
+  const related = relatedToolsFor(page, lang, slug);
   const relatedSection = related
     ? `\n    <section class="seo-section related-tools">\n` +
       `      <h2>${escapeHtml(t.relatedH2)}</h2>\n` +
@@ -607,7 +607,7 @@ function toolVars(p, t, lang, page, labels) {
   vars.jsonld = jsonldSite() + jsonldTool(page, canonical, lang);
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
-  vars.contentSections = contentSectionsForTool(page, t, lang);
+  vars.contentSections = contentSectionsForTool(page, t, lang, p.slug);
   vars.footer = footerHtml(t, LANG_H2[lang], labels, lang, "tool", p.slug);
   vars.uiTextScript = uiTextScriptFor(t, lang);
   return vars;
