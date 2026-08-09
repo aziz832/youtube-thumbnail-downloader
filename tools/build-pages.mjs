@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { SITE, LANGUAGES, PSEO, BLOG, INFO } from "./site-data.mjs";
 import { L as T } from "./translations.mjs";
 import { PT } from "./pages-translations.mjs";
+import { TOOL_CONTENT } from "./tool-content.mjs";
 import { EN_HOME, EN_LABELS, EN_FAQ } from "./content.mjs";
 
 const TOOLS_DIR = dirname(fileURLToPath(import.meta.url));
@@ -263,7 +264,9 @@ function jsonldIndex(t, canonical, lang, faq) {
   );
 }
 
-function jsonldTool(page, canonical, lang) {
+function jsonldTool(page, canonical, lang, slug) {
+  const deep = lang === "en" ? TOOL_CONTENT[slug] : null;
+  const faqList = deep ? [...page.faq, ...(deep.extraFaq || [])] : page.faq;
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -280,7 +283,7 @@ function jsonldTool(page, canonical, lang) {
   ];
   return (
     `<script type="application/ld+json">${jsonScript(webAppJsonLd(SITE.toolName, canonical, page.meta, lang, features))}</script>\n  ` +
-    `<script type="application/ld+json">${jsonScript(faqJsonLd(page.faq))}</script>\n  ` +
+    `<script type="application/ld+json">${jsonScript(faqJsonLd(faqList))}</script>\n  ` +
     `<script type="application/ld+json">${jsonScript(breadcrumb)}</script>`
   );
 }
@@ -461,9 +464,11 @@ function relatedToolsFor(page, lang, slug) {
 }
 
 function contentSectionsForTool(page, t, lang, slug) {
+  const deep = lang === "en" ? TOOL_CONTENT[slug] : null;
   const intro = page.intro.map((par) => `<p>${escapeHtml(par)}</p>`).join("\n");
   const steps = page.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("\n");
-  const faq = page.faq
+  const faqList = deep ? [...page.faq, ...(deep.extraFaq || [])] : page.faq;
+  const faq = faqList
     .map(
       ([q, a]) =>
         `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`
@@ -485,17 +490,41 @@ function contentSectionsForTool(page, t, lang, slug) {
       `      <div class="related-grid">\n${related}\n      </div>\n` +
       `    </section>\n`
     : "";
+  const whatIsSection = deep && deep.whatIs
+    ? `\n    <section class="seo-section">\n` +
+      `      <h2>What is a ${page.h1}?</h2>\n` +
+      deep.whatIs.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
+      `\n    </section>\n`
+    : "";
+  const whySection = deep && deep.why
+    ? `\n    <section class="seo-section">\n` +
+      `      <h2>Why use this ${page.h1}?</h2>\n` +
+      `      <p>${escapeHtml(deep.why.para)}</p>\n` +
+      `      <ul class="benefit-list">\n${deep.why.bullets
+        .map((b) => `      <li>${escapeHtml(b)}</li>`)
+        .join("\n")}\n      </ul>\n` +
+      `    </section>\n`
+    : "";
+  const conclusionSection = deep && deep.conclusion
+    ? `\n    <section class="seo-section">\n` +
+      `      <h2>Get started with this ${page.h1}</h2>\n` +
+      deep.conclusion.map((par) => `      <p>${escapeHtml(par)}</p>`).join("\n") +
+      `\n    </section>\n`
+    : "";
   return (
     `\n    <section class="seo-section">\n` +
     `      <h2>${escapeHtml(page.howH2)}</h2>\n` +
     `      ${intro}\n` +
     `      <ol>\n${steps}\n      </ol>\n` +
     `    </section>\n` +
+    whatIsSection +
     benefitsSection +
+    whySection +
     `    <section class="seo-section">\n` +
     `      <h2>${escapeHtml(t.secFaqH2)}</h2>\n` +
     `      ${faq}\n` +
     `    </section>\n` +
+    conclusionSection +
     relatedSection
   );
 }
@@ -604,7 +633,7 @@ function toolVars(p, t, lang, page, labels) {
   vars.h1 = page.h1;
   vars.hreflangLinks = hreflangFor("tool", p.slug);
   vars.ogMeta = ogMeta(page.title, page.meta, canonical, OG_LOCALES[lang] || "en_US");
-  vars.jsonld = jsonldSite() + jsonldTool(page, canonical, lang);
+  vars.jsonld = jsonldSite() + jsonldTool(page, canonical, lang, p.slug);
   vars.dirCss = dirCssFor(t);
   vars.breadcrumbs = breadcrumbHtml(page.h1, lang);
   vars.contentSections = contentSectionsForTool(page, t, lang, p.slug);
