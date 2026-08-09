@@ -941,3 +941,14 @@ console.log(
   `Generated ${written.length} files (${LANGUAGES.length} locales x home/tools/blog/info).`
 );
 console.log(errors ? `${errors} verification error(s)!` : "Verification OK.");
+
+// ---- SEO audit (informational; does not fail the build) ----
+import { spawnSync } from "node:child_process";
+const audit = spawnSync(process.execPath, [join(TOOLS_DIR, "seo-audit.mjs")], {
+  encoding: "utf8",
+});
+if (audit.stdout) console.log(audit.stdout);
+if (audit.stderr) console.error(audit.stderr);
+if (audit.status !== 0) {
+  console.log("SEO audit found issues (see report above). Fix them before deploying.");
+}

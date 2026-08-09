@@ -1,8 +1,8 @@
 export const L = {
   en: {
     dir: "ltr",
-    htmlTitle: "YouTube Thumbnail Downloader — Free HD Thumbnail Download from Video Link",
-    metaDesc: "Free YouTube thumbnail downloader. Paste any YouTube video link and download HD, SD and HQ thumbnails in one click. No sign-up, no watermark, no limits — everything runs in your browser.",
+    htmlTitle: "YouTube Thumbnail Downloader — Get HD Thumbnails Free",
+    metaDesc: "Free YouTube thumbnail downloader. Paste any video link and download HD, SD and HQ thumbnails in one click — no sign-up, no watermark.",
     h1: "YouTube Thumbnail Downloader",
     subtitle: "Paste any YouTube link to preview and download the video thumbnail in HD, SD, HQ and more — free, fast, and 100% in your browser.",
     placeholder: "Paste a YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ",
