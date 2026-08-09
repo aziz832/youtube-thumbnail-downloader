@@ -2,6 +2,7 @@ const HSTS = "max-age=31536000; includeSubDomains";
 
 const CANONICAL_HOST = "yt-thumbnail-downloader.site";
 const OLD_HOSTS = ["youtube-thumbnail-downloader.aziizboukerma.workers.dev"];
+const REDIRECT_TO_CANONICAL = [...OLD_HOSTS, `www.${CANONICAL_HOST}`];
 
 const BOT_AGENTS = [
   "GPTBot", "ChatGPT-User", "OAI-SearchBot", "CCBot", "ClaudeBot",
@@ -32,7 +33,7 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    if (OLD_HOSTS.includes(url.hostname)) {
+    if (REDIRECT_TO_CANONICAL.includes(url.hostname)) {
       url.hostname = CANONICAL_HOST;
       return Response.redirect(url.toString(), 301);
     }
