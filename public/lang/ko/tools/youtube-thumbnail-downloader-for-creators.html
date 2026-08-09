@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>크리에이터를 위한 YouTube 썸네일 다운로더</title>
   <meta name="description" content="YouTube 제작자를 위해 제작된 썸네일 다운로더입니다. 경쟁사의 썸네일을 저장하고, 자신이 업로드한 것을 보관하고, 성공적인 디자인을 연구하세요. 무료." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/youtube-thumbnail-downloader-for-creators" />

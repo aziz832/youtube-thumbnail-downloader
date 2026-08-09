@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>개인정보 보호정책 — YouTube 썸네일 다운로더</title>
   <meta name="description" content="YouTube 썸네일 다운로더에 대한 개인정보 보호정책. 도구가 수집하는 데이터, 사용 방법 및 링크가 비공개로 유지되는 이유." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/privacy-policy" />

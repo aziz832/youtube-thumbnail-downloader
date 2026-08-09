@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 비디오 썸네일 보기 — 모든 크기를 나란히 보기</title>
   <meta name="description" content="모든 YouTube 동영상의 미리보기 이미지를 모든 크기로 나란히 봅니다. 링크를 붙여넣고 HD, SD 및 HQ 미리보기를 즉시 비교하세요. 무료 뷰어." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/youtube-thumbnail-viewer" />

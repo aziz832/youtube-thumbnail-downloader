@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Download YouTube Video Thumbnail — From Any Video URL</title>
   <meta name="description" content="Download the thumbnail of any YouTube video from its URL. Paste the link and save the HD, SD or HQ cover image instantly. Free, no sign-up." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/tools/download-youtube-video-thumbnail" />

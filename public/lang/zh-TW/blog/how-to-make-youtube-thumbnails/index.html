@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>如何製作 YouTube 縮圖 - 工具、尺寸和設計規則</title>
   <meta name="description" content="如何製作可點擊的 YouTube 縮圖：正確的工具、1280x720 畫布以及區分優質縮圖和優秀縮圖的設計規則。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/zh-TW/blog/how-to-make-youtube-thumbnails/" />

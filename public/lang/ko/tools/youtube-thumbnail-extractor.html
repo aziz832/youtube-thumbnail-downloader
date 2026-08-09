@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 썸네일 추출기 - 즉시 이미지 가져오기</title>
   <meta name="description" content="YouTube 동영상에서 미리보기 이미지를 즉시 추출하세요. 링크를 붙여넣고 사용 가능한 모든 해결 방법을 얻으세요. 무료, 비공개, 가입이 필요하지 않습니다." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/youtube-thumbnail-extractor" />

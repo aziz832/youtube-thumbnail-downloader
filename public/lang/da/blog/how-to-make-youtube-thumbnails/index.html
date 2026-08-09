@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Sådan laver du YouTube-miniaturebilleder - Værktøjer, størrelser og designregler</title>
   <meta name="description" content="Sådan laver du YouTube-miniaturebilleder, der får klik: det rigtige værktøj, 1280x720-lærredet og designreglerne, der adskiller gode miniaturebilleder fra fantastiske." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/da/blog/how-to-make-youtube-thumbnails/" />

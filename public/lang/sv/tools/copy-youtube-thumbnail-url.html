@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Kopiera YouTubes miniatyr-URL — Hämta den direkta bildlänken</title>
   <meta name="description" content="Kopiera den direkta webbadressen till en YouTube-videominiatyr. Klistra in videolänken och få i.ytimg.com bild-URL för varje storlek. Gratis verktyg." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/sv/tools/copy-youtube-thumbnail-url" />

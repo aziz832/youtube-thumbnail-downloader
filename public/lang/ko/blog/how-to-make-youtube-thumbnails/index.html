@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 썸네일을 만드는 방법 - 도구, 크기 및 디자인 규칙</title>
   <meta name="description" content="클릭을 유도하는 YouTube 썸네일을 만드는 방법: 올바른 도구, 1280x720 캔버스, 좋은 썸네일과 좋은 썸네일을 구분하는 디자인 규칙." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/blog/how-to-make-youtube-thumbnails/" />

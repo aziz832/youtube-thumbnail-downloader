@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 缩略图下载器 — 获取高清缩略图</title>
   <meta name="description" content="从任何视频链接下载 HD、SD 和 HQ 格式的 YouTube 缩略图。粘贴 URL，选择分辨率，然后保存图像 - 免费、无需注册、无水印。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/zh-CN/tools/youtube-thumbnail-downloader" />

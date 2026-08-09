@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube Shorts 썸네일 다운로더 — Shorts 썸네일 저장</title>
   <meta name="description" content="YouTube Shorts 동영상에서 미리보기 이미지를 다운로드하세요. Shorts 링크를 붙여넣고 HD 또는 SD 미리보기 이미지를 즉시 저장하세요. 무료이며 쉽습니다." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/youtube-shorts-thumbnail-downloader" />

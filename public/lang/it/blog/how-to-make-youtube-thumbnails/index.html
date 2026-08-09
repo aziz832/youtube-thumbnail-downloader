@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Come realizzare miniature di YouTube: strumenti, dimensioni e regole di progettazione</title>
   <meta name="description" content="Come realizzare miniature di YouTube che ottengano clic: lo strumento giusto, il canvas 1280x720 e le regole di progettazione che separano le miniature valide da quelle eccezionali." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/it/blog/how-to-make-youtube-thumbnails/" />

@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 썸네일 이미지 다운로더 — 표지를 JPG로 저장</title>
   <meta name="description" content="YouTube 동영상의 썸네일 이미지를 JPG 파일로 다운로드하세요. 링크를 붙여넣고 해상도를 선택한 후 저장하세요. 무료이고 빠르며 가입이 필요하지 않습니다." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/youtube-thumbnail-image-downloader" />

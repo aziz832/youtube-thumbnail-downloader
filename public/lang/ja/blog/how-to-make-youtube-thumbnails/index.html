@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube サムネイルの作り方 — ツール、サイズ、デザインルール</title>
   <meta name="description" content="クリックされる YouTube サムネイルを作成する方法: 適切なツール、1280x720 キャンバス、および優れたサムネイルと優れたサムネイルを区別するデザイン ルール。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ja/blog/how-to-make-youtube-thumbnails/" />

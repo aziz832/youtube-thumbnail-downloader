@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Maattabel voor YouTube-miniaturen: afmetingen en regels</title>
   <meta name="description" content="De volledige maattabel voor YouTube-thumbnails: 1280x720 is de aanbevolen grootte, minimaal 640x360, bestandsgrootte onder 2MB. Plus elk formaat dat YouTube daadwerkelijk opslaat." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/nl/blog/youtube-thumbnail-size-guide/" />

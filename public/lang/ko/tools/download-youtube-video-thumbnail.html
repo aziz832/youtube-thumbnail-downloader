@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 비디오 썸네일 다운로드 — 모든 비디오 URL에서</title>
   <meta name="description" content="해당 URL에서 YouTube 동영상의 썸네일을 다운로드하세요. 링크를 붙여넣고 HD, SD 또는 HQ 표지 이미지를 즉시 저장하세요. 무료이며 가입이 필요하지 않습니다." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/download-youtube-video-thumbnail" />

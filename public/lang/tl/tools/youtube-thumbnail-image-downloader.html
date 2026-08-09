@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube Thumbnail Image Downloader — I-save ang Anumang Cover bilang JPG</title>
   <meta name="description" content="I-download ang thumbnail na larawan ng anumang video sa YouTube bilang isang JPG file. I-paste ang link, pumili ng resolution, at i-save. Libre, mabilis, walang pag-sign up." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/tl/tools/youtube-thumbnail-image-downloader" />

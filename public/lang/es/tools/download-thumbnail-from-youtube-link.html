@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Descargar miniatura desde el enlace de YouTube: guardado instantáneo</title>
   <meta name="description" content="Descargue la miniatura de cualquier enlace de YouTube con un solo clic. Pega la URL del vídeo, elige un tamaño y guarda la imagen. Gratis, sin registro, sin marca de agua." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/es/tools/download-thumbnail-from-youtube-link" />

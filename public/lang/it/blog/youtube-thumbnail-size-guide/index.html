@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Guida alle dimensioni delle miniature di YouTube: dimensioni e regole</title>
   <meta name="description" content="La guida completa alle dimensioni delle miniature di YouTube: 1280x720 è la dimensione consigliata, minima 640x360, dimensione file sotto 2MB. Inoltre, ogni dimensione effettivamente memorizzata da YouTube." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/it/blog/youtube-thumbnail-size-guide/" />

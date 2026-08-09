@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Руководство по размеру миниатюр YouTube — размеры и правила</title>
   <meta name="description" content="Полное руководство по размеру миниатюр YouTube: 1280x720 — рекомендуемый размер, минимум 640x360, размер файла меньше 2MB. Кроме того, YouTube действительно хранит все размеры." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ru/blog/youtube-thumbnail-size-guide/" />

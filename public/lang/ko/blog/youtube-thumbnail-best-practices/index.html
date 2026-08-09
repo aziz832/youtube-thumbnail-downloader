@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 썸네일 모범 사례 - CTR을 높이는 12가지 팁</title>
   <meta name="description" content="클릭률을 높이는 12가지 YouTube 썸네일 모범 사례: 얼굴, 대비, 3~4단어 텍스트, 일관된 브랜딩, 색상 심리." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/blog/youtube-thumbnail-best-practices/" />

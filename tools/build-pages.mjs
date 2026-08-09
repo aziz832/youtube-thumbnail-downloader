@@ -35,6 +35,32 @@ const LANG_H2 = {
   th: "ภาษา", id: "Bahasa", ms: "Bahasa", tl: "Mga Wika",
 };
 
+const GTAG_ID = "G-08WX39XXYP";
+
+const GTAG_SCRIPT =
+  `<!-- Google tag (gtag.js) - lazy loaded -->\n` +
+  `  <script>\n` +
+  `    window.dataLayer = window.dataLayer || [];\n` +
+  `    function gtag(){dataLayer.push(arguments);}\n` +
+  `    gtag('js', new Date());\n` +
+  `    gtag('config', '${GTAG_ID}');\n` +
+  `    (function () {\n` +
+  `      function load() {\n` +
+  `        var s = document.createElement('script');\n` +
+  `        s.async = true;\n` +
+  `        s.src = 'https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}';\n` +
+  `        document.head.appendChild(s);\n` +
+  `      }\n` +
+  `      if ('requestIdleCallback' in window) {\n` +
+  `        window.requestIdleCallback(load, { timeout: 3000 });\n` +
+  `      } else if (window.addEventListener) {\n` +
+  `        window.addEventListener('load', load);\n` +
+  `      } else {\n` +
+  `        load();\n` +
+  `      }\n` +
+  `    })();\n` +
+  `  </script>`;
+
 const favicon =
   "data:image/svg+xml," +
   encodeURIComponent(
@@ -612,6 +638,7 @@ function baseVars(t, lang, canonical, labels) {
     favicon,
     css,
     js,
+    gtag: GTAG_SCRIPT,
     langSwitch: langSwitchHtml(lang, labels.langLabel),
     langSwitchScript: langSwitchScript(),
   };
@@ -777,6 +804,7 @@ function blogIndexHtmlFor(lang) {
   return (
     `<!DOCTYPE html>\n<html lang="${lang}" dir="${t.dir}">\n<head>\n  <meta charset="UTF-8" />\n` +
     `  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n` +
+    `  ${GTAG_SCRIPT}\n` +
     `  <title>${escapeHtml(labels.blogIndexTitle)}</title>\n` +
     `  <meta name="description" content="${escapeHtml(labels.blogIndexMeta)}" />\n` +
     `  <link rel="canonical" href="${canonical}" />\n` +

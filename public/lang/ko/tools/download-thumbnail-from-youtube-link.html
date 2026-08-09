@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 링크에서 썸네일 다운로드 — 즉시 저장</title>
   <meta name="description" content="한 번의 클릭으로 YouTube 링크에서 썸네일을 다운로드할 수 있습니다. 동영상 URL을 붙여넣고 크기를 선택한 후 이미지를 저장하세요. 무료, 가입 불필요, 워터마크 없음." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ko/tools/download-thumbnail-from-youtube-link" />

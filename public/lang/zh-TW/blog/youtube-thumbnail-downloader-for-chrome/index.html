@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>適用於 Chrome 的 YouTube 縮圖下載器 — 無擴充程序</title>
   <meta name="description" content="如何在沒有擴充功能的情況下在 Chrome 中下載 YouTube 縮圖。請改用網路工具 — 無需權限，無需安裝，可在任何瀏覽器中使用。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/zh-TW/blog/youtube-thumbnail-downloader-for-chrome/" />

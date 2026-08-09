@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>YouTube 缩略图下载器 - 无水印，原始文件</title>
   <meta name="description" content="免费在线下载无水印的 YouTube 缩略图。每个文件都是直接来自 YouTube CDN 的原始图像 — 干净、未压缩，可在任何项目中使用。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/zh-CN/blog/youtube-thumbnail-downloader-without-watermark/" />

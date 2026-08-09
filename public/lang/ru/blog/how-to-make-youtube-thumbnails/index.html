@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>Как сделать миниатюры для YouTube — инструменты, размеры и правила дизайна</title>
   <meta name="description" content="Как создавать миниатюры YouTube, которые получают клики: правильный инструмент, холст 1280x720 и правила дизайна, которые отличают хорошие миниатюры от отличных." />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/ru/blog/how-to-make-youtube-thumbnails/" />

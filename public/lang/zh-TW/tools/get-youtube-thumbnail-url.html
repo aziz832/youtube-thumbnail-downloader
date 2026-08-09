@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) - lazy loaded -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-08WX39XXYP');
+    (function () {
+      function load() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-08WX39XXYP';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else if (window.addEventListener) {
+        window.addEventListener('load', load);
+      } else {
+        load();
+      }
+    })();
+  </script>
   <title>取得 YouTube 縮圖 URL — 任何影片的直接圖像鏈接</title>
   <meta name="description" content="取得任何影片的直接 YouTube 縮圖 URL。貼上連結並複製每個尺寸的i.ytimg.com 圖像 URL。免費工具。" />
   <link rel="canonical" href="https://yt-thumbnail-downloader.site/lang/zh-TW/tools/get-youtube-thumbnail-url" />
