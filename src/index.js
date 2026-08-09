@@ -9,10 +9,7 @@ const BOT_AGENTS = [
   "Claude-Web", "Claude-SearchBot", "anthropic-ai", "Google-Extended",
   "GoogleOther", "Bytespider", "Amazonbot", "Applebot-Extended",
   "meta-externalagent", "PerplexityBot", "YouBot", "cohere-ai",
-  "cohere-training-data-crawler", "Diffbot", "facebookexternalhit",
-  "Googlebot", "bingbot", "Baiduspider", "YandexBot", "Slurp",
-  "DuckDuckBot", "Sogou", "Exabot", "ia_archiver", "Screaming Frog",
-  "AhrefsBot", "SemrushBot", "MJ12bot", "DotBot", "PetalBot",
+  "cohere-training-data-crawler", "Diffbot",
 ];
 
 const BOT_RESPONSE =
